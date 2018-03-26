@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+/*----------------------------------- tag style reset */
+
+html{ /* //바디보다 더 상위개념 */
+	height: 100%;
+}
+
+
+body{
+	margin:0px;
+	height: 100%;
+}
+
+ul{
+	list-style-type:none;
+	padding:0px;
+	margin:0px;
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin: 0px;
+}
+
+/*----------------------------------- my style cascade */
+.hidden{
+	display: none;
+}
+
+/*----------------------------------- header */
+.header{
+	height: 45px;
+	position:fixed;
+	background: #ffffff;
+	width:100%;
+	border-bottom: 1px solid #e9e9e9;
+}	
+
+
+	.header>h1{
+	font-size: 14px;
+	height:inherit;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	}
+	/*----------------------------------- main-menu */
+	.main-menu{
+	position: relative;
+	top:-45px;
+	}
+		.main-menu ul{
+			display: flex;
+			justify-content:space-between;
+			/* text-align: center;
+			vertical-align: middle;  */
+		}
+	
+			.main-menu li,
+			.main-menu li a{
+				width: 45px;
+				height: 45px;
+				
+				display: flex;
+				justify-content:center;
+				align-items: center;
+				
+			}
+
+/*----------------------------------- main */	
+.main{
+	
+}
+	.main .note-list{
+		font-size: 14px;
+		line-height: 19px;
+		color: #595959;
+	}
+		.main .note-list ul{
+			
+		}
+		
+		.main .note-list li{
+			padding: 15px;
+			border-bottom: 1px solid #ddd;
+		}
+		
+			.main .note-list li>div:first-child{
+				font-size: 17px;
+				line-height: 21px;
+				color: #000;
+				
+			}
+		
+			.main .note-list li > div:not(:first-child){
+				margin-top: 5px;
+			}
+		
+			
+			
+			.main .note-list li > div:last-child {
+				font-size: 13px;
+				display: flex;
+				justify-content: space-between;
+				
+			}
+			
+				.main .note-list li > div > span:first-child{
+					color: #6bacca;
+				}
+				
+			

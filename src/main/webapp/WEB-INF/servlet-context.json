@@ -1,0 +1,6 @@
+{
+	"mappers":[
+		{"url":"/index.do", "class":"com.newlecture.controller.IndexController"},
+		{"url":"/notice/list.do", "class":" com.newlecture.controller.notice.ListController"}
+	]
+}
