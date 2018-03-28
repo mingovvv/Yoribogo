@@ -14,26 +14,27 @@
 </head>
 <body>
 	<header class="header">
-		<h1>블로그</h1>
+		<h1>Yoribogo</h1>
 
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
-				<li><a href="#"><img src="resources/images/ic_dehaze_black_24dp_1x.png"/></a></li>
+				<li><a href="#"><img class="logo" src="resources/images/logo.png"/></a></li>
 				<li><a href="#"><img src="resources/images/ic_search_black_24dp_1x.png"/></a></li>
+				<li><a href="#"><img src="resources/images/ic_dehaze_black_24dp_1x.png"/></a></li>
 			</ul>
 		</nav>
 	</header>
 	
 	<main class="main">
-		<section class="note-list">
-			<h1 class="hidden">노트목록</h1>
+		<section class="recipe-list">
+			<h1 class="hidden">레시피목록</h1>
 			<ul>
 				<c:forEach begin="0" end="9">
 				<li>
-					<div>노트제목</div>
-					<div>오늘 어디서 보나요?</div>
-					<div><span>분류</span><span> 2018-03-22 15:23</span></div>
+					<div><img src="resources/images/sample-images.png"/></div>
+					<div>등갈비 만들기</div>
+					<div>집밥장선생</div>
 				</li>
 				</c:forEach>
 			</ul>

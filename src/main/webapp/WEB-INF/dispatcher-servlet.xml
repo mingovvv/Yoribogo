@@ -17,7 +17,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
         
 <!-- 어노테이션 -->
-    <context:component-scan base-package="com.newlecture.controller"/> <!-- 다 읽는다 -->
+    <context:component-scan base-package="com.yoribogo.controller"/> <!-- 다 읽는다 -->
     
 <!-- 예외로 두기위한 방 -->
 	<mvc:annotation-driven/>
@@ -30,9 +30,11 @@
       <property name="suffix" value=".jsp" />
    </bean>
    
-   <!-- 마이바티스 설정 --> 
-   <!-- 빈들은 다 객체 --> 
-   <!-- DB연결 -->
+ <!--   
+   
+   마이바티스 설정 
+   빈들은 다 객체 
+   DB연결
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
        <property name="driverClassName"  value="com.mysql.jdbc.Driver"/>
        <property name="url" value="jdbc:mysql://211.238.142.97/newlecture?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
@@ -44,24 +46,29 @@
        <property name="maxActive" value="30" />
 </bean>
    
-   		<!-- ㅎ한번만 / 공장 -->
+   		ㅎ한번만 / 공장
       <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		      <property name="dataSource" ref="dataSource" />
 		      <property name="mapperLocations"
 		         value="classpath:com/newlecture/dao/mybatis/mapper/*.xml" />
 	   </bean>
 	   
-	   <!-- 계속 꺼내씀 / 도구 -->
+	   계속 꺼내씀 / 도구
 	   <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 	      <constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	   </bean>
 	   
-	   <!-- 객체생성(결합력 낮추기 위해) -->
+	   
+	   
+	   
+	   객체생성(결합력 낮추기 위해)
 	   <bean class="com.newlecture.dao.mybatis.MyBatisNoteDao">
 	   </bean>
 	   
 	   <bean class="com.newlecture.service.NoteService">
 	   </bean>
+ 
+  -->
  
 <!-- 어노테이션 안쓸때 -->
 <!-- <bean name="/index" class="com.newlecture.controller.IndexController" />
