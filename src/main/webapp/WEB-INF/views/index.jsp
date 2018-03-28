@@ -19,7 +19,7 @@
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
-				<li><a href="#"><img class="logo" src="resources/images/logo.png"/></a></li>
+				<li><a href="#"><img class="logo" src="resources/images/logo-joof.png"/></a></li>
 				<li><a href="#"><img src="resources/images/ic_search_black_24dp_1x.png"/></a></li>
 				<li><a href="#"><img src="resources/images/ic_dehaze_black_24dp_1x.png"/></a></li>
 			</ul>
@@ -34,7 +34,8 @@
 				<li>
 					<div><img src="resources/images/sample-images.png"/></div>
 					<div>등갈비 만들기</div>
-					<div>집밥장선생</div>
+					<div>자취맨</div>
+					<div><img src="resources/images/empty-heart.png"></div>
 				</li>
 				</c:forEach>
 			</ul>
