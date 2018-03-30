@@ -80,6 +80,16 @@ h1,h2,h3,h4,h5,h6{
     			margin-right: auto; /*applied only to the right*/
 			}
 
+/*----------------------------------- visual */	
+
+.visual{
+	position: relative;
+	top:45px;
+	width:auto;
+	height: 280px;
+}
+
+
 /*----------------------------------- main */	
 .main{
 	position: relative;

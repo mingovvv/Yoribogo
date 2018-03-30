@@ -26,6 +26,10 @@
 		</nav>
 	</header>
 	
+	<div class="visual">
+		<img src="resources/images/index-door.png">
+	</div>
+	
 	<main class="main">
 		<section class="recipe-list">
 			<h1 class="hidden">레시피목록</h1>
