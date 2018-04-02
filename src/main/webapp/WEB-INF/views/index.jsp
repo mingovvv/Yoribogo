@@ -27,13 +27,13 @@
 	</header>
 	
 	<div class="visual">
-		<img src="resources/images/index-door.png">
+		<img src="resources/images/main-image.png">
 	</div>
 	
 	<main class="main">
 		<section class="recipe-list">
 			<h1 class="hidden">레시피목록</h1>
-			<ul>
+			<%-- <ul>
 				<c:forEach begin="0" end="9">
 				<li>
 					<div><img src="resources/images/sample-images.png"/></div>
@@ -42,7 +42,7 @@
 					<div><img src="resources/images/empty-heart.png"></div>
 				</li>
 				</c:forEach>
-			</ul>
+			</ul> --%>
 		</section>
 	</main>
 	

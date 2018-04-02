@@ -83,12 +83,13 @@ h1,h2,h3,h4,h5,h6{
 /*----------------------------------- visual */	
 
 .visual{
-	position: relative;
-	top:45px;
-	width:auto;
-	height: 280px;
 }
 
+.visual img {
+    max-width: 100%;
+    min-height: 250px;
+    vertical-align: bottom;
+}
 
 /*----------------------------------- main */	
 .main{
