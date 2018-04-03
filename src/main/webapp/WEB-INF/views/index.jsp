@@ -27,22 +27,30 @@
 	</header>
 	
 	<div class="visual">
-		<img src="resources/images/main-image.png">
+		<p class="change-image"><img src="resources/images/main-image.png"></p>
 	</div>
 	
 	<main class="main">
 		<section class="recipe-list">
 			<h1 class="hidden">레시피목록</h1>
-			<%-- <ul>
-				<c:forEach begin="0" end="9">
-				<li>
-					<div><img src="resources/images/sample-images.png"/></div>
-					<div>등갈비 만들기</div>
-					<div>자취맨</div>
-					<div><img src="resources/images/empty-heart.png"></div>
-				</li>
+			<ul>
+			
+				<c:forEach begin="0" end="30">
+				
+					<li>
+						<div class = "frame">
+							<div><!-- <img src="resources/images/sample-images.png"/> --></div>
+							<div>등갈비 만들기</div>
+							<div>
+								<div><!-- <img src="resources/images/empty-heart.png"> --></div>
+								<div>by 만가지요리</div>
+							</div>
+						</div>
+					</li>
+					
 				</c:forEach>
-			</ul> --%>
+				
+			</ul>
 		</section>
 	</main>
 	
