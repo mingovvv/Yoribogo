@@ -81,6 +81,38 @@ h1,h2,h3,h4,h5,h6{
     			margin-right: auto; /*applied only to the right*/
 			}
 
+
+.add-memu{
+	margin-top:-44px;
+	margin-right:-155px;
+	display: flex;
+	justify-content:flex-end;
+	
+	transition:300ms;
+}
+
+.add-memu.show{
+	margin-right: 0px;	
+	
+}
+
+	.add-memu ul{
+	
+		color: white;
+		background: black;
+		text-align: center;
+	}
+	
+	.add-memu ul li{
+	
+		width: 150px;
+		height: 30px;
+		color: white;
+		background: black;
+		border: 1px solid white;
+		box-sizing: content-box;
+	}
+
 /*----------------------------------- visual */	
 
 .visual{
@@ -89,16 +121,18 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .visual img {
-    width: 100%;
+	width: 100%;
     min-height: 250px;
     vertical-align: bottom;
+    margin-top: 45px;
+    
 
 }
 
 @media screen and (max-width: 640px) {
     .change-image {
-        height: 0;
-        padding-top: 60%; 
+        margin-top: 45px;
+        padding-top: 50%; 
         background: url(../images/index-door.png) no-repeat center;
         background-size: contain;
     }
@@ -126,21 +160,50 @@ h1,h2,h3,h4,h5,h6{
 		justify-content:space-around;
 		
 	}
-		.main .frame{
-			height: 200px; 	/* 380 */
-			width: 150px;	/* 300 */
-			box-sizing: content-box;
-			border: 1px solid black;
-			margin: 10px; 
-			border-radius: 10px;
-			border-style: 
-			
 
-		} 
 		
+/* 미디어 쿼리 */
 
-
+            @media screen and (max-width:400px){
+               .main .frame{
+                height: 200px; 	/* 380 */
+				width: 150px;	/* 300 */
+				box-sizing: content-box;
+				border: 1px solid black;
+				margin: 10px 10px 20px 10px; 
+				border-radius: 10px;
+                } 
+            }
+            @media screen and (min-width: 400px) and (max-width:640px){
+               .main .frame{
+                height: 250px; 	/* 380 */
+				width: 200px;	/* 300 */
+				box-sizing: content-box;
+				border: 1px solid black;
+				margin: 10px 10px 20px 10px; 
+				border-radius: 10px;
+                } 
+            }
+            @media screen and (min-width: 640px){
+                .main .frame{
+                height: 380px; 	/* 380 */
+				width: 300px;	/* 300 */
+				box-sizing: content-box;
+				border: 1px solid black;
+				margin: 10px 10px 20px 10px; 
+				border-radius: 10px;
+                } 
+            }
 			
+			
+			
+			
+/* footer */
+.footer{
+	background: #4d4d4d;
+	color: white;
+	font-size: 1em;
+}
 	
 			/* .main .recipe-list li>div:first-child{
 				font-size: 17px;

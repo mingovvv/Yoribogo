@@ -21,13 +21,24 @@
 			<ul>
 				<li><a href="#"><img class="logo" src="resources/images/logo-joof.png"/></a></li>
 				<li><a href="#"><img src="resources/images/ic_search_black_24dp_1x.png"/></a></li>
-				<li><a href="#"><img src="resources/images/ic_dehaze_black_24dp_1x.png"/></a></li>
+				
+				<li id = "menu-button">
+					<a href="#"><img src="resources/images/ic_dehaze_black_24dp_1x.png"/></a>
+				</li>
 			</ul>
 		</nav>
+		<div class="add-memu">
+			<ul>
+				<li>Login</li>
+				<li>Recipe</li>
+				<li>Community</li>
+				<li>냉장고를 부탁해</li>
+			</ul>
+		</div>
 	</header>
 	
 	<div class="visual">
-		<p class="change-image"><img src="resources/images/main-image.png"></p>
+		<div class="change-image"><img src="resources/images/main-image.png"></div>
 	</div>
 	
 	<main class="main">
@@ -53,6 +64,46 @@
 			</ul>
 		</section>
 	</main>
+<footer class = "footer">
+	
+주소:
+서울특별시 마포구 토정로35길 11, 인우빌딩 5층 266호
+관리자메일:
+admin@newlecture.com
+사업자 등록번호:
+132-18-46763
+통신 판매업:
+신고제 2013-서울강동-0969 호
+상호:
+뉴렉처
+대표:
+박용우
+전화번호:
+070-4206-4084
+Copyright ⓒ newlecture.com 2012-2014 All Right Reserved. Contact admin@newlecture.com for more information
+</footer>
 	
 </body>
 </html>
+
+<script>
+window.addEventListener("load", function(){
+	var menuButton = document.querySelector("#menu-button");
+	var addMemu = document.querySelector(".add-memu");
+	var visual = document.querySelector(".visual");
+	var main = document.querySelector(".main");
+	
+	menuButton.onclick=function(){
+		if(addMemu.classList.contains("show")==false){
+			addMemu.classList.add("show");
+			visual.style.opacity="0.2";
+			main.style.opacity="0.2";
+		}
+		else{
+			addMemu.classList.remove("show");
+			visual.style.opacity="1";
+			main.style.opacity="1";
+		}
+	}
+});
+</script>
