@@ -50,11 +50,11 @@
 				
 					<li>
 						<div class = "frame">
-							<div><!-- <img src="resources/images/sample-images.png"/> --></div>
-							<div>등갈비 만들기</div>
+							<div><img src="resources/images/sample-images.png"></div>
+							<div>모두가 좋아하는  </div>
 							<div>
-								<div><!-- <img src="resources/images/empty-heart.png"> --></div>
-								<div>by 만가지요리</div>
+								<div>by 자취왕</div>
+								<div><a href="#"><img src="resources/images/frying-egg.png"></a></div>
 							</div>
 						</div>
 					</li>
@@ -96,13 +96,13 @@ window.addEventListener("load", function(){
 	menuButton.onclick=function(){
 		if(addMemu.classList.contains("show")==false){
 			addMemu.classList.add("show");
-			visual.style.opacity="0.2";
-			main.style.opacity="0.2";
+			/* visual.style.opacity="0.2";
+			main.style.opacity="0.2"; */
 		}
 		else{
 			addMemu.classList.remove("show");
-			visual.style.opacity="1";
-			main.style.opacity="1";
+			/* visual.style.opacity="1";
+			main.style.opacity="1"; */
 		}
 	}
 });
