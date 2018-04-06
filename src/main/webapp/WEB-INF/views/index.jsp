@@ -29,10 +29,12 @@
 		</nav>
 		<div class="add-memu">
 			<ul>
-				<li>Login</li>
+				<li>Login / Register</li>
+				<li>Home</li>
 				<li>Recipe</li>
 				<li>Community</li>
 				<li>냉장고를 부탁해</li>
+				<li>About us</li>
 			</ul>
 		</div>
 	</header>
@@ -93,8 +95,13 @@ window.addEventListener("load", function(){
 	var visual = document.querySelector(".visual");
 	var main = document.querySelector(".main");
 	
+	
+	
 	menuButton.onclick=function(){
 		if(addMemu.classList.contains("show")==false){
+			addMemu.classList.add("show");
+			addMemu.classList.add("show");
+			addMemu.classList.add("show");
 			addMemu.classList.add("show");
 			/* visual.style.opacity="0.2";
 			main.style.opacity="0.2"; */

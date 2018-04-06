@@ -30,7 +30,7 @@ h1,h2,h3,h4,h5,h6{
 /*----------------------------------- header */
 .header{
 	top:0px;
-	height: 45px;
+	height: 70px;
 	position:fixed;
 	background: #ffffff;
 	width:100%;
@@ -39,22 +39,29 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .logo{
-	width: 45px;
+	width: 65px;
     height: auto;
 }	
 	
 	.header>h1{
-	font-size: 14px;
+	font-size: 18px;
 	height:inherit;
 	display: flex;
 	justify-content:center;
 	align-items: center;
 	}
+	
+.main,
+.foote,
+.visual{
+	transform: translate(-322px, 0px);
+	transition:300ms;
+}
 	/*----------------------------------- main-menu */
 	
 	.main-menu{
 	position: relative;
-	top:-45px;
+	top:-55px;
 	}
 		
 		
@@ -83,30 +90,38 @@ h1,h2,h3,h4,h5,h6{
 
 
 .add-memu{
-	margin-top:-44px;
-	margin-right:-155px;
+	font-size:18px;
+	top:71px;
+	right:-322px;
+	/* margin-top:-44px;
+	margin-right:-330px; */
 	display: flex;
 	justify-content:flex-end;
 	
 	transition:300ms;
+	
+	position:fixed;
+	height: 100%;
+
 }
 
 .add-memu.show{
-	margin-right: 0px;	
+	right: 0px;	
 	
 }
 
 	.add-memu ul{
-	
 		color: white;
 		background: black;
 		text-align: center;
+		
+		
 	}
 	
 	.add-memu ul li{
 	
-		width: 150px;
-		height: 30px;
+		width: 320px;
+		height: 70px;
 		color: white;
 		background: black;
 		border: 1px solid white;
@@ -124,7 +139,7 @@ h1,h2,h3,h4,h5,h6{
 	width: 100%;
     min-height: 250px;
     vertical-align: bottom;
-    margin-top: 45px;
+    margin-top: 70px;
     
 
 }
