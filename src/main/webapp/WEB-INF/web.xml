@@ -31,22 +31,47 @@
    <listener>
        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
    </listener> -->
+   
+<!--        <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+  
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+        /WEB-INF/spring/service-context.xml
+        /WEB-INF/spring/security-context.xml
+     
+     </param-value>
+  </context-param>
+  
+  
   
   <servlet>
-  	<servlet-name>dispatcher</servlet-name>
-  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<!-- <init-param>
-  		<param-name>path</param-name>
-  		<param-value>/WEB-INF/mapper.properties</param-value>
-  	</init-param> -->
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param> <!-- 서블릿 설정 -->
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>/WEB-INF/spring/servlet-context.xml</param-value>
+    </init-param>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
-  	<url-pattern>/</url-pattern> <!-- 모든것을 처리하겠다 --> 
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
   
   <session-config>
-  	<session-timeout>3</session-timeout>
+    <session-timeout>3</session-timeout>
   </session-config>
+  
 </web-app>

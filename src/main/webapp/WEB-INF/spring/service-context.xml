@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+   
+   <!-- 마이바티스 설정 --> 
+   <!-- 빈들은 다 객체 --> 
+   <!-- DB연결 -->
+   <!-- <context:annotation-config />
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+       <property name="driverClassName"  value="com.mysql.jdbc.Driver"/>
+       <property name="url" value="jdbc:mysql://211.238.142.97/newlecture?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+       <property name="username" value="sist" />
+       <property name="password" value="cclass"/>
+       
+       <property name="removeAbandoned" value="true"/>
+       <property name="initialSize" value="20" />
+       <property name="maxActive" value="30" />
+</bean>
+   
+   		ㅎ한번만 / 공장
+      <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		      <property name="dataSource" ref="dataSource" />
+		      <property name="mapperLocations"
+		         value="classpath:com/newlecture/dao/mybatis/mapper/*.xml" />
+	   </bean>
+	   
+	   계속 꺼내씀 / 도구
+	   <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	      <constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	   </bean>
+	   
+	   
+	   객체생성(결합력 낮추기 위해)
+	   <bean class="com.newlecture.dao.mybatis.MyBatisNoteDao" />
+	   
+	   <bean class="com.newlecture.service.NoteService" />
+	   <bean class="com.newlecture.service.MemberService" />
+	   <bean class="com.newlecture.service.author.NoteService" />
+ 
+		<context:annotation-config />Autowired가 필요한 곳에서 설정함
+		다오나 서비스에서 가져가서 쓸수 있게끔 -->
+</beans>

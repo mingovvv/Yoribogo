@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    
+    	http://www.springframework.org/schema/security
+    	http://www.springframework.org/schema/security/spring-security.xsd
+    
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+   
+	<!-- <http> auto-config="true" 페이지 까지 만들고 알아서 인증과 권한을 주는 기능
+		<form-login login-page="/member/login" default-target-url="/index"/>
+		<logout logout-success-url="/index" invalidate-session="true"/> 세션을 모두 지워버려
+		
+		
+		<intercept-url pattern="/author/**" access="hasRole('ROLE_AUTHOR')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<csrf disabled="true"/>
+	</http>
+	
+	인증을 위한
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder hash="bcrypt" /> pwd 암호화 인코딩
+			<jdbc-user-service 
+				data-source-ref="dataSource"
+				users-by-username-query="select id, pwd password, 1 enabled  from Member where id=?"
+				authorities-by-username-query="select memberId id, roleId authority from MemberRole where memberId=?"
+				/> 역할에 따라서 사용할 수 있는 권한의 한계가 있음.
+		
+			<user-service> noop은 우선 패스워드 인코딩하지 않겠다.
+				<user name="min" password="{noop}4560" authorities="ROLE_AUTHOR, ROLE_ADMIN"/>
+				<user name="gyu" password="{noop}4560" authorities="ROLE_AUTHOR"/>
+			</user-service>
+			
+			
+		</authentication-provider>
+	</authentication-manager> -->
+</beans:beans>

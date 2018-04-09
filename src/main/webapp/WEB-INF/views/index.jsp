@@ -1,49 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta name="viewport" content="width=device-width,  initial-scale=1 minimum-scale=1 user-scalable=1">
-
-
-<title>Insert title here</title>
-<link href="resources/CSS/style.css" type="text/css" rel="stylesheet"/>
-</head>
-<body>
-	<header class="header">
-		<h1>Yoribogo</h1>
-
-		<nav class="main-menu">
-			<h1 class="hidden">메인메뉴</h1>
-			<ul>
-				<li><a href="#"><img class="logo" src="resources/images/logo-joof.png"/></a></li>
-				<li><a href="#"><img src="resources/images/ic_search_black_24dp_1x.png"/></a></li>
-				
-				<li id = "menu-button">
-					<a href="#"><img src="resources/images/ic_dehaze_black_24dp_1x.png"/></a>
-				</li>
-			</ul>
-		</nav>
-		<div class="add-memu">
-			<ul>
-				<li>Login / Register</li>
-				<li>Home</li>
-				<li>Recipe</li>
-				<li>Community</li>
-				<li>냉장고를 부탁해</li>
-				<li>About us</li>
-			</ul>
-		</div>
-	</header>
-	
-	<div class="visual">
-		<div class="change-image"><img src="resources/images/main-image.png"></div>
-	</div>
-	
-	<main class="main">
+<main class="main">
 		<section class="recipe-list">
 			<h1 class="hidden">레시피목록</h1>
 			<ul>
@@ -52,11 +13,11 @@
 				
 					<li>
 						<div class = "frame">
-							<div><img src="resources/images/sample-images.png"></div>
-							<div>모두가 좋아하는  </div>
+							<div><img src="${ctx}/resources/images/test.png"></div>
+							<div>모두가 좋아하는 등갈비 </div>
 							<div>
 								<div>by 자취왕</div>
-								<div><a href="#"><img src="resources/images/frying-egg.png"></a></div>
+								<div><a href="#"><img id="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
 							</div>
 						</div>
 					</li>
@@ -66,51 +27,38 @@
 			</ul>
 		</section>
 	</main>
-<footer class = "footer">
-	
-주소:
-서울특별시 마포구 토정로35길 11, 인우빌딩 5층 266호
-관리자메일:
-admin@newlecture.com
-사업자 등록번호:
-132-18-46763
-통신 판매업:
-신고제 2013-서울강동-0969 호
-상호:
-뉴렉처
-대표:
-박용우
-전화번호:
-070-4206-4084
-Copyright ⓒ newlecture.com 2012-2014 All Right Reserved. Contact admin@newlecture.com for more information
-</footer>
-	
-</body>
-</html>
 
 <script>
 window.addEventListener("load", function(){
-	var menuButton = document.querySelector("#menu-button");
-	var addMemu = document.querySelector(".add-memu");
-	var visual = document.querySelector(".visual");
-	var main = document.querySelector(".main");
+	/* var likeButton = document.querySelector("#like-button"); */
+	var likeButton = document.getElementById("like-button");
 	
+		
 	
-	
-	menuButton.onclick=function(){
-		if(addMemu.classList.contains("show")==false){
-			addMemu.classList.add("show");
-			addMemu.classList.add("show");
-			addMemu.classList.add("show");
-			addMemu.classList.add("show");
-			/* visual.style.opacity="0.2";
-			main.style.opacity="0.2"; */
+		for(var i=0; i<likeButton.length; i++){
+	likeButton[i].onclick = function(){
+			if (likeButton[m].src.match("unlike"))
+				likeButton[m].src = "${ctx}/resources/images/like.png";
 		}
-		else{
-			addMemu.classList.remove("show");
-			/* visual.style.opacity="1";
-			main.style.opacity="1"; */
-		}
-	}
-});
+	};
+	
+	
+		/* for (var i = 0; i < likeButton.length; i++) {
+			(function(m){
+				likeButton[m].onclick = function() {
+	
+					if (likeButton[m].src.match("unlike"))
+						likeButton[m].src = "${ctx}/resources/images/like.png";
+	
+				};
+				
+			})(i);
+		} */
+
+		/* likeButton.onclick = function(){
+			if(likeButton.src.match("unlike"))
+				likeButton.src = "${ctx}/resources/images/like.png";
+		}; */
+
+	});
 </script>
