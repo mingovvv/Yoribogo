@@ -17,7 +17,7 @@
 							<div>모두가 좋아하는 등갈비 </div>
 							<div>
 								<div>by 자취왕</div>
-								<div><a href="#"><img id="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
+								<div><a href="#"><img class="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
 							</div>
 						</div>
 					</li>
@@ -31,34 +31,27 @@
 <script>
 window.addEventListener("load", function(){
 	/* var likeButton = document.querySelector("#like-button"); */
-	var likeButton = document.getElementById("like-button");
-	
-		
-	
-		for(var i=0; i<likeButton.length; i++){
-	likeButton[i].onclick = function(){
-			if (likeButton[m].src.match("unlike"))
-				likeButton[m].src = "${ctx}/resources/images/like.png";
-		}
-	};
+	/* var likeButton = document.getElementById("like-button"); */
+	/* var likeButton = document.getElementsByClassName("like-button"); */
+	var likeButton = document.querySelectorAll(".like-button");
 	
 	
-		/* for (var i = 0; i < likeButton.length; i++) {
-			(function(m){
-				likeButton[m].onclick = function() {
+    for(var i=0;i<likeButton.length;i++){
+    	(function(m) {
+    		likeButton[m].onclick = function(){
+    			if(likeButton[m].src.match("unlike")){
+					alert("레시피 저장고에 등록되었습니다 :)");   				
+    				likeButton[m].src = "${ctx}/resources/images/like.png";
+    			}
+    			else{
+    				likeButton[m].src = "${ctx}/resources/images/unlike.png";
+    				alert("레시피 저장고에서 삭제 되었습니다 :)");  				
+    			}
+    		}
+    	})(i);
+	}; 
 	
-					if (likeButton[m].src.match("unlike"))
-						likeButton[m].src = "${ctx}/resources/images/like.png";
-	
-				};
-				
-			})(i);
-		} */
 
-		/* likeButton.onclick = function(){
-			if(likeButton.src.match("unlike"))
-				likeButton.src = "${ctx}/resources/images/like.png";
-		}; */
 
 	});
 </script>

@@ -4,12 +4,13 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-<!-- 	<definition name="note.*" template="/WEB-INF/views/inc/layout.jsp">    
-	    <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
- 	    <put-attribute name="visual" value="/WEB-INF/views/inc/visual.jsp" />
-	    <put-attribute name="main" value="/WEB-INF/views/{1}.jsp" />
-	    <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
-	</definition> -->
+<!-- 타일즈는 순서의 영향을 받는다 ! 중요 -->
+
+  <definition name="member.*" template="/WEB-INF/views/member/inc/member-layout.jsp">    
+    <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+    <put-attribute name="main" value="/WEB-INF/views/member/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+  </definition>
 	
   <definition name="*" template="/WEB-INF/views/inc/layout.jsp">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
@@ -19,10 +20,12 @@
   </definition>	
 
   
-  <definition name="*.*" template="/WEB-INF/views/inc/layout.jsp">    
+  
+<!--   <definition name="*.*" template="/WEB-INF/views/inc/member-layout.jsp">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
-    <put-attribute name="visual" value="/WEB-INF/views/inc/visual.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/{1}/{2}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
-  </definition> 
+  </definition> -->
+  
+   
 </tiles-definitions>
