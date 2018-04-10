@@ -4,12 +4,12 @@
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 
 	<header class="header">
-		<h1>Yoribogo</h1>
+		<h1><img src="${ctx}/resources/images/yoribogo.png" height="50px"></h1>
 
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
-				<li><a href="#"><img class="logo" src="${ctx}/resources/images/logo-joof.png"/></a></li>
+				<li><a href="${ctx}/index"><img class="logo" src="${ctx}/resources/images/yoribogo-logo.png"/></a></li>
 				<li id = "search-button"><a href="#"><img src="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></a></li>
 				
 				<li id = "menu-button">
@@ -31,7 +31,7 @@
 		
 		<div class="add-memu">
 			<ul>
-				<li>Login / Register</li>
+				<li><a href="${ctx}/member/login">Login / Register</a></li>
 				<li>Home</li>
 				<li>Recipe</li>
 				<li>Community</li>

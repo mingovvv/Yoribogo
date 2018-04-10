@@ -2,6 +2,15 @@
 
 /*----------------------------------- tag style reset */
 
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+
 html{ /* //바디보다 더 상위개념 */
 	height: 100%;
 }
@@ -10,7 +19,8 @@ html{ /* //바디보다 더 상위개념 */
 body{
 	margin:0px;
 	height: 100%;
-	background-color: #f4f7f6;
+	font-family: 'Lato', sans-serif;
+  	background-color: #f8f8f8;
 }
 
 ul{
@@ -23,6 +33,8 @@ h1,h2,h3,h4,h5,h6{
 	margin: 0px;
 }
 
+a:link { color: white; text-decoration: none;}
+a:visited { color: white; text-decoration: none;}
 
 
 /*----------------------------------- my style cascade */
@@ -43,9 +55,10 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .logo{
-	width: 80px;
-    height: 60px;
+    height: 50px;
     margin-left: 15px;
+    margin-bottom: 10px;
+   
 }	
 	
 	.header>h1{
@@ -61,7 +74,7 @@ h1,h2,h3,h4,h5,h6{
 .main,
 .footer,
 .visual{
-	transition:1000ms;
+	transition:700ms;
 }
 
 	
@@ -69,7 +82,7 @@ h1,h2,h3,h4,h5,h6{
 .footer.show,
 .visual.show{
 	transform: translate(-322px, 0px);
-	transition:1000ms;
+	transition:700ms;
 	opacity: 0.1;
 
 }
@@ -159,7 +172,7 @@ h1,h2,h3,h4,h5,h6{
 	display: flex;
 	justify-content:flex-end;
 	
-	transition:1000ms;
+	transition:700ms;
 	
 	position:fixed;
 	height: 100%;
@@ -253,8 +266,6 @@ h1,h2,h3,h4,h5,h6{
 	.main .frame>div:first-child {
 		width: 130px;
 		height: 100px;
-		margin-left: auto;
-		margin-right: auto;
 	}
 	.main .frame {
 		width: 140px;
@@ -279,14 +290,19 @@ h1,h2,h3,h4,h5,h6{
 		height: 250px;
 		margin-bottom: 90px;
 	}
+	
+		.search-recipe{
+	position: relative;
+	width: 450px;
+	margin: -35px auto;
+	display: none;
+}
 }
 
 @media screen and (min-width: 1020px) {
 	.main .frame>div:first-child {
 		width: 250px;
 		height: 200px;
-		margin-left: auto;
-		margin-right: auto;
 	}
 	.main {
 		margin-left: 150px;
@@ -307,10 +323,12 @@ h1,h2,h3,h4,h5,h6{
 
 }
 
+
 .main .frame div:first-child img{
-		width: 90%;
-   	 	height: 90%;
-   	 	padding: 5%;
+	width: 100%;
+   height: 60%;
+   padding: 5%;
+   position: absolute;
 }
 
 .main .frame div:nth-child(2){
@@ -320,6 +338,7 @@ h1,h2,h3,h4,h5,h6{
 	font-size: 1em;
 	
 }
+
 
 
 		
@@ -367,15 +386,12 @@ h1,h2,h3,h4,h5,h6{
 
 /* ★login */
 
- /* body {
-  font-family: 'Lato', sans-serif;
-  background-color: #f8f8f8;
-}
+
 body .container {
   position: relative;
   overflow: hidden;
-  width: 700px;
-  height: 500px;
+  width: 900px;
+  height: 550px;
   margin: 80px auto 0;
   background-color: #ffffff;
   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
@@ -386,12 +402,17 @@ body .container .half {
   float: left;
   width: 50%;
   height: 100%;
-  padding: 58px 40px 0;
+  padding: 5%;
 }
-body .container .half.bg {
-  background-image: url("http://www.blueb.co.kr/SRC2/_image/v01.jpg");
-  background-size: 400px;
-  background-repeat: no-repeat;
+
+body .container .half.bg{
+	width: 50%;
+	height: 100%;
+}
+
+body .container .half.bg img{
+	width:100%;
+	height:100%;
 }
 body .container h1 {
   font-size: 18px;
@@ -570,7 +591,7 @@ body .container .content .checkbox:checked + label:before {
 body .container .content .submit-wrap {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 270px;
 }
 body .container .content .submit-wrap a {
   font-size: 12px;
@@ -626,6 +647,6 @@ body .container .content .signup-cont {
   color: inherit;
   font-weight: 700;
   text-decoration: none;
-} */
+}
 
 
