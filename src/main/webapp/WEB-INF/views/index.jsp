@@ -5,6 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <main class="main">
+		
+		<div>
+			<p class="line"></p>
+		</div>
+
 		<section class="recipe-list">
 			<h1 class="hidden">레시피목록</h1>
 			<ul>
@@ -13,7 +18,7 @@
 				
 					<li>
 						<div class = "frame">
-							<div><img src="${ctx}/resources/images/test.png"></div>
+							<div><img src="${ctx}/resources/images/sample-images.png"></div>
 							<div>모두가 좋아하는 등갈비 </div>
 							<div>
 								<div>by 자취왕</div>

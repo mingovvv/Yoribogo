@@ -6,7 +6,7 @@
     <main>
 <section class="container">
 		    <article class="half">
-			        <h1>Azure</h1>
+			        <h1>Yoribogo</h1>
 			        <div class="tabs">
 				            <span class="tab signin active"><a href="#signin">Sign in</a></span>
 				            <span class="tab signup"><a href="#signup">Sign up</a></span>

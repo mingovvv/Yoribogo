@@ -6,3 +6,4 @@
 	<div class="visual">
 		<div class="change-image"><img src="${ctx}/resources/images/main-image.png"></div>
 	</div>
+	<div class="visual-line"></div>
