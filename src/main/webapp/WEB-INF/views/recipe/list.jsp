@@ -6,15 +6,56 @@
 
 <main class="main">
 		
-		<div>
-			<p class="line"></p>
-		</div>
-
-		<section class="recipe-list">
+		<nav class="select-recipe-option">
+			<h1 class="hidden">레시피 분류</h1>
+			<ul>
+				<li>종류별</li>
+				<li>전체</li>
+				<li>한식</li>
+				<li>중식</li>
+				<li>일식</li>
+				<li>양식</li>
+				<li>기타</li>
+			</ul>
+			<ul>
+				<li>상황별</li>
+				<li>한식</li>
+				<li>중식</li>
+				<li>일식</li>
+				<li>양식</li>
+				<li>기타</li>
+			</ul>
+			<ul>
+				<li>상황별</li>
+				<li>한식</li>
+				<li>중식</li>
+				<li>일식</li>
+				<li>양식</li>
+				<li>기타</li>
+			</ul>
+			<ul>
+				<li>조리시간</li>
+				<li>15분이내</li>
+				<li>30분이내</li>
+				<li>1시간 이내</li>
+				<li>2시간 이내</li>
+				<li>2시간 이상</li>
+			</ul>
+		</nav>
+		
+		<nav class="select-recipe-view">
+			<ul>
+				<li>최신순</li>
+				<li>조회순</li>
+				<li>댓글순</li>
+			</ul>
+		</nav>
+		
+ 		<section class="recipe-list">
 			<h1 class="hidden">레시피목록</h1>
 			<ul>
 			
-				<c:forEach begin="0" end="11">
+				<c:forEach begin="0" end="30">
 				
 					<li>
 						<div class = "frame">
@@ -35,9 +76,6 @@
 
 <script>
 window.addEventListener("load", function(){
-	/* var likeButton = document.querySelector("#like-button"); */
-	/* var likeButton = document.getElementById("like-button"); */
-	/* var likeButton = document.getElementsByClassName("like-button"); */
 	var likeButton = document.querySelectorAll(".like-button");
 	
 	

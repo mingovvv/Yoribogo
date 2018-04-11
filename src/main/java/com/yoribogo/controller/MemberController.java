@@ -6,15 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.yoribogo.service.MemberService;
 
 
-
-@Controller
+@Controller("memberController")
 @RequestMapping("/member/")
 public class MemberController {
     
-/*	@Autowired 
+	/*@Autowired
 	private MemberService service;*/
 	
       @RequestMapping(value="login", method=RequestMethod.GET)
@@ -29,7 +27,7 @@ public class MemberController {
          return "redirect:../index"; 
       }*/
       
-/*      @RequestMapping(value="join", method=RequestMethod.GET)
+ /*     @RequestMapping(value="join", method=RequestMethod.GET)
       public String join() {
         
          return "member.join";

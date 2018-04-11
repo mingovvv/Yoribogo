@@ -32,8 +32,8 @@
 		<div class="add-memu">
 			<ul>
 				<li><a href="${ctx}/member/login">Login / Register</a></li>
-				<li>Home</li>
-				<li>Recipe</li>
+				<li><a href="${ctx}/index" style="color: #49c5b6">Home</a></li>
+				<li><a href="${ctx}/recipe/list">Recipe</a></li>
 				<li>Community</li>
 				<li>냉장고를 부탁해</li>
 				<li>About us</li>
