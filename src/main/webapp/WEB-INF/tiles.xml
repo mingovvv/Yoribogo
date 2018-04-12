@@ -12,6 +12,13 @@
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
+    <definition name="chef.recipe.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp">    
+    <put-attribute name="header" value="/WEB-INF/views/chef/inc/header.jsp" />
+    <put-attribute name="main" value="/WEB-INF/views/chef/recipe/{1}.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/views/chef/inc/aside.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+  </definition>
+  
     <definition name="recipe.*" template="/WEB-INF/views/recipe/inc/recipe-layout.jsp">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/recipe/{1}.jsp" />

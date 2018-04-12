@@ -687,9 +687,52 @@ body .container .content .signup-cont {
 
 .select-recipe-view{
 	margin: 5% 0px 30px;
-	border: 5px solid green;
+	border: 1px solid green;
 	width: 50%;
 	margin-left: 50%;
 	
 }
+
+/* ★aide */
+.chef-aside{
+}
+
+.chef-aside ul li:first-child{
+	position: fixed;
+	bottom: 30px;
+	right: 30px;	
+}
+.chef-aside ul li:nth-child(2){
+	position: fixed;
+	bottom: 120px;
+	right: -50px;	
+	transition: all 0.5s ease-in-out;
+	transition-delay: 0.2s
+}
+.chef-aside ul li:nth-child(2).show{
+	position: fixed;
+	bottom: 120px;
+	right: 30px;	
+	transition: all 0.5s ease-in-out;
+}
+.chef-aside ul li:nth-child(3){
+	position: fixed;
+	bottom: 210px;
+	right: -50px;	
+	transition: all 0.5s ease-in-out;
+	
+}
+.chef-aside ul li:nth-child(3).show{
+	position: fixed;
+	bottom: 210px;
+	right: 30px;	
+	transition: all 0.5s ease-in-out;
+	transition-delay: 0.2s
+}
+
+.chef-aside ul li img{
+	width: 50px;
+	height: 50px;
+}
+
 
