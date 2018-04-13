@@ -735,4 +735,15 @@ body .container .content .signup-cont {
 	height: 50px;
 }
 
+.timer{
+	display:none;
+	background:yellowgreen;
+	position: fixed;
+	bottom: 50px;
+	left: 5px;
+}
 
+.timer.show{
+	display:block;
+	
+}
