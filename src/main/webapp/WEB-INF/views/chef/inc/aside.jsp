@@ -74,7 +74,6 @@ function countdown(expireSec) {
     var countText;
     var cycle = 1; // 체크 주기 설정(1이면 1초에 한번)
 
-
     remainSec = expireSec - cycle;
     countText = "";
 
@@ -123,7 +122,7 @@ function startCountdown() {
 		return;
 	}
 	
-	expireSec=(expireMin*60)+expireSecond;
+	expireSec=parseInt((expireMin*60))+parseInt(expireSecond);
 	countdown(expireSec);
 }
 
