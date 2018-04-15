@@ -13,10 +13,10 @@
 		</div>
 		<div class="content">
 			<div class="signin-cont cont">
-				<form action="#" method="post" enctype="multipart/form-data">
-					<input type="email" name="email" id="email" class="inpt"
-						required="required" placeholder="Your email"> <label
-						for="email">Your email</label> <input type="password"
+				<form method="post">
+					<input type="text" name="username" id="username" class="inpt"
+						required="required" placeholder="username"> <label
+						for="username">username</label> <input type="password"
 						name="password" id="password" class="inpt" required="required"
 						placeholder="Your password"> <label for="password">Your
 						password</label> <input type="checkbox" id="remember" class="checkbox"
