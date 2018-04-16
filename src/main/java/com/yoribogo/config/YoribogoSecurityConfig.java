@@ -12,6 +12,29 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 @EnableWebSecurity
 public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	
+		http
+			.csrf().disable()
+			.authorizeRequests()//인증을 요청
+			//-----------------------------------
+			.antMatchers("/*","/recipe/**","/member/**").permitAll()
+			.antMatchers("/resources/**").permitAll()
+			.antMatchers("/chef/**").hasRole("CHEF")//access("hasRole('AUTHOR') or hasRole('ADMIN')").hasRole("AUTHOR")
+			//-----------------------------------
+			.anyRequest().authenticated()//기본 설정(모든것을 다 막아버리기)
+			.and()
+		.formLogin()//로그인 폼 설정
+			.loginPage("/member/login") // get
+			.loginProcessingUrl("/member/login") //post
+			.defaultSuccessUrl("/index")//로그인시 디폴트 이동값
+			.and()
+		.logout()
+			//.logoutUrl("/member/logout") //내가 정해주는 로그아웃 URL
+			.logoutSuccessUrl("/index")
+			.invalidateHttpSession(true);
+	}
 	
 	
 	

@@ -14,10 +14,9 @@
 		</nav>
 		
 		<div class="timer">
-			시간 입력 해줘!	 
-			<input type="text" id="expireMin" style="width:30px;text-align:right">
+			<input type="text" id="expireMin">
 			:
-			<input type="text" id="expireSecond" style="width:30px;text-align:right">
+			<input type="text" id="expireSecond">
 			
 			<button id="btnStartCountdown" onclick="startCountdown()">
 			Start
@@ -26,7 +25,6 @@
 			Stop
 			</button>
 
-			남은시간 : <label id="countText"></label>
 
 
 
@@ -69,7 +67,7 @@ var remainSec;
 var autoExecTimer;
 
 function countdown(expireSec) {
-
+	var expireMin,expireSecond
     var day, hour, min, sec, mod;
     var countText;
     var cycle = 1; // 체크 주기 설정(1이면 1초에 한번)
@@ -92,11 +90,14 @@ function countdown(expireSec) {
 
         // 남은초
         sec = mod % 60;
-
-        countText += (day>0) ? (day + "일 ") : "";
+		
+        //expireMin = min;
+        //expireSecond = sec;
+        
+        /* countText += (day>0) ? (day + "일 ") : "";
         countText += (hour>0) ? hour + "시간 " : "";
         countText += min + "분 ";
-        countText += sec + "초";
+        countText += sec + "초"; */
     }
 
     if (expireSec<=0) {
@@ -105,7 +106,8 @@ function countdown(expireSec) {
         // 종료 후에 필요한 로직 구현
     }
 
-    document.getElementById('countText').innerHTML = countText;
+    document.getElementById('expireMin').value = min;
+    document.getElementById('expireSecond').value = sec;
 
     if (expireSec>0) {
     	autoExecTimer = setTimeout("countdown(remainSec)", cycle*1000);
@@ -115,22 +117,42 @@ function countdown(expireSec) {
 function startCountdown() {
 	var expireMin =  document.getElementById('expireMin').value;
 	var expireSecond =  document.getElementById('expireSecond').value;
+	var btnStartCountdown =  document.getElementById('btnStartCountdown');
 	var expireSec;
+	var a=0;
 	
-	if (expireMin == "" && expireSecond=="") {
-		alert("실행예약시간을 분이나 초로 입력하십시오.");
-		return;
+	//if(expireMin.value !=0 && expireSecond.value !=0){
+		
+	if(a==0)
+	{
+			if (expireMin == "" && expireSecond=="") {
+				alert("실행예약시간을 분이나 초로 입력하십시오.");
+				return;
+			}
+		
+			if(expireMin=="")
+				expireMin=0;
+			if(expireSecond=="")
+				expireSecond=0;
+			
+			expireSec=parseInt((expireMin*60))+parseInt(expireSecond);
+			countdown(expireSec);
+				
+			btnStartCountdown.innerHTML = 'pause';
+			a=1;
 	}
-	
-	expireSec=parseInt((expireMin*60))+parseInt(expireSecond);
-	countdown(expireSec);
+	else(a==1){
+			alert("후");
+	 }
 }
 
+	//else(메소드가 시작했다면)
 
 
 function stopCountdown() {
 	clearTimeout(autoExecTimer);
-	document.getElementById('countText').innerHTML = '';
+	//document.getElementById('expireMin').value = 00;
+	//document.getElementById('expireSecond').value = 00;
 }
 
 

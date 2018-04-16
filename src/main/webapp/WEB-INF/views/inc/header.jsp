@@ -26,7 +26,7 @@
 					
 				</div>
 			</div>
-		
+		</form>
 		
 		
 		<div class="add-memu">

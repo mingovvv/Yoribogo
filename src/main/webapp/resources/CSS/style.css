@@ -735,15 +735,38 @@ body .container .content .signup-cont {
 	height: 50px;
 }
 
+/* ★timer */
 .timer{
-	display:none;
-	background:yellowgreen;
-	position: fixed;
-	bottom: 50px;
-	left: 5px;
+    display: block;
+    background: white;
+    border: 2px solid #5fcad4;
+    position: fixed;
+    bottom: 50px;
+    left: 5px;
+    height: 60px;
+    width: 300px;
+    text-align: center;
+    margin-left: auto;
+    left: -50px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .timer.show{
 	display:block;
-	
 }
+
+.timer #expireMin {
+	width: 40px;
+	height: 50px;
+	font-size: 35px;
+}
+.timer #expireSecond {
+	width: 40px;
+	height: 50px;
+	font-size: 35px;
+}
+
+
+		
