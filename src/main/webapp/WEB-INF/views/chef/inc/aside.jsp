@@ -24,11 +24,8 @@
 			<button id="btnStopCountdown" onclick="stopCountdown()">
 			Stop
 			</button>
-
-
-
-
 		</div>
+		<img class="time-end" src="${ctx}/resources/images/cookcook.png">
 	</aside>
 	
 <script>
@@ -100,31 +97,42 @@ function countdown(expireSec) {
         countText += sec + "초"; */
     }
 
+    document.getElementById('expireMin').value = min;
+    document.getElementById('expireSecond').value = sec;
+    
     if (expireSec<=0) {
-        countText = "종료";
+    	 	document.getElementById('expireMin').value = 00;
+    	    document.getElementById('expireSecond').value = 00;
+    	    
+    	    setTimeout(function(){
+    	    	 document.querySelector("main").style.opacity=0; 
+    	    	 document.querySelector(".time-end").classList.add("show");
+    		}, 100);
+    	    setTimeout(function(){
+    	    	document.querySelector("main").style.opacity=1; 
+    	    	document.querySelector(".time-end").classList.remove("show");
+    		}, 1100);
 
+    	    btnStartCountdown.innerHTML = 'start';
+			
         // 종료 후에 필요한 로직 구현
     }
 
-    document.getElementById('expireMin').value = min;
-    document.getElementById('expireSecond').value = sec;
 
     if (expireSec>0) {
     	autoExecTimer = setTimeout("countdown(remainSec)", cycle*1000);
     }
 }
 
+var a = 0 ;
 function startCountdown() {
 	var expireMin =  document.getElementById('expireMin').value;
 	var expireSecond =  document.getElementById('expireSecond').value;
 	var btnStartCountdown =  document.getElementById('btnStartCountdown');
 	var expireSec;
-	var a=0;
 	
 	//if(expireMin.value !=0 && expireSecond.value !=0){
-		
-	if(a==0)
-	{
+		if(a == 0){
 			if (expireMin == "" && expireSecond=="") {
 				alert("실행예약시간을 분이나 초로 입력하십시오.");
 				return;
@@ -139,11 +147,12 @@ function startCountdown() {
 			countdown(expireSec);
 				
 			btnStartCountdown.innerHTML = 'pause';
-			a=1;
-	}
-	else(a==1){
-			alert("후");
-	 }
+			a = 1 ;
+			}else{
+				clearTimeout(autoExecTimer);
+				a = 0;
+				btnStartCountdown.innerHTML = 'start';
+			}
 }
 
 	//else(메소드가 시작했다면)
@@ -151,8 +160,9 @@ function startCountdown() {
 
 function stopCountdown() {
 	clearTimeout(autoExecTimer);
-	//document.getElementById('expireMin').value = 00;
-	//document.getElementById('expireSecond').value = 00;
+	document.getElementById('expireMin').value = 00;
+	document.getElementById('expireSecond').value = 00;
+	btnStartCountdown.innerHTML = 'start';
 }
 
 

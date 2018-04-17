@@ -678,7 +678,7 @@ body .container .content .signup-cont {
 
 .select-recipe-option{
     margin-top: 100px;
-    border: 5px solid green;	
+    border: 5px solid #5fcad4
 }
 
 .select-recipe-option ul li:first-child {
@@ -686,11 +686,20 @@ body .container .content .signup-cont {
 }
 
 .select-recipe-view{
-	margin: 5% 0px 30px;
-	border: 1px solid green;
-	width: 50%;
-	margin-left: 50%;
+    display: inline-flex;
+    margin: 5% 0px 30px;
+    width: auto;
 	
+}
+
+.select-recipe-view li{
+    background: #5fcad4;
+    color: white;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid white;
 }
 
 /* ★aide */
@@ -737,14 +746,14 @@ body .container .content .signup-cont {
 
 /* ★timer */
 .timer{
-    display: block;
+    display: none;
     background: white;
     border: 2px solid #5fcad4;
     position: fixed;
-    bottom: 50px;
+    bottom: 25px;
     left: 5px;
     height: 60px;
-    width: 300px;
+    width: 240px;
     text-align: center;
     margin-left: auto;
     left: -50px;
@@ -758,15 +767,52 @@ body .container .content .signup-cont {
 }
 
 .timer #expireMin {
-	width: 40px;
-	height: 50px;
-	font-size: 35px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    margin-top: 10px;
 }
 .timer #expireSecond {
-	width: 40px;
-	height: 50px;
-	font-size: 35px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    margin-top: 10px;
 }
 
+.time-end{
+	display:none;
+	margin: auto;
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    bottom: 200px;
+    left: 10%;
+}
+.time-end.show{
+	display:block;
+}
+
+.select-recipe-option2{
+	margin-top:70px;
+	background: #5fcad4;
+	height: 30px;
+	width: auto;
+	transition : 500ms;
+}
+
+.select-recipe-option2.show{
+	margin-top:370px;
+	background: #5fcad4;
+	height: 30px;
+	width: auto;
+	transition : 500ms;
+}
+
+.select-recipe-option2 img{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	
+}
 
 		

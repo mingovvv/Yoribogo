@@ -4,11 +4,51 @@
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<main class="main">
-		
-		<nav class="select-recipe-option">
-			<h1 class="hidden">레시피 분류</h1>
-			<ul>
+<main class="main"> 
+<nav class="select-recipe-option">
+<h1 class="hidden">레시피 분류</h1>
+<table cellspacing='0'>
+
+	
+	<tbody>
+		<tr>
+			<td>종류별</td>
+			<td>전체</td>
+			<td>한식</td>
+			<td>일식</td>
+			<td>중식</td>
+			<td>양식</td>
+			<td>기타</td>
+		</tr>
+		<!-- Table Row -->
+
+		<tr>
+			<td>상황별</td>
+			<td>전체</td>
+			<td>가나</td>
+			<td>다라</td>
+			<td>마바</td>
+			<td>사아</td>
+			<td>자차</td>
+			<td>카타</td>
+			<td>기타</td>
+		</tr>
+		<!-- Darker Table Row -->
+
+		<tr>
+			<td>조리시간</td>
+			<td>전체</td>
+			<td>15분 미만</td>
+			<td>30분 미만</td>
+			<td>60분 미만</td>
+			<td>120분 미만</td>
+			<td>기타</td>
+		</tr>
+
+	</tbody>
+
+</table>
+<!-- <ul>
 				<li>종류별</li>
 				<li>전체</li>
 				<li>한식</li>
@@ -40,8 +80,7 @@
 				<li>1시간 이내</li>
 				<li>2시간 이내</li>
 				<li>2시간 이상</li>
-			</ul>
-		</nav>
+			</ul> --> </nav>
 		
 		<nav class="select-recipe-view">
 			<ul>

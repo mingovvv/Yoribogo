@@ -6,41 +6,9 @@
 
 <main class="main">
 		
-		<nav class="select-recipe-option">
+		<nav class="select-recipe-option2">
 			<h1 class="hidden">레시피 분류</h1>
-			<ul>
-				<li>종류별</li>
-				<li>전체</li>
-				<li>한식</li>
-				<li>중식</li>
-				<li>일식</li>
-				<li>양식</li>
-				<li>기타</li>
-			</ul>
-			<ul>
-				<li>상황별</li>
-				<li>한식</li>
-				<li>중식</li>
-				<li>일식</li>
-				<li>양식</li>
-				<li>기타</li>
-			</ul>
-			<ul>
-				<li>상황별</li>
-				<li>한식</li>
-				<li>중식</li>
-				<li>일식</li>
-				<li>양식</li>
-				<li>기타</li>
-			</ul>
-			<ul>
-				<li>조리시간</li>
-				<li>15분이내</li>
-				<li>30분이내</li>
-				<li>1시간 이내</li>
-				<li>2시간 이내</li>
-				<li>2시간 이상</li>
-			</ul>
+			<img src="${ctx}/resources/images/ic_arrow_drop_down_black_24dp_1x.png">
 		</nav>
 		
 		<nav class="select-recipe-view">
