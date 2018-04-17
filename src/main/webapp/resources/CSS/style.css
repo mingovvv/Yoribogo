@@ -792,12 +792,15 @@ body .container .content .signup-cont {
 	display:block;
 }
 
+/* ★menu */
+
 .select-recipe-option2{
 	margin-top:70px;
 	background: #5fcad4;
 	height: 30px;
 	width: auto;
 	transition : 500ms;
+	cursor: pointer;
 }
 
 .select-recipe-option2.show{
@@ -812,7 +815,7 @@ body .container .content .signup-cont {
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	
+	padding: 1%;
 }
 
 		

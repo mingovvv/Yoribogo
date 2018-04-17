@@ -8,7 +8,7 @@
 		
 		<nav class="select-recipe-option2">
 			<h1 class="hidden">레시피 분류</h1>
-			<img src="${ctx}/resources/images/ic_arrow_drop_down_black_24dp_1x.png">
+			<img class="menu-down-button" src="${ctx}/resources/images/caret-down.png">
 		</nav>
 		
 		<nav class="select-recipe-view">
@@ -45,6 +45,8 @@
 <script>
 window.addEventListener("load", function(){
 	var likeButton = document.querySelectorAll(".like-button");
+	var menuDownButton = document.querySelector(".menu-down-button");
+	var selectRecipeOption2 = document.querySelector(".select-recipe-option2");
 	
 	
     for(var i=0;i<likeButton.length;i++){
@@ -62,6 +64,16 @@ window.addEventListener("load", function(){
     	})(i);
 	}; 
 	
+	menuDownButton.onclick = function(){
+		if(selectRecipeOption2.classList.contains("show")==false){
+			selectRecipeOption2.classList.add("show");
+			menuDownButton.src = "${ctx}/resources/images/caret-arrow-up.png";
+		}
+		else{
+			selectRecipeOption2.classList.remove("show");
+			menuDownButton.src = "${ctx}/resources/images/caret-down.png";
+		}
+	};
 
 
 	});

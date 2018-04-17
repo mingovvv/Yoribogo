@@ -111,7 +111,7 @@ function countdown(expireSec) {
     	    setTimeout(function(){
     	    	document.querySelector("main").style.opacity=1; 
     	    	document.querySelector(".time-end").classList.remove("show");
-    		}, 1100);
+    		}, 2100);
 
     	    btnStartCountdown.innerHTML = 'start';
 			
