@@ -799,16 +799,14 @@ body .container .content .signup-cont {
 	background: #5fcad4;
 	height: 30px;
 	width: auto;
-	transition : 500ms;
 	cursor: pointer;
 }
 
 .select-recipe-option2.show{
-	margin-top:370px;
+	margin-top:10px;
 	background: #5fcad4;
 	height: 30px;
 	width: auto;
-	transition : 500ms;
 }
 
 .select-recipe-option2 img{
@@ -818,4 +816,21 @@ body .container .content .signup-cont {
 	padding: 1%;
 }
 
-		
+.a{
+	display:none;
+}
+.a.show{
+	display:block;
+	margin-top: 80px;
+}
+.a span{
+	width: 120px;
+    display: block;
+    color: #fff;
+    background: #57a4a5;
+    margin: 0 3px;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 5px;
+}
+

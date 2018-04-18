@@ -31,14 +31,14 @@
 		
 		<div class="add-memu">
 			<ul>
-				<li><a href="${ctx}/member/login">admin님 안녕하세요!</a></li>
+				<li><span style="color: #49c5b6">min</span>님 안녕하세요!</li>
 				<li>Mypage</li>
-				<li><a href="${ctx}/index" style="color: #49c5b6">Home</a></li>
-				<li><a href="${ctx}/recipe/list">Recipe</a></li>
+				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
+				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
 				<li>Community</li>
 				<li>냉장고를 부탁해</li>
 				<li>About us</li>
-				<li>Log-Out</li>
+				<li><a href="${ctx}/logout">Log-Out</a></li>
 			</ul>
 		</div>
 	</header>

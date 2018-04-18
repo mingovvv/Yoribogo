@@ -6,6 +6,46 @@
 
 <main class="main">
 		
+		<form class="a">
+			<div>
+				<span>종류별</span>
+				<br>
+					<div>
+					<input type="checkbox" value="#" checked="checked" />전체
+					<input type="checkbox" value="#"/>한식
+					<input type="checkbox" value="#"/>일식
+					<input type="checkbox" value="#"/>중식
+					<input type="checkbox" value="#"/>양식
+					<input type="checkbox" value="#"/>기타
+					</div>
+				<br>
+				<br>
+				<span>상황별</span>
+				<br>
+					<div>
+					<input type="checkbox" value="#" checked="checked"/>전체
+					<input type="checkbox" value="#"/>일상
+					<input type="checkbox" value="#"/>다이어트
+					<input type="checkbox" value="#"/>안주
+					<input type="checkbox" value="#"/>건강
+					<input type="checkbox" value="#"/>간식
+					<input type="checkbox" value="#"/>야식
+					<input type="checkbox" value="#"/>기타
+					</div>
+				<br>
+				<br>
+				<span>시간별</span>
+				<br>
+					<div>
+					<input type="checkbox" value="#" checked="checked"/>전체
+					<input type="checkbox" value="#"/>15분
+					<input type="checkbox" value="#"/>30분
+					<input type="checkbox" value="#"/>1시간
+					<input type="checkbox" value="#"/>2시간
+					<input type="checkbox" value="#"/>2시간 이상
+					</div>
+			</div>
+		</form>
 		<nav class="select-recipe-option2">
 			<h1 class="hidden">레시피 분류</h1>
 			<img class="menu-down-button" src="${ctx}/resources/images/caret-down.png">
@@ -47,6 +87,7 @@ window.addEventListener("load", function(){
 	var likeButton = document.querySelectorAll(".like-button");
 	var menuDownButton = document.querySelector(".menu-down-button");
 	var selectRecipeOption2 = document.querySelector(".select-recipe-option2");
+	var a = document.querySelector(".a");
 	
 	
     for(var i=0;i<likeButton.length;i++){
@@ -66,10 +107,14 @@ window.addEventListener("load", function(){
 	
 	menuDownButton.onclick = function(){
 		if(selectRecipeOption2.classList.contains("show")==false){
+			//a.style.display="block";
+			a.classList.add("show");
 			selectRecipeOption2.classList.add("show");
 			menuDownButton.src = "${ctx}/resources/images/caret-arrow-up.png";
 		}
 		else{
+			//a.style.display="none";
+			a.classList.remove("show");
 			selectRecipeOption2.classList.remove("show");
 			menuDownButton.src = "${ctx}/resources/images/caret-down.png";
 		}
@@ -77,4 +122,18 @@ window.addEventListener("load", function(){
 
 
 	});
+	
+	
+	function check_all(start) {
+		if(document.searchform.b_all.checked == true) {
+		    document.searchform.b_desc.checked = true; document.searchform.b_cmt.checked = true; document.searchform.b_file.checked = true; document.searchform.b_copyright.checked = true; document.searchform.b_cmt_exif.checked = true;
+		    document.searchform.b_desc.disabled = true; document.searchform.b_cmt.disabled = true; document.searchform.b_file.disabled = true; document.searchform.b_copyright.disabled = true; document.searchform.b_cmt_exif.disabled = true;
+		    } else {
+		        if(start != 'start') {
+		            document.searchform.b_desc.checked = false; document.searchform.b_cmt.checked = false; document.searchform.b_file.checked = false; document.searchform.b_copyright.checked = false; document.searchform.b_cmt_exif.checked = false;
+		            document.searchform.b_desc.disabled = false; document.searchform.b_cmt.disabled = false; document.searchform.b_file.disabled = false; document.searchform.b_copyright.disabled = false; document.searchform.b_cmt_exif.disabled = false;
+		        }
+		    }
+		}
+		check_all('start');
 </script>
