@@ -44,14 +44,8 @@ window.addEventListener("load", function(){
     for(var i=0;i<likeButton.length;i++){
     	(function(m) {
     		likeButton[m].onclick = function(){
-    			if(likeButton[m].src.match("unlike")){
-					alert("레시피 저장고에 등록되었습니다 :)");   				
-    				likeButton[m].src = "${ctx}/resources/images/like.png";
-    			}
-    			else{
-    				likeButton[m].src = "${ctx}/resources/images/unlike.png";
-    				alert("레시피 저장고에서 삭제 되었습니다 :)");  				
-    			}
+					if(confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?"))
+    					location.href="${ctx}/member/login";
     		}
     	})(i);
 	}; 

@@ -4,89 +4,61 @@
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<main class="main"> 
-<nav class="select-recipe-option">
-<h1 class="hidden">레시피 분류</h1>
-<table cellspacing='0'>
-
-	
-	<tbody>
-		<tr>
-			<td>종류별</td>
-			<td>전체</td>
-			<td>한식</td>
-			<td>일식</td>
-			<td>중식</td>
-			<td>양식</td>
-			<td>기타</td>
-		</tr>
-		<!-- Table Row -->
-
-		<tr>
-			<td>상황별</td>
-			<td>전체</td>
-			<td>가나</td>
-			<td>다라</td>
-			<td>마바</td>
-			<td>사아</td>
-			<td>자차</td>
-			<td>카타</td>
-			<td>기타</td>
-		</tr>
-		<!-- Darker Table Row -->
-
-		<tr>
-			<td>조리시간</td>
-			<td>전체</td>
-			<td>15분 미만</td>
-			<td>30분 미만</td>
-			<td>60분 미만</td>
-			<td>120분 미만</td>
-			<td>기타</td>
-		</tr>
-
-	</tbody>
-
-</table>
-<!-- <ul>
-				<li>종류별</li>
-				<li>전체</li>
-				<li>한식</li>
-				<li>중식</li>
-				<li>일식</li>
-				<li>양식</li>
-				<li>기타</li>
-			</ul>
-			<ul>
-				<li>상황별</li>
-				<li>한식</li>
-				<li>중식</li>
-				<li>일식</li>
-				<li>양식</li>
-				<li>기타</li>
-			</ul>
-			<ul>
-				<li>상황별</li>
-				<li>한식</li>
-				<li>중식</li>
-				<li>일식</li>
-				<li>양식</li>
-				<li>기타</li>
-			</ul>
-			<ul>
-				<li>조리시간</li>
-				<li>15분이내</li>
-				<li>30분이내</li>
-				<li>1시간 이내</li>
-				<li>2시간 이내</li>
-				<li>2시간 이상</li>
-			</ul> --> </nav>
+<main class="main">
+		
+		<form class="a">
+			<div>
+				<span>종류별</span>
+				<br>
+					<div>
+					<input type="checkbox" value="#" checked="checked" />전체
+					<input type="checkbox" value="#"/>한식
+					<input type="checkbox" value="#"/>일식
+					<input type="checkbox" value="#"/>중식
+					<input type="checkbox" value="#"/>양식
+					<input type="checkbox" value="#"/>기타
+					</div>
+				<br>
+				<br>
+				<span>상황별</span>
+				<br>
+					<div>
+					<input type="checkbox" value="#" checked="checked"/>전체
+					<input type="checkbox" value="#"/>일상
+					<input type="checkbox" value="#"/>다이어트
+					<input type="checkbox" value="#"/>안주
+					<input type="checkbox" value="#"/>건강
+					<input type="checkbox" value="#"/>간식
+					<input type="checkbox" value="#"/>야식
+					<input type="checkbox" value="#"/>기타
+					</div>
+				<br>
+				<br>
+				<span>시간별</span>
+				<br>
+					<div>
+					<input type="checkbox" value="#" checked="checked"/>전체
+					<input type="checkbox" value="#"/>15분
+					<input type="checkbox" value="#"/>30분
+					<input type="checkbox" value="#"/>1시간
+					<input type="checkbox" value="#"/>2시간
+					<input type="checkbox" value="#"/>2시간 이상
+					</div>
+			</div>
+			
+			<input type="submit" value="검색"/>
+			
+			<nav class="select-recipe-option2">
+				<h1 class="hidden">레시피 분류</h1>
+				<img class="menu-down-button" src="${ctx}/resources/images/caret-down.png">
+			</nav>
+		</form>
 		
 		<nav class="select-recipe-view">
 			<ul>
-				<li>Date</li>
-				<li>Popularity</li>
-				<li>Random</li>
+				<li class="date-button">Date</li>
+				<li class="pop-button">Popularity</li>
+				<li class="ran-button">Random</li>
 			</ul>
 		</nav>
 		
@@ -116,24 +88,56 @@
 <script>
 window.addEventListener("load", function(){
 	var likeButton = document.querySelectorAll(".like-button");
+	var menuDownButton = document.querySelector(".menu-down-button");
+	var selectRecipeOption2 = document.querySelector(".select-recipe-option2");
+	var a = document.querySelector(".a");
+	var selectRecipeViewButton = document.querySelectorAll(".select-recipe-view ul li");
+	var dateButton = document.querySelector(".date-button");
+	var popButton = document.querySelector(".pop-button");
+	var ranButton = document.querySelector(".ran-button");
 	
 	
     for(var i=0;i<likeButton.length;i++){
     	(function(m) {
     		likeButton[m].onclick = function(){
-    			if(likeButton[m].src.match("unlike")){
-					alert("레시피 저장고에 등록되었습니다 :)");   				
-    				likeButton[m].src = "${ctx}/resources/images/like.png";
-    			}
-    			else{
-    				likeButton[m].src = "${ctx}/resources/images/unlike.png";
-    				alert("레시피 저장고에서 삭제 되었습니다 :)");  				
-    			}
+					if(confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?"))
+    					location.href="${ctx}/member/login";
     		}
     	})(i);
 	}; 
 	
+	dateButton.onclick = function(){
+		dateButton.style.background="#5fcad4";
+		popButton.style.background="#95a5a3";
+		ranButton.style.background="#95a5a3";
+	}
+	popButton.onclick = function(){
+		dateButton.style.background="#95a5a3";
+		popButton.style.background="#5fcad4";
+		ranButton.style.background="#95a5a3";
+	}
+	ranButton.onclick = function(){
+		dateButton.style.background="#95a5a3";
+		popButton.style.background="#95a5a3";
+		ranButton.style.background="#5fcad4";
+	}
+	
+	
+
+	 menuDownButton.onclick = function(){
+		if(a.classList.contains("show")==false){
+			a.classList.add("show");
+			menuDownButton.src = "${ctx}/resources/images/caret-arrow-up.png";
+		}
+		else{
+			a.classList.remove("show");
+			menuDownButton.src = "${ctx}/resources/images/caret-down.png";
+		}
+	}; 
 
 
-	});
+});
+	
+	
+
 </script>

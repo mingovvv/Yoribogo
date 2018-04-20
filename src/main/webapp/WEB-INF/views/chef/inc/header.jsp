@@ -9,7 +9,7 @@
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
-				<li><a href="${ctx}/index"><img class="logo" src="${ctx}/resources/images/yoribogo-logo.png"/></a></li>
+				<li><a href="${ctx}/chef/index"><img class="logo" src="${ctx}/resources/images/yoribogo-logo.png"/></a></li>
 				<li id = "search-button"><a href="#"><img src="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></a></li>
 				
 				<li id = "menu-button">
@@ -35,9 +35,9 @@
 				<li>Mypage</li>
 				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
-				<li>Community</li>
-				<li>냉장고를 부탁해</li>
-				<li>About us</li>
+				<li><a href="#">Community</a></li>
+				<li><a href="#">냉장고를 부탁해</a></li>
+				<li><a href="#">About us</a></li>
 				<li><a href="${ctx}/logout">Log-Out</a></li>
 			</ul>
 		</div>

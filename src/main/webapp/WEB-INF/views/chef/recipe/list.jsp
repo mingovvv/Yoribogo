@@ -45,17 +45,20 @@
 					<input type="checkbox" value="#"/>2시간 이상
 					</div>
 			</div>
+			
+			<input type="submit" value="검색"/>
+			
+			<nav class="select-recipe-option2">
+				<h1 class="hidden">레시피 분류</h1>
+				<img class="menu-down-button" src="${ctx}/resources/images/caret-down.png">
+			</nav>
 		</form>
-		<nav class="select-recipe-option2">
-			<h1 class="hidden">레시피 분류</h1>
-			<img class="menu-down-button" src="${ctx}/resources/images/caret-down.png">
-		</nav>
 		
 		<nav class="select-recipe-view">
 			<ul>
-				<li>Date</li>
-				<li>Popularity</li>
-				<li>Random</li>
+				<li class="date-button">Date</li>
+				<li class="pop-button">Popularity</li>
+				<li class="ran-button">Random</li>
 			</ul>
 		</nav>
 		
@@ -88,6 +91,10 @@ window.addEventListener("load", function(){
 	var menuDownButton = document.querySelector(".menu-down-button");
 	var selectRecipeOption2 = document.querySelector(".select-recipe-option2");
 	var a = document.querySelector(".a");
+	var selectRecipeViewButton = document.querySelectorAll(".select-recipe-view ul li");
+	var dateButton = document.querySelector(".date-button");
+	var popButton = document.querySelector(".pop-button");
+	var ranButton = document.querySelector(".ran-button");
 	
 	
     for(var i=0;i<likeButton.length;i++){
@@ -105,35 +112,38 @@ window.addEventListener("load", function(){
     	})(i);
 	}; 
 	
-	menuDownButton.onclick = function(){
-		if(selectRecipeOption2.classList.contains("show")==false){
-			//a.style.display="block";
+	dateButton.onclick = function(){
+		dateButton.style.background="#5fcad4";
+		popButton.style.background="#95a5a3";
+		ranButton.style.background="#95a5a3";
+	}
+	popButton.onclick = function(){
+		dateButton.style.background="#95a5a3";
+		popButton.style.background="#5fcad4";
+		ranButton.style.background="#95a5a3";
+	}
+	ranButton.onclick = function(){
+		dateButton.style.background="#95a5a3";
+		popButton.style.background="#95a5a3";
+		ranButton.style.background="#5fcad4";
+	}
+	
+	
+
+	 menuDownButton.onclick = function(){
+		if(a.classList.contains("show")==false){
 			a.classList.add("show");
-			selectRecipeOption2.classList.add("show");
 			menuDownButton.src = "${ctx}/resources/images/caret-arrow-up.png";
 		}
 		else{
-			//a.style.display="none";
 			a.classList.remove("show");
-			selectRecipeOption2.classList.remove("show");
 			menuDownButton.src = "${ctx}/resources/images/caret-down.png";
 		}
-	};
+	}; 
 
 
-	});
+});
 	
 	
-	function check_all(start) {
-		if(document.searchform.b_all.checked == true) {
-		    document.searchform.b_desc.checked = true; document.searchform.b_cmt.checked = true; document.searchform.b_file.checked = true; document.searchform.b_copyright.checked = true; document.searchform.b_cmt_exif.checked = true;
-		    document.searchform.b_desc.disabled = true; document.searchform.b_cmt.disabled = true; document.searchform.b_file.disabled = true; document.searchform.b_copyright.disabled = true; document.searchform.b_cmt_exif.disabled = true;
-		    } else {
-		        if(start != 'start') {
-		            document.searchform.b_desc.checked = false; document.searchform.b_cmt.checked = false; document.searchform.b_file.checked = false; document.searchform.b_copyright.checked = false; document.searchform.b_cmt_exif.checked = false;
-		            document.searchform.b_desc.disabled = false; document.searchform.b_cmt.disabled = false; document.searchform.b_file.disabled = false; document.searchform.b_copyright.disabled = false; document.searchform.b_cmt_exif.disabled = false;
-		        }
-		    }
-		}
-		check_all('start');
+
 </script>

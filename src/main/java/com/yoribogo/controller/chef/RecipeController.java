@@ -2,6 +2,7 @@ package com.yoribogo.controller.chef;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,5 +18,10 @@ public class RecipeController {
 	}
 	
 
+	@GetMapping("reg")
+	public String reg() {
+
+		return "chef.recipe.reg";
+	}	
 
 }
