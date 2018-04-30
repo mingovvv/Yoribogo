@@ -49,10 +49,13 @@
 				<img id="" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
 			</div>
 			
-			<div>
+			<div class="add-ingredient">
 				<span>재료</span>
-				<input type="text" placeholder="ex)돼지고기">
-				
+				<div class="add">
+				<input type="text" placeholder="ex)돼지고기" />
+				<img class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
+				</div>
+				<div class="box"></div>
 				<input type="button" value="추가" />
 			</div>
 			
@@ -77,5 +80,16 @@
 	
 	</form>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+$(function(){
+	var addButton = $(".add-ingredient input[type=button]");
+	var box = $(".add-ingredient .box");
+	addButton.click(function(){ 
+		$("<input type=text />").appendTo(box);
+		
+	});
+	
+	
+});
 </script>

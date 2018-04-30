@@ -905,6 +905,12 @@ body .container .content .signup-cont {
     height: 30px;
  }
  
+ .reg-frame .add-ingredient> div>input {
+    background: white;
+    width: 270px;
+    height: 30px;
+ }
+ 
   .reg-frame > div > textarea{
       width: 270px;
       min-height: 100px;
@@ -916,9 +922,19 @@ body .container .content .signup-cont {
    	width: 50px;
    }
  
+.btn-cancel{
+	position: relative;
+    left: -33px;
+    top: 8px;
+    opacity: 0.1;
+}
+.btn-cancel:hover{
+    opacity: 1;
+}
  
  
- 
+
+
  
  
  
