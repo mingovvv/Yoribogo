@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 
 	<header class="header">
@@ -28,7 +29,8 @@
 			</div>
 		</form>
 		
-		
+	<!-- 로그인 되지 않았을때 -->	
+	<sec:authorize access="!isAuthenticated()">	
 		<div class="add-memu">
 			<ul>
 				<li><a href="${ctx}/member/login">Login / Register</a></li>
@@ -39,8 +41,34 @@
 				<li>About us</li>
 			</ul>
 		</div>
+	</sec:authorize>
+	
+	
+	 
+	<!-- 로그인 되었을때 -->
+	<sec:authorize access="isAuthenticated()">
+		<div class="add-memu">
+			<ul>
+				<li><span style="color: #49c5b6">min</span>님 안녕하세요!</li>
+				<li>Mypage</li>
+				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
+				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
+				<li><a href="#">Community</a></li>
+				<li><a href="#">냉장고를 부탁해</a></li>
+				<li><a href="#">About us</a></li>
+				<li><a href="${ctx}/logout">Log-Out</a></li>
+			</ul>
+		</div>
+	</sec:authorize>
 	</header>
 	
+	
+	
+
+
+
+
+
 <script>
 window.addEventListener("load", function(){
 	var menuButton = document.querySelector("#menu-button");

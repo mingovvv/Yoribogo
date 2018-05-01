@@ -51,19 +51,23 @@
 			
 			<div class="add-ingredient">
 				<span>재료</span>
-				<div class="add">
-				<input type="text" placeholder="ex)돼지고기" />
-				<img class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
+				<div class="box">
+					<input name="ingredient1" type="text" placeholder="ex)돼지고기" />
+					<img class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
+				
 				</div>
-				<div class="box"></div>
 				<input type="button" value="추가" />
 			</div>
 			
-			<div>
+			<div class="recipe-order">
 				<span>요리순서</span>
 				<p><b style="font-size: 25px;">step 1</b></p>
+				<img class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
 				<textarea name="" id="" class=" " placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
 				<img id="" src="http://recipe.ezmember.co.kr/img/pic_none2.gif" style="width: 270px; height: 250px; cursor:pointer">
+				<div class="recipe-box">
+				
+				</div>
 				<input type="button" value="추가" />
 			</div>
 			
@@ -83,13 +87,66 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(function(){
-	var addButton = $(".add-ingredient input[type=button]");
+	var addIngredientButton = $(".add-ingredient input[type=button]");
 	var box = $(".add-ingredient .box");
-	addButton.click(function(){ 
-		$("<input type=text />").appendTo(box);
+	
+	var addRecipeOrderButton = $(".recipe-order input[type=button]");
+	var recipeBox = $(".recipe-order .recipe-box");
+	var step = $(".recipe-order p b").text()
+	
+	var deleteButton = $(".btn-cancel");
+	
+	
+	addIngredientButton.click(function(){ 
+		$("<input name=\"ingredient1\" type=\"text\" placeholder=\"ex)돼지고기\" />").appendTo(box);
+		$("<img class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(box);
 		
 	});
 	
+	var n=1;
+	addRecipeOrderButton.click(function(){
+		n++;
+		$("<p><b style=\"font-size: 25px;\">step "+n+"</b></p>").appendTo(recipeBox);
+		$("<img class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(recipeBox);
+		$("<textarea name= id= class= placeholder=예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요. style=resize: none></textarea>").css("width","270px").css("height","100px").appendTo(recipeBox);
+		$("<img src=http://recipe.ezmember.co.kr/img/pic_none2.gif>").css("width","270px").css("heigth","250px").appendTo(recipeBox);
+	});
+	
+	deleteButton.click(function(){
+		$(box).children().remove();
+	})
 	
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
