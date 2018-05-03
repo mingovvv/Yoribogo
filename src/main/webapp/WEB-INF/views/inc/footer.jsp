@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath }" />
 
 <footer class="footer">
 	<div></div>
-	<p>주소: 서울특별시 마포구 토정로35길 11, 인우빌딩 5층 266호 관리자메일:
-		admin@newlecture.com 사업자 등록번호: 132-18-46763 통신 판매업: 신고제 2013-서울강동-0969
-		호 상호: 뉴렉처 대표: 박용우 전화번호: 070-4206-4084 Copyright ⓒ newlecture.com
-		2012-2014 All Right Reserved. Contact admin@newlecture.com for more
-		information
-	</p>
+	<p>주소: 서울특별시 양천구 관리자메일:puregyu@naver.com </p>
+	<p>상호: 요리보고 대표: 장민규 Copyright ⓒ newlecture.com</p>
+	<p>All Right Reserved. Contact puregyu@naver.com for more information</p>
+	
 </footer>

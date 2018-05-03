@@ -19,30 +19,37 @@
 			
 			<div>
 			<span>분류</span>
+			
+			
 			<select>
-				<option value="">종류별</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
+				<option>종류별</option>
+				<option value="">한식</option>
+				<option value="">일식</option>
+				<option value="">중식</option>
+				<option value="">양식</option>
+				<option value="">기타</option>
 			</select>
 			<select>
-				<option value="">별별별</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
+				<option>상황별</option>
+				<option value="">영양식</option>
+				<option value="">일상</option>
+				<option value="">간식</option>
+				<option value="">야식</option>
+				<option value="">안주</option>
+				<option value="">다이어트</option>
+				<option value="">반찬</option>
+				<option value="">기타</option>
 			</select>
 			<select>
-				<option value="">시간별</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
-				<option value="">a</option>
+				<option>시간별</option>
+				<option value="">15분 ↓</option>
+				<option value="">30분 ↓</option>
+				<option value="">1시간 ↓</option>
+				<option value="">2시간 ↓</option>
+				<option value="">2시간 ↑</option>
 			</select>
+			
+			
 			</div>
 			
 			<div>
@@ -77,9 +84,9 @@
 			</div>
 		</div>
 		
-		<div>
-			<input type="button" value="글쓰기" />
-			<input type="button" value="취소하기" />
+		<div class="button-container">
+			<input class="btn btn-ok" type="button" value="글쓰기" />
+			<input class="btn btn-cancel" type="button" value="취소하기" />
 		</div>
 	
 	</form>
