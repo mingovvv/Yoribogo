@@ -1,11 +1,9 @@
 package com.yoribogo.dao;
 
-import com.mysql.fabric.xmlrpc.base.Member;
+import com.yoribogo.entity.Member;
 
-public class MemberDao {
+public interface MemberDao {
 
-	public void insert(Member member) {
-		
-	}
+	int insert(Member member);
 
 }

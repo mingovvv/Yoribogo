@@ -1,5 +1,7 @@
 package com.yoribogo.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
@@ -16,6 +19,9 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @ComponentScan(basePackages="com.yoribogo.config")
 public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 
+	@Autowired
+	private DataSource dataSource;
+	
 	@Autowired /*콩에 담긴거 쓰기*/
 	private AuthenticationSuccessHandler successHandler;
 	
@@ -57,7 +63,15 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 		//UserBuilder users = User.withDefaultPasswordEncoder(); 사용자 pwd를 확인할때 텍스트로 확인해서 오류뜸
 		UserBuilder users = User.builder();
 		
-		auth.inMemoryAuthentication().withUser(users.username("min").password("{noop}min").roles("CHEF"));
+		
+		//inMemoryAuthentication().withUser(users.username("min").password("{noop}min").roles("CHEF"));
+		
+		auth. 
+		jdbcAuthentication()
+		.dataSource(dataSource)
+		.usersByUsernameQuery("select id, pwd password, 1 enabled  from Member where id=?")
+		.authoritiesByUsernameQuery("select memberId id, roleId authority from MemberRole where memberId=?")
+		.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	

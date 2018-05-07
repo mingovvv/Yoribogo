@@ -12,6 +12,7 @@ public class YoribogoDispatcherServletInitializer extends AbstractAnnotationConf
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
 		return new Class[] {
+				HibernateConfig.class,
 				YoribogoSecurityConfig.class//보안 담당
 		};
 	}
