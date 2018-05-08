@@ -57,15 +57,19 @@ public class MemberController {
 	public String join(Member member) {
 		
 		System.out.println(member);
+		
+		
+		//--
 		String pwd = member.getPwd();
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		
 		String hashedPwd = passwordEncoder.encode(pwd);
 		member.setPwd(hashedPwd);
-		String memberId = member.getId();
+		//--
 		
+		
+		//String memberId = member.getId();
 		service.insertMember(member);
-		
+		/*service.insertMemberRole(memberRole);*/
 		/*service.insertMemberRole(member, memberRole);*/
 		/*service.insertMemberRole(memberRole);*/
 		return pwd + ":" + hashedPwd;

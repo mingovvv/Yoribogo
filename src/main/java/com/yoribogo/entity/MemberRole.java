@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class MemberRole {
 	
 	@EmbeddedId
-	MemberRoleId memberRoleId;
+	private MemberRoleId memberRoleId;
 	
 	private boolean defaultRole;
 	

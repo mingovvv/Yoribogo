@@ -502,7 +502,8 @@ body .container .tabs .tab a {
   color: #d9d9d9;
   transition: all 0.1s ease-in-out;
 }
-body .container .tabs .tab.active a, body .container .tabs .tab:hover a {
+body .container .tabs .tab.active a, 
+body .container .tabs .tab:hover a {
   color: #263238;
 }
 body .container .tabs .tab.active {

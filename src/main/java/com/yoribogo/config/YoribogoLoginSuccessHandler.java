@@ -53,12 +53,17 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 				redirectStrategy.sendRedirect(request, renponse, returnUrl);
 			}
 			else { //직접 로그인창으로 간 경우
-				String defaultRole = service.getDefaultRoleByMemberId(memberId);
+				
+				redirectStrategy.sendRedirect(request, renponse, "/chef/index");
+				
+				
+				//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
+				//String defaultRole = service.getDefaultRoleByMemberId(memberId);
 				
 			/*	if(defaultRole=="ROLE_ADMIN") {
 					redirectStrategy.sendRedirect(request, renponse, "/admin/index");
 				}*/
-				switch(defaultRole) {
+				/*switch(defaultRole) {
 				case "ROLE_CHEF":
 					redirectStrategy.sendRedirect(request, renponse, "/chef/index");
 					break;
@@ -67,7 +72,8 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 					break;
 				default :
 					break;
-				}
+				}*/
+				//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
 			}
 					
 					

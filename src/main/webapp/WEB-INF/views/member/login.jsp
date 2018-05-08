@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
     
- <%--    <main>
+<main>
 <section class="container">
 	<article class="half">
 		<h1>Yoribogo</h1>
 		<div class="tabs">
-			<span class="tab signin active"><a href="#signin">Sign in</a></span>
-			<span class="tab signup"><a href="#signup">Sign up</a></span>
+			<span class="tab signin active">Sign in</span>
+			<span class="tab signup"><a href="${ctx}/member/join">Sign up</a></span>
 		</div>
 		
 		
@@ -28,8 +28,8 @@
 			</div>
 			
 			
-			<div class="signup-cont cont">
-				<form method="post" enctype="multipart/form-data">
+<!-- 			<div class="signup-cont cont">
+				<form method="post">  enctype="multipart/form-data"
 
 					<input type="text" name="id" id="id" class="inpt" required="required" placeholder="Your id"> 
 					<input type="password" name="pwd" id="pwd" class="inpt" required="required" placeholder="Your password">
@@ -42,7 +42,7 @@
 						<input type="submit" value="Sign up" class="submit"> <a href="#" class="more">Terms and conditions</a>
 					</div>
 				</form>
-			</div>
+			</div> -->
 			
 			
 		</div>
@@ -53,12 +53,12 @@
 		<img src="${ctx}/resources/images/login-door.png">
 	</div>
 </section>
-</main> --%>
+</main>
 
-<main>
+<%-- <main>
 	<section>
 		<h1>로그인 폼</h1>
-		<form <%-- action="${ctx}/login" --%> method="post">
+		<form action="${ctx}/login" method="post">
 			<fieldset>
 				<legend>로그인필드</legend>
 				<table>
@@ -79,7 +79,7 @@
 			</fieldset>
 		</form>
 	</section>
-</main>
+</main> --%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script type="text/javascript">

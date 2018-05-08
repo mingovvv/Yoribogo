@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 
 import com.yoribogo.entity.MemberRole;
+import com.yoribogo.entity.MemberRoleId;
 import com.mysql.fabric.xmlrpc.base.Member;
 import com.yoribogo.dao.MemberRoleDao;
 
@@ -31,7 +32,8 @@ public class HbMemberRoleDao implements MemberRoleDao{
 		Iterator<MemberRole> iterator = list.iterator();
 		int i = 0;
 		String roleName = null;
-		while(iterator.hasNext()) {
+		//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
+		/*while(iterator.hasNext()) {
 			//System.out.println(list.get(i).getMemberId());
 			
 			if(memberId.equals(list.get(i).getMemberId())) { 
@@ -42,27 +44,45 @@ public class HbMemberRoleDao implements MemberRoleDao{
 			}
 		
 			i++;
-		}
-		
+		}*/
+		//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
 		
 		
 		return roleName;
 	}
 
 
-	@Override
+	/*@Override
 	public int insert(String memberId) {
 		System.out.println("하이버" +memberId);
 		
 		
 		Session session = sessionFactory.getCurrentSession();
-		//System.out.println(session);
-		MemberRole memberRole = new MemberRole();
-		memberRole.setMemberId(memberId);
-		session.save(memberRole);
+		//MemberRole memberRole = new MemberRole();
+		//MemberRoleId memberRoleId = new MemberRoleId(memberId, "ROLE_CHEF");
+		
+		//memberRole.setMemberId(memberRoleId);
+		//memberRole.setMemberRoleId(memberRoleId);
+		//memberRole.setMemberId("99");
+		//memberRole.setRoleId("ROLE_CHEF");
+		//memberRole.setDefaultRole(false);
+		
+		session.save(memberId);
 		
 		return 0;
-	}
+	}*/
+
+
+/*	@Override
+	public int insert(MemberRole memberRole) {
+		System.out.println("여기까지오나? : "+memberRole);
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.save(memberRole);
+		
+		
+		return 1;
+	}*/
 
 
 

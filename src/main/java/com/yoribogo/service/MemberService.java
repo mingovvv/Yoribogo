@@ -24,10 +24,9 @@ public class MemberService {
 		
 		int result = memberDao.insert(member);
 		
-		String memberId = member.getId();
-		memberRoleDao.insert(memberId);
+		/*String memberId = member.getId();
 		System.out.println("서비스" +memberId);
-		
+		memberRoleDao.insert(memberId);*/
 		
 		return result;
 	}
@@ -40,6 +39,15 @@ public class MemberService {
 		
 		return roleName;
 	}
+
+/*	@Transactional
+	public int insertMemberRole(MemberRole memberRole) {
+		
+		int result = memberRoleDao.insert(memberRole);
+		
+		return result;
+		
+	}*/
 
 
 

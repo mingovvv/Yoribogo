@@ -70,7 +70,11 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 		jdbcAuthentication()
 		.dataSource(dataSource)
 		.usersByUsernameQuery("select id, pwd password, 1 enabled  from Member where id=?")
-		.authoritiesByUsernameQuery("select memberId id, roleId authority from MemberRole where memberId=?")
+		//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
+		//.usersByUsernameQuery("select id, pwd password, 1 enabled  from Member where id=?")
+		.authoritiesByUsernameQuery("select id, role authority from Member where id=?")
+		//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
+		//.authoritiesByUsernameQuery("select memberId id, roleId authority from MemberRole where memberId=?")
 		.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	

@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class MemberRoleId implements Serializable{
+	
 	private String memberId;
 	private String roleId;
 	
@@ -40,5 +41,17 @@ public class MemberRoleId implements Serializable{
 		return "MerberRoleId [memberId=" + memberId + ", roleId=" + roleId + "]";
 	}	
 	
+	
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
 	
 }

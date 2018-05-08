@@ -37,7 +37,7 @@ public class HbMemberDao implements MemberDao{
 		
 		System.out.println(member);
 		
-		return 0;
+		return 1;
 	}
 	
 }

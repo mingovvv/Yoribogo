@@ -2,26 +2,82 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-    
-<%--     <main>
+
+
+<main>
 <section class="container">
 	<article class="half">
 		<h1>Yoribogo</h1>
 		<div class="tabs">
-			<span class="tab signin"><a href="#signin">Sign in</a></span>
-			<span class="tab signup active"><a href="#signup">Sign up</a></span>
+			<span class="tab signin"><a href="${ctx}/member/login">Sign in</a></span>
+			<span class="tab signup active">Sign up</span>
+		</div>
+		
+		
+		<div class="content">
+			<div class="signin-cont cont">
+				<form method="post">
+					<input type="text" name="id" class="inpt" required="required" placeholder="Your id"> 
+					<input type="password" name="pwd" class="inpt" required="required" placeholder="Your password">
+					<input type="text" name="name" class="inpt" required="required" placeholder="Your name"> 
+					<input type="text" name="nickname" class="inpt" required="required" placeholder="Your nickname"> 
+					<input type="text" name="email" class="inpt" required="required" placeholder="Your e-mail"> 
+					<input type="file" name="photo" class="inpt" > 
+					
+					<div class="submit-wrap">
+						<input type="submit" value="Sign up" class="submit"> <a href="#" class="more">Terms and conditions</a>
+					</div>
+				</form>
+			</div>
+			
+
+		</div>
+	</article>
+	
+	
+	<div class="half bg">
+		<img src="${ctx}/resources/images/login-door.png">
+	</div>
+</section>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script type="text/javascript">
+	$('.tabs .tab').click(function() {
+		if ($(this).hasClass('signin')) {
+			$('.tabs .tab').removeClass('active');
+			$(this).addClass('active');
+			$('.cont').hide();
+			$('.signin-cont').show();
+		}
+		if ($(this).hasClass('signup')) {
+			$('.tabs .tab').removeClass('active');
+			$(this).addClass('active');
+			$('.cont').hide();
+			$('.signup-cont').show();
+		}
+	});
+</script>
+    
+<%-- <main>
+<section class="container">
+	<article class="half">
+		<h1>Yoribogo</h1>
+		<div class="tabs">
+			<span class="tab signin"><a href="${ctx}/member/login">Sign in</a></span>
+			<span class="tab signup active">Sign up</span>
 		</div>
 		
 		
 			<div class="signup-cont cont">
-				<form method="post" enctype="multipart/form-data">
+				<form method="post"> <!-- enctype="multipart/form-data" -->
 
-					<input type="text" name="id" id="id" class="inpt" required="required" placeholder="Your id"> 
-					<input type="password" name="pwd" id="pwd" class="inpt" required="required" placeholder="Your password">
-					<input type="text" name="name" id="name" class="inpt" required="required" placeholder="Your name"> 
-					<input type="text" name="nickname" id="nickname" class="inpt" required="required" placeholder="Your nickname"> 
-					<input type="text" name="email" id="email" class="inpt" required="required" placeholder="Your e-mail"> 
-					<input type="file" name="photo" id="photo" class="inpt" > 
+					<input type="text" name="id" class="inpt" required="required" placeholder="Your id"> 
+					<input type="password" name="pwd" class="inpt" required="required" placeholder="Your password">
+					<input type="text" name="name" class="inpt" required="required" placeholder="Your name"> 
+					<input type="text" name="nickname" class="inpt" required="required" placeholder="Your nickname"> 
+					<input type="text" name="email" class="inpt" required="required" placeholder="Your e-mail"> 
+					<input type="file" name="photo" class="inpt" > 
 					
 					<div class="submit-wrap">
 						<input type="submit" value="Sign up" class="submit"> <a href="#" class="more">Terms and conditions</a>
@@ -39,8 +95,30 @@
 	
 </section>
 </main>
- --%>
-<main>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script type="text/javascript">
+	$('.tabs .tab').click(function() {
+		if ($(this).hasClass('signin')) {
+			$('.tabs .tab').removeClass('active');
+			$(this).addClass('active');
+			$('.cont').hide();
+			$('.signin-cont').show();
+		}
+		if ($(this).hasClass('signup')) {
+			$('.tabs .tab').removeClass('active');
+			$(this).addClass('active');
+			$('.cont').hide();
+			$('.signup-cont').show();
+		}
+	});
+</script> --%>
+
+
+
+
+<!-- <main>
 	<section>
 		<h1>회원 가입폼</h1>
 		<form method="post">
@@ -80,4 +158,4 @@
 			</fieldset>
 		</form>
 	</section>
-</main>
+</main> -->
