@@ -22,7 +22,7 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 	
-
+	
 	public Member(String id, String pwd, String name, String nickname, String email, String photo) {
 		super();
 		this.id = id;
@@ -44,6 +44,9 @@ public class Member {
 		this.regDate = regDate;
 		this.photo = photo;
 	}
+
+
+
 
 
 	public String getId() {
@@ -96,14 +99,14 @@ public class Member {
 	}
 
 
-	public Date getRegDate() {
+/*	public Date getRegDate() {
 		return regDate;
 	}
 
 
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
-	}
+	}*/
 
 
 	public String getPhoto() {

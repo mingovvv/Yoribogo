@@ -1,6 +1,8 @@
 package com.yoribogo.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yoribogo.entity.Member;
+import com.yoribogo.entity.MemberRole;
 import com.yoribogo.service.MemberService;
 
 
@@ -22,6 +25,9 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	//----------------------------------- 로그인 --------------------------------------------------
+	
+	
       @RequestMapping(value="login", method=RequestMethod.GET)
       public String login() {
          
@@ -31,12 +37,12 @@ public class MemberController {
       
       
       
+
       
       
       
       
-      
-      
+      //----------------------------------- 회원가입 --------------------------------------------------
       
      @RequestMapping(value="join", method=RequestMethod.GET)
       public String join() {
@@ -49,15 +55,19 @@ public class MemberController {
 	@PostMapping("join")
 	@ResponseBody
 	public String join(Member member) {
-
+		
 		System.out.println(member);
 		String pwd = member.getPwd();
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
+		
 		String hashedPwd = passwordEncoder.encode(pwd);
 		member.setPwd(hashedPwd);
-
+		String memberId = member.getId();
+		
 		service.insertMember(member);
+		
+		/*service.insertMemberRole(member, memberRole);*/
+		/*service.insertMemberRole(memberRole);*/
 		return pwd + ":" + hashedPwd;
 
 	}
