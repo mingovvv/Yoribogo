@@ -1,7 +1,17 @@
 package com.yoribogo.controller;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.MemberRole;
@@ -20,6 +31,12 @@ import com.yoribogo.service.MemberService;
 
 @Controller("memberController")
 @RequestMapping("/member/")
+@MultipartConfig
+(
+		fileSizeThreshold = 1024*1024,
+		maxFileSize = 1024*1024*100,
+		maxRequestSize = 1024*1024*100*5
+)
 public class MemberController {
     
 	@Autowired
@@ -54,7 +71,49 @@ public class MemberController {
      
 	@PostMapping("join")
 	@ResponseBody
-	public String join(Member member) {
+	public String join(MultipartFile file, Member member, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		
+		
+		
+		String pathURL = "/resources/profile";
+		String pathSystem = request.getServletContext().getRealPath(pathURL);
+		
+		if(!((File) file).exists())
+			((File) file).mkdir();
+				
+		Part part = request.getPart("profile");	
+		InputStream is = part.getInputStream();
+		String fname = part.getSubmittedFileName();
+
+		byte[] buf = new byte[1024];
+		
+			if(fname.isEmpty())
+			fname="profile.png";
+		
+		FileOutputStream fos = new FileOutputStream(pathSystem+File.separator+fname);
+				
+		int size=0;
+		while((size = is.read(buf,0,1024)) != -1)
+			fos.write(buf,0,size);
+
+		is.close();
+		fos.close();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		System.out.println(member);
 		

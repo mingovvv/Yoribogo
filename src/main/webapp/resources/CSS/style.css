@@ -190,7 +190,7 @@ a:visited { color: white; text-decoration: none;}
 }
 
 .add-memu ul li:hover{
-	background: #9c5743;
+	background: #fbd259; 
 	font-size: 24px;
 	transition:100ms;
 }
@@ -571,7 +571,7 @@ body .container .content input.inpt {
   height: 42px;
   margin-bottom: 12px;
   padding: 16px 13px;
-  color: #999999;
+  color: black;
   border: 1px solid #d9d9d9;
   background: transparent;
   -moz-border-radius: 2px;
@@ -1022,7 +1022,7 @@ body .container .content .signup-cont {
  }
 
  
- 
+ /* ★join */
  
  
  
