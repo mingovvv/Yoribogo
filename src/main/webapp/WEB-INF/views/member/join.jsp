@@ -22,7 +22,12 @@
 					<input type="text" name="name" class="inpt" required="required" placeholder="Your name"> 
 					<input type="text" name="nickname" class="inpt" required="required" placeholder="Your nickname"> 
 					<input type="text" name="email" class="inpt" required="required" placeholder="Your e-mail"> 
-					<input type="file" name="photo" class="inpt" > 
+					<div class = "l-box">
+					<input style="border: none;" type="file" name="photo" class="inpt" value="사진선택" > 
+					<img id="photo"
+						src="${ctx}/resources/images/profile.png"
+						style="width: 120px; height: 120px; border: 1px solid #595959;  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);" />
+					</div>
 					
 					<div class="submit-wrap">
 						<input type="submit" value="Sign up" class="submit"> <a href="#" class="more">Terms and conditions</a>

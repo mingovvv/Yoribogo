@@ -420,13 +420,17 @@ a:visited { color: white; text-decoration: none;}
 } */
 			
 /*----------------------------------- footer */	
-.f-logo{
-		
+
+.footer{
+	height: 200px;
+	background: black;
 }
 
 .footer div{
     height: 20px;
     background: #6ccfc3;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .footer p{
 	min-height: 25px;
@@ -436,16 +440,22 @@ a:visited { color: white; text-decoration: none;}
     font-size: 12px;
     margin: 0px;
     padding-top: 10px;
+    
 }
 
 
 /* ★login */
 
+.l-box{
+	display: flex;
+}
+
+
 
 body .container {
   position: relative;
   overflow: hidden;
-  height: 550px;
+  height: 650px;
   margin: 80px auto 0;
   background-color: #ffffff;
   -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
@@ -661,6 +671,7 @@ body .container .content .submit-wrap {
   position: absolute;
   /* bottom: 0; */
   width: 270px;
+  margin-top: 15px;
 }
 body .container .content .submit-wrap a {
   font-size: 12px;
