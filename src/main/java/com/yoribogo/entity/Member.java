@@ -2,6 +2,7 @@ package com.yoribogo.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -14,6 +15,7 @@ public class Member {
 	private String name;
 	private String nickname;
 	private String email;
+	@Column(insertable=false)//insert할 때 빼줘라 / DB에서 지정한 기본값으로 들어가라   
 	private Date regDate;
 	private String photo;
 	

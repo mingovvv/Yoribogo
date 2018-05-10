@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -35,6 +36,15 @@ public class ServletContextConfig {
 		filter.setForceEncoding(true);
 		
 		return filter;
+	}
+	
+	@Bean(name = "multipartResolver") /*멀티파트*/
+	public CommonsMultipartResolver multipartResolver() {
+	    CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+	    resolver.setDefaultEncoding("utf-8");
+	    resolver.setMaxUploadSize(10485760);
+	    resolver.setMaxInMemorySize(10485760);
+	    return resolver;
 	}
 	
 }

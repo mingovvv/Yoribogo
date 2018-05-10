@@ -16,7 +16,7 @@
 		
 		<div class="content">
 			<div class="signin-cont cont">
-				<form method="post" enctype="multipart/form-data">
+				<form method="post" enctype="multipart/form-data">  <!-- enctype="multipart/form-data" -->
 					<input type="text" name="id" class="inpt" required="required" placeholder="Your id"> 
 					<input type="password" name="pwd" class="inpt" required="required" placeholder="Your password">
 					<input type="text" name="name" class="inpt" required="required" placeholder="Your name"> 
