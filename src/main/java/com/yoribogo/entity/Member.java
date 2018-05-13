@@ -17,7 +17,7 @@ public class Member {
 	private String email;
 	@Column(insertable=false)//insert할 때 빼줘라 / DB에서 지정한 기본값으로 들어가라   
 	private Date regDate;
-	private String photo;
+	private String file;
 	
 	
 	public Member() {
@@ -25,18 +25,18 @@ public class Member {
 	}
 	
 	
-	public Member(String id, String pwd, String name, String nickname, String email, String photo) {
+	public Member(String id, String pwd, String name, String nickname, String email, String file) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.nickname = nickname;
 		this.email = email;
-		this.photo = photo;
+		this.file = file;
 	}
 
 
-	public Member(String id, String pwd, String name, String nickname, String email, Date regDate, String photo) {
+	public Member(String id, String pwd, String name, String nickname, String email, Date regDate, String file) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -44,7 +44,7 @@ public class Member {
 		this.nickname = nickname;
 		this.email = email;
 		this.regDate = regDate;
-		this.photo = photo;
+		this.file = file;
 	}
 
 
@@ -112,17 +112,17 @@ public class Member {
 
 
 	public String getPhoto() {
-		return photo;
+		return file;
 	}
 
 
 	public void setPhoto(String photo) {
-		this.photo = photo;
+		this.file = photo;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [nickname=" + nickname + ", regDate=" + regDate + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", photo=" + photo + "]";
+		return "Member [nickname=" + nickname + ", regDate=" + regDate + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", file=" + file + "]";
 	}
 	
 	

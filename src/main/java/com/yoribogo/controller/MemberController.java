@@ -33,12 +33,7 @@ import com.yoribogo.service.MemberService;
 
 @Controller("memberController")
 @RequestMapping("/member/")
-@MultipartConfig
-(
-		fileSizeThreshold = 1024*1024,
-		maxFileSize = 1024*1024*100,
-		maxRequestSize = 1024*1024*100*5
-)
+
 public class MemberController {
     
 	@Autowired
@@ -60,7 +55,6 @@ public class MemberController {
       
       
       
-      http://diaryofgreen.tistory.com/146
       //----------------------------------- 회원가입 --------------------------------------------------
       
      @RequestMapping(value="join", method=RequestMethod.GET)
@@ -73,20 +67,30 @@ public class MemberController {
      
 	@PostMapping("join")
 	@ResponseBody
-	public String join(@RequestParam("photo")MultipartFile photo
+	public String join(MultipartFile file
 									, Member member
 									, HttpServletRequest request
 									, HttpServletResponse response) throws IOException, ServletException{
 		
-		
+	
+		System.out.println(file);
 		ServletContext ctx = request.getServletContext();
-	    String path = ctx.getRealPath("/resources/profile"); //물리경로
+		System.out.println(ctx);
+	    String path = ctx.getRealPath("/resources/profile/"+member.getId()); //물리경로
+	    File filepath = new File(path);
+	    if(!filepath.exists())
+	    	filepath.mkdir();
+	    System.out.println(path);
+	    System.out.println(filepath);
 	    
 	    
-		if(!photo.isEmpty()) {
+		if(!file.isEmpty()) {
 			try {
-				String fname = photo.getOriginalFilename();  //경로만 있고 실제 파일은 없다
-				InputStream fis = photo.getInputStream();
+				String fname = file.getOriginalFilename();  
+				System.out.println(fname);
+				member.setPhoto(path+"/"+fname);
+				
+				InputStream fis = file.getInputStream();
 				
 				FileOutputStream fos = new FileOutputStream(path + File.separator + fname); //File.separator 구분자 / \ 윈도우는 \ 유닉스는 / 니깐 둘중 골라주는놈 파일.세퍼레이톨
 				
@@ -108,116 +112,6 @@ public class MemberController {
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*String pathURL = "/resources/profile";
-		String pathSystem = request.getServletContext().getRealPath(pathURL);
-		File filef = new File(pathSystem);
-		
-		System.out.println(pathSystem);
-		
-		if(!filef.exists())
-			filef.mkdir();
-		String page_ = request.getParameter("p");
-		if(page_!=null && !page_.equals(""))
-			page = Integer.parseInt(page_);
-				
-		InputStream fis = file.getInputStream();
-		String fname = file.getOriginalFilename();
-
-		System.out.println(fis);
-		System.out.println(fname);
-		
-		byte[] buf = new byte[1024];
-		
-		
-		FileOutputStream fos = new FileOutputStream(pathSystem+File.separator+fname);
-				
-		int size=0;
-		while((size = fis.read(buf,0,1024)) != -1)
-			fos.write(buf,0,size);
-
-		fis.close();
-		fos.close();*/
-		
-		
-		/*String pathURL = "/resources/profile";
-		String pathSystem = request.getServletContext().getRealPath(pathURL);
-		
-		if(!((File) file).exists())
-			((File) file).mkdir();
-		
-		if(!file.isEmpty()) {
-			try {
-				String fname = file.getOriginalFilename();  //경로만 있고 실제 파일은 없다
-				InputStream fis = file.getInputStream();
-				
-				FileOutputStream fos = new FileOutputStream(pathURL + File.separator + fname); //File.separator 구분자 / \ 윈도우는 \ 유닉스는 / 니깐 둘중 골라주는놈 파일.세퍼레이톨
-				
-				byte[] buf = new byte[1024]; //버퍼 만들기
-				
-				int size = 0;
-				
-				while((size = fis.read(buf,0,1024)) != -1)
-						fos.write(buf,0,size);
-				
-				fis.read(buf, 0, 1024);
-				
-				fis.close();
-				fos.close();
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}*/
-			
-			
-			
-			
-		/*if(!((File) file).exists())
-			((File) file).mkdir();
-				
-		Part part = request.getPart("profile");	
-		InputStream is = part.getInputStream();
-		String fname = part.getSubmittedFileName();
-
-		byte[] buf = new byte[1024];
-		
-			if(fname.isEmpty())
-			fname="profile.png";
-		
-		FileOutputStream fos = new FileOutputStream(pathSystem+File.separator+fname);
-				
-		int size=0;
-		while((size = is.read(buf,0,1024)) != -1)
-			fos.write(buf,0,size);
-
-		is.close();
-		fos.close();*/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		System.out.println(member);
 		
 		
@@ -228,7 +122,6 @@ public class MemberController {
 		member.setPwd(hashedPwd);
 		//--
 		
-		
 		//String memberId = member.getId();
 		service.insertMember(member);
 		/*service.insertMemberRole(memberRole);*/
@@ -237,25 +130,4 @@ public class MemberController {
 		return pwd + ":" + hashedPwd;
 
 	}
-     
-
-     /* 스프링이 제공하는걸 사용할거니깐 주석*/
-   /*   @RequestMapping(value="login", method=RequestMethod.POST)
-      public String login(String id, String pwd) {
-         return "redirect:../index"; 
-      }*/
-      
- /*     @RequestMapping(value="join", method=RequestMethod.GET)
-      public String join() {
-        
-         return "member.join";
-      } 
-      
-      @RequestMapping(value="join", method=RequestMethod.POST)
-      public String login(Member member) { //맴버컨트롤러 안에는 아이디 패스워드 등..
-         
-    	  int result = service.insertMember(member);
-    	 
-    	  return "redirect:../index"; 
-      }*/
 }
