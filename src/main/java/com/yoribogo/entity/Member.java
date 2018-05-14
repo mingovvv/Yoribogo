@@ -104,8 +104,6 @@ public class Member {
 /*	public Date getRegDate() {
 		return regDate;
 	}
-
-
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}*/

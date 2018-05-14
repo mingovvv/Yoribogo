@@ -3,6 +3,7 @@ package com.yoribogo.service;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import com.yoribogo.dao.MemberDao;
@@ -39,6 +40,17 @@ public class MemberService {
 		
 		return roleName;
 	}
+
+	@Transactional
+	public Member getMemberInfo(String memberId) {
+		
+		Member member = memberDao.get(memberId);
+		
+		return member;
+	}
+
+	
+
 
 /*	@Transactional
 	public int insertMemberRole(MemberRole memberRole) {

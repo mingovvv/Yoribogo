@@ -36,6 +36,9 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 			throws IOException, ServletException {
 		
 		String memberId = authentication.getName();
+		
+		System.out.println("아이디 = " +  memberId);
+		
 		Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
 		
 		for(String role : roles)

@@ -5,28 +5,28 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+import java.security.Principal;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yoribogo.entity.Member;
-import com.yoribogo.entity.MemberRole;
 import com.yoribogo.service.MemberService;
 
 
@@ -44,7 +44,7 @@ public class MemberController {
 	
       @RequestMapping(value="login", method=RequestMethod.GET)
       public String login() {
-         
+    	  
          return "member.login";
       }
       
@@ -63,11 +63,18 @@ public class MemberController {
          return "member.join";
       } 
       
-      //@PostMapping("join") 이렇게 써두 됨
+     
+     
+     
+     
+     
+     
+     
+     
      
 	@PostMapping("join")
-	@ResponseBody
 	public String join(MultipartFile file
+									, Model model
 									, Member member
 									, HttpServletRequest request
 									, HttpServletResponse response) throws IOException, ServletException{
@@ -80,6 +87,7 @@ public class MemberController {
 	    File filepath = new File(path);
 	    if(!filepath.exists())
 	    	filepath.mkdir();
+	    
 	    System.out.println(path);
 	    System.out.println(filepath);
 	    
@@ -127,7 +135,28 @@ public class MemberController {
 		/*service.insertMemberRole(memberRole);*/
 		/*service.insertMemberRole(member, memberRole);*/
 		/*service.insertMemberRole(memberRole);*/
-		return pwd + ":" + hashedPwd;
+		
+		System.out.println(model);
+		
+		return "index";
 
 	}
+	
+	
+	
+	@GetMapping("{id}/aside")
+	public String aside(Principal principal, Model model, @PathVariable("id") String Id) {
+		
+		String memberId =principal.getName();
+		Member member = service.getMemberInfo(memberId);
+		
+		System.out.println("아이뒤는~" + memberId);
+		
+		model.addAttribute("member",member);
+		
+		return "index";	
+		
+	}
+	
+	
 }

@@ -49,7 +49,10 @@
 	<sec:authorize access="isAuthenticated()">
 		<div class="add-memu">
 			<ul>
-				<li class ="profile"><img src="${ctx}/resources/images/chef.png" style="margin-top: 25px"><p><span style="color: #49c5b6">min</span>님 안녕하세요!</p></li>
+				<li class ="profile">
+					<img src="${ctx}/resources/images/chef.png" style="margin-top: 25px">
+					<p><span style="color: #49c5b6">${member.Id}</span>님 안녕하세요!</p>
+				</li>
 				<li>Mypage</li>
 				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
