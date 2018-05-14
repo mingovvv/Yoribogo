@@ -101,21 +101,21 @@ public class Member {
 	}
 
 
-/*	public Date getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
-	}*/
+	}
 
 
-	public String getPhoto() {
+	public String getFile() {
 		return file;
 	}
 
 
-	public void setPhoto(String photo) {
-		this.file = photo;
+	public void setFile(String file) {
+		this.file = file;
 	}
 
 	@Override

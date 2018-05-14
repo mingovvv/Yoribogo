@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -96,7 +94,7 @@ public class MemberController {
 			try {
 				String fname = file.getOriginalFilename();  
 				System.out.println(fname);
-				member.setPhoto(path+"/"+fname);
+				member.setFile(path+"/"+fname);
 				
 				InputStream fis = file.getInputStream();
 				
@@ -144,19 +142,20 @@ public class MemberController {
 	
 	
 	
-	@GetMapping("{id}/aside")
-	public String aside(Principal principal, Model model, @PathVariable("id") String Id) {
+/*	@GetMapping("aside")
+	public String aside(Principal principal, Model model) {
 		
-		String memberId =principal.getName();
-		Member member = service.getMemberInfo(memberId);
+		String mId =principal.getName();
+		Member member = service.getMemberInfo(mId);
 		
-		System.out.println("아이뒤는~" + memberId);
+		System.out.println("아이디 = " + mId);
+		System.out.println(member);
 		
 		model.addAttribute("member",member);
 		
-		return "index";	
+		return "note.index";	
 		
-	}
+	}*/
 	
 	
 }

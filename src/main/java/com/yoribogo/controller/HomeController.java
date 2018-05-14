@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yoribogo.entity.Member;
+import com.yoribogo.service.MemberService;
+
 @Controller
 @RequestMapping("/")
 
@@ -21,4 +24,6 @@ public class HomeController {
 		return "index";	
 		
 	}
+	
+
 }

@@ -31,11 +31,11 @@ public class HbMemberDao implements MemberDao{
 
 
 	@Override
-	public Member get(String memberId) {
+	public Member get(String id) {
 
 		Session session = sessionFactory.getCurrentSession();
 		
-		Member member = session.get(Member.class, memberId);
+		Member member = session.get(Member.class, id);
 		
 		return member;
 	}

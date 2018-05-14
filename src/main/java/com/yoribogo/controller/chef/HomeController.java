@@ -1,23 +1,16 @@
 package com.yoribogo.controller.chef;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import java.security.Principal;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+
+import com.yoribogo.entity.Member;
+import com.yoribogo.service.MemberService;
 
 
 
@@ -28,13 +21,41 @@ public class HomeController {
 /*	@Autowired
 	private NoteService service;//어나니머스들을 위한 노트서비스가 아님 이것도 2개인거야
 */	
+	@Autowired
+	private MemberService service;
+	
+	
 	@GetMapping("index")//최신버전 get까지가능
-	public String index(Integer page, Model model) {
+	public String index(Integer page, Model model,Principal principal) {
 		
 		/*List<Note> note =service.getNoteList(page);
 		model.addAttribute("notes" ,note);*/
 		
+		String mId =principal.getName();
+		Member member = service.getMemberInfo(mId);
+		
+		System.out.println("아이디 = " + mId);
+		System.out.println(member);
+		
+		model.addAttribute("member",member);
+		
 		return "chef.index";
 	}
+	
+	
+	/*	@GetMapping("pro")
+	public String aside(Principal principal, Model model) {
+		
+		String mId =principal.getName();
+		Member member = service.getMemberInfo(mId);
+		
+		System.out.println("아이디 = " + mId);
+		System.out.println(member);
+		
+		model.addAttribute("member",member);
+		
+		return "index";	
+		
+	}*/
 	
 }
