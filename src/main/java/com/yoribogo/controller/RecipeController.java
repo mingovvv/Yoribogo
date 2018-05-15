@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/recipe/")
 public class RecipeController {
 	
-	/*@Autowired
-	private NoteService service;// = new 서비스();
-*/	
+
 	@RequestMapping("list")
 	public String list(@RequestParam(value="p", defaultValue="1") Integer page, Model model) {
 		//String page = request.getParameter("p"); 이렇게 안해두 됨
@@ -33,14 +31,12 @@ public class RecipeController {
 		return "recipe.list"/*"note/list"*/; //뷰를 반환하는 형태
 	}
 	
-/*	@RequestMapping("{id}")//경로 설정
+	@RequestMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model) { //파라미터 말고 주소 url때문에
 		
-		Note note = service.getNote(id);
-		model.addAttribute("note",note);
 		
-		return "note/detail";
+		return "recipe.detail";
 		
-	}*/
+	}
 
 }

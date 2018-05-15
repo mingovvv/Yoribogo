@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.security.Principal;
 
 import javax.servlet.ServletContext;
@@ -81,7 +82,10 @@ public class MemberController {
 		System.out.println(file);
 		ServletContext ctx = request.getServletContext();
 		System.out.println(ctx);
-	    String path = ctx.getRealPath("/resources/profile/"+member.getId()); //물리경로
+		String fpath = "/resources/profile/"+member.getId();
+	    String path = ctx.getRealPath(fpath); //물리경로
+	    
+	    
 	    File filepath = new File(path);
 	    if(!filepath.exists())
 	    	filepath.mkdir();
@@ -94,7 +98,8 @@ public class MemberController {
 			try {
 				String fname = file.getOriginalFilename();  
 				System.out.println(fname);
-				member.setFile(path+"/"+fname);
+				
+				member.setPhoto(fpath+'/'+fname);
 				
 				InputStream fis = file.getInputStream();
 				
@@ -128,34 +133,16 @@ public class MemberController {
 		member.setPwd(hashedPwd);
 		//--
 		
-		//String memberId = member.getId();
 		service.insertMember(member);
-		/*service.insertMemberRole(memberRole);*/
-		/*service.insertMemberRole(member, memberRole);*/
-		/*service.insertMemberRole(memberRole);*/
 		
 		System.out.println(model);
+		
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='login';</script>");
 		
 		return "index";
 
 	}
-	
-	
-	
-/*	@GetMapping("aside")
-	public String aside(Principal principal, Model model) {
-		
-		String mId =principal.getName();
-		Member member = service.getMemberInfo(mId);
-		
-		System.out.println("아이디 = " + mId);
-		System.out.println(member);
-		
-		model.addAttribute("member",member);
-		
-		return "note.index";	
-		
-	}*/
 	
 	
 }

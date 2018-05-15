@@ -109,13 +109,13 @@ public class Member {
 	}
 
 
-	public String getFile() {
+	public String getPhoto() {
 		return file;
 	}
 
 
-	public void setFile(String file) {
-		this.file = file;
+	public void setPhoto(String photo) {
+		this.file = photo;
 	}
 
 	@Override

@@ -26,7 +26,7 @@
 					
 					<div class = "l-box">
 					
-					<input id="file" style="border: none;" type="file" name="file" class="inpt" > 
+					<input id="file" style="border: none" type="file" name="file" class="inpt" > 
 					<img id="photo"
 						src="${ctx}/resources/images/profile.png"
 						style="width: 120px; height: 120px; border: 1px solid #595959;  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);" />
