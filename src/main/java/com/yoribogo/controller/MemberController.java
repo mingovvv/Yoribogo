@@ -85,6 +85,12 @@ public class MemberController {
 		String fpath = "/resources/profile/"+member.getId();
 	    String path = ctx.getRealPath(fpath); //물리경로
 	    
+	    String folder = ctx.getRealPath("/resources/profile/");
+
+	    
+	    File filefolder = new File(folder);
+	    if(!filefolder.exists())
+	    	filefolder.mkdir();
 	    
 	    File filepath = new File(path);
 	    if(!filepath.exists())
