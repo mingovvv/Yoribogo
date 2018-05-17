@@ -31,12 +31,12 @@ public class RecipeController {
 		return "recipe.list"/*"note/list"*/; //뷰를 반환하는 형태
 	}
 	
-/*	@RequestMapping("{id}")//경로 설정
+	@RequestMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model) { //파라미터 말고 주소 url때문에
 		
 		
 		return "recipe.detail";
 		
-	}*/
+	}
 
 }

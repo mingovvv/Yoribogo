@@ -6,6 +6,11 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 
-<main>
-<div style="border: 1px solid red; height: 800px;" ></div>
+<main class="main">
+	<div class="detail-container">
+		<div class="representative-img">
+			<h1>대표이미지</h1>
+			<div class=""></div>
+		</div>
+	</div>
 </main>   
