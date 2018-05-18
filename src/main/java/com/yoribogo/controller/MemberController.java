@@ -82,19 +82,24 @@ public class MemberController {
 		System.out.println(file);
 		ServletContext ctx = request.getServletContext();
 		System.out.println(ctx);
-		String fpath = "/resources/profile/"+member.getId();
+		String fpath = "/resources/profiles/"+member.getId();
 	    String path = ctx.getRealPath(fpath); //물리경로
 	    
-	    String folder = ctx.getRealPath("/resources/profile/");
 
+	    //String folder = ctx.getRealPath("/resources/profiles/");
 	    
-	    File filefolder = new File(folder);
+	   /* File filefolder = new File(folder);
 	    if(!filefolder.exists())
 	    	filefolder.mkdir();
 	    
 	    File filepath = new File(path);
 	    if(!filepath.exists())
-	    	filepath.mkdir();
+	    	filepath.mkdir();*/
+	    
+	    //경로 한번에 만들어주고 생성하기
+	    File filepath = new File(path);
+	    if(!filepath.exists())
+	    	filepath.mkdirs();
 	    
 	    System.out.println(path);
 	    System.out.println(filepath);

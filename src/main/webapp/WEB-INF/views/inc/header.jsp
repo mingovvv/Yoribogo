@@ -54,7 +54,7 @@
 					<img src="${ctx}/resources/images/chef.png" style="margin-top: 25px">
 					</c:if>
 					
-					<c:if test="${member.photo != null}">
+					<c:if test="${member.photo != ''}">
 					<img src="${ctx}${member.photo}" style="border-radius:  195px;margin-top: 25px;" width="195px" height="195px">
 					</c:if> 
 					<p><span style="color: #49c5b6"> ${member.id}</span>님 안녕하세요!</p>

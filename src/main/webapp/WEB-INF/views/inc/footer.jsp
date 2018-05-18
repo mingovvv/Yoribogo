@@ -11,6 +11,6 @@
 	
 	<p>
 		<img src="${ctx}/resources/images/footer-main.png" style="margin-right: 50px"> 
-		<img src="${ctx}/resources/images/call.png" style="margin-bottom: 35px"> <span style="display: inline-block; position: relative; bottom: 40px;">010-9970-6281</span>
+		<img src="${ctx}/resources/images/call.png" style="margin-bottom: 35px; margin-left: -20px;"> <span style="display: inline-block; position: relative; bottom: 40px;">010-9970-6281</span>
 	</p>
 </footer>
