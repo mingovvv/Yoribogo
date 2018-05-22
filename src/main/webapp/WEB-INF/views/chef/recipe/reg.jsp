@@ -59,7 +59,7 @@
 			<div class="add-ingredient">
 				<span>재료</span>
 				<div class="box">
-					<input name="ingredient1" type="text" placeholder="ex)돼지고기" />
+					<input name="fname" type="text" placeholder="ex)돼지고기" />
 					<img class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
 				
 				</div>
@@ -80,7 +80,7 @@
 			
 			<div>
 				<span>요리꿀팁</span>
-				<textarea name="" id="" class=" " placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
+				<textarea name="ggulTip" id="" class=" " placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
 			</div>
 		</div>
 		
@@ -104,10 +104,10 @@ $(function(){
 	var deleteButton = $(".btn-cancel");
 	
 	
-	var i=1;
+	//var i=1;
 	addIngredientButton.click(function(){ 
-		i++;
-		$("<input name=\"ingredient"+i+"\" type=\"text\" placeholder=\"ex)돼지고기\" />").appendTo(box);
+		//i++;
+		$("<input name=\"fname\" type=\"text\" placeholder=\"ex)돼지고기\" />").appendTo(box);
 		$("<img class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(box);
 		
 	});

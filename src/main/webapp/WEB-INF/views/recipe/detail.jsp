@@ -8,6 +8,7 @@
 
 <main class="main">
 	<div class="detail-container">
+		<div>2018-05-21</div>
 		<div class="representative-img">
 			<img alt="" src="${ctx}/resources/images/sam.jpg">
 			<div class="profile">

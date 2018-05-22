@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.service.chef.RecipeService;
 
@@ -34,16 +35,23 @@ public class RecipeController {
 	}
 	
 	@PostMapping("reg")
-	public String reg(Recipe recipe, Principal principal) {
+	public String reg(Recipe recipe, Principal principal, Ingredient ingredient) {
 		
 		String memberId = principal.getName();
 		System.out.println(memberId);
-		
+		recipe.setMemberId(memberId);
 		recipe.setRepresentativeImage("z");
 		
-		recipe.setMemberId(memberId);
-		System.out.println(recipe);
+		
 		service.insertRecipe(recipe);
+		System.out.println(recipe);
+		
+		int recipeId=recipe.getId();
+		ingredient.setRecipeId(recipeId);
+		System.out.println("레시피id : " +recipeId);
+		
+		service.insertingredient(ingredient);
+		
 		
 		return "redirect:list";
 		
