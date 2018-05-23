@@ -943,10 +943,11 @@ body .container .content .signup-cont {
     color: white;
  }
  
+ .addchapter,
  .reg-frame > div >input{
     background: white;
     width: 270px;
-    height: 30px;
+    height: 24px;
  }
  
  .reg-frame .add-ingredient> div>input {

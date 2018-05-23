@@ -53,14 +53,10 @@
 			</div>
 			
 			<div>
+			
 				<img id="photo" name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
 				<input id="file" style="border: none" type="file" name="file" class="inpt" >
-				<!-- <div class="filebox bs3-primary">
-                            <input class="upload-name" value="파일선택" disabled="disabled">
-
-                            <label for="file">업로드</label> 
-                          <input type="file" id="file" class="upload-hidden"> 
-               </div> -->
+			
 			</div>
 			
 			<div class="add-ingredient">
@@ -77,8 +73,14 @@
 				<span>요리순서</span>
 				<p><b style="font-size: 25px;">step 1</b></p>
 				<img class="btn-cancel" name="step-image-1" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
-				<textarea name="step-text-1" id="" class=" " placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
-				<img id="" src="http://recipe.ezmember.co.kr/img/pic_none2.gif" style="width: 270px; height: 250px; cursor:pointer">
+				
+				
+				<textarea name="content"  placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
+				
+				
+				<img id="photo" src="http://recipe.ezmember.co.kr/img/pic_none2.gif" style="width: 270px; height: 250px; cursor:pointer">
+				<input id="file" style="border: none" type="file" name="file" class="inpt" >
+				
 				<div class="recipe-box">
 				
 				</div>
@@ -95,6 +97,7 @@
 			<input class="btn btn-ok" type="submit" value="글쓰기" />
 			<input class="btn btn-cancel" type="button" value="취소하기" />
 		</div>
+	
 	
 	</form>
 </main>
@@ -124,8 +127,9 @@ $(function(){
 		n++;
 		$("<p><b style=\"font-size: 25px;\">step "+n+"</b></p>").appendTo(recipeBox);
 		$("<img class=\"btn-cancel\" name=\"step-image-"+n+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(recipeBox);
-		$("<textarea name=\"step-text-"+n+"\" id= class= placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=resize: none></textarea>").css("width","270px").css("height","100px").appendTo(recipeBox);
+		$("<textarea name=\"content\" id= class= placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=resize: none></textarea>").css("width","270px").css("height","100px").appendTo(recipeBox);
 		$("<img src=http://recipe.ezmember.co.kr/img/pic_none2.gif>").css("width","270px").css("heigth","250px").appendTo(recipeBox);
+		$("<input id=\"file\" style=\"border: none\" type=\"file\" name=\"file\" class=\"inpt addchapter\" >").appendTo(recipeBox);
 	});
 	
 	deleteButton.click(function(){
@@ -134,25 +138,31 @@ $(function(){
 });
 </script>
 		
+		
 <script>
+
 function readURL(input) {
 	 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
- 
+ 		
         reader.onload = function (e) {
             $('#photo').attr('src', e.target.result);
         }
  
         reader.readAsDataURL(input.files[0]);
-    }
+    }    
 }
  
 $("#file").change(function(){
     readURL(this);
 });
 </script>
-<script>
+
+
+
+
+<!-- <script>
 $(document).ready(function(){
   var fileTarget = $('.filebox .upload-hidden');
 
@@ -166,5 +176,5 @@ $(document).ready(function(){
         $(this).siblings('.upload-name').val(filename);
     });
 }); 
-</script>
+</script> -->
 
