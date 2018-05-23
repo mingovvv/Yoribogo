@@ -20,6 +20,8 @@ public class HbIngredientDao implements IngredientDao{
 		
 		session.save(ingredient);
 		
+		int x =ingredient.getFname().length();
+		
 		System.out.println("하이버네이트 단 : "+ingredient);
 		
 		return 1;

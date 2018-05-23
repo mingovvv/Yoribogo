@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <main class="main">
-	<form method="post" class="reg-form">
+	<form method="post" class="reg-form" enctype="multipart/form-data">
 		<div class="reg-frame">
 			<div>
 			<span>요리제목</span>
@@ -53,7 +53,14 @@
 			</div>
 			
 			<div>
-				<img name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
+				<img id="photo" name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
+				<input id="file" style="border: none" type="file" name="file" class="inpt" >
+				<!-- <div class="filebox bs3-primary">
+                            <input class="upload-name" value="파일선택" disabled="disabled">
+
+                            <label for="file">업로드</label> 
+                          <input type="file" id="file" class="upload-hidden"> 
+               </div> -->
 			</div>
 			
 			<div class="add-ingredient">
@@ -124,38 +131,40 @@ $(function(){
 	deleteButton.click(function(){
 		$(box).children().remove();
 	})
-	
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
+		
+<script>
+function readURL(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            $('#photo').attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+ 
+$("#file").change(function(){
+    readURL(this);
+});
+</script>
+<script>
+$(document).ready(function(){
+  var fileTarget = $('.filebox .upload-hidden');
+
+    fileTarget.on('change', function(){
+        if(window.FileReader){
+            var filename = $(this)[0].files[0].name;
+        } else {
+            var filename = $(this).val().split('/').pop().split('\\').pop();
+        }
+
+        $(this).siblings('.upload-name').val(filename);
+    });
+}); 
+</script>
+
