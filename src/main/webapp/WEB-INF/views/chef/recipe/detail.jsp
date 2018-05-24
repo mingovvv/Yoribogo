@@ -78,8 +78,15 @@
 		
 		
 		<section class="comment-form" id="comment-form">
-         <p style="text-align: center; color: gray;">로그인을 하시면 댓글서비스를<br> 이용할 수 있습니다.</p>
-         <a href="${ctx}/member/login"><p style="text-align: center; color: black; font-weight: bold;">로그인 하러 가기</p></a>
+         <form action="${recipe.id}/comment/reg/" method="post">
+            <div>
+               <label class="hidden">댓글</label>
+               <textarea cols="48" rows="5" name="content" placeholder="댓글을 남겨주세요 :)"></textarea>
+            </div>
+            <div>
+               <input type="submit" value="등록" class="btn" />
+            </div>
+         </form>
       </section>
 		
 		

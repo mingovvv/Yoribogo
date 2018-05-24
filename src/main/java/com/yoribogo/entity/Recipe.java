@@ -1,12 +1,15 @@
 package com.yoribogo.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
 
 @Entity
 public class Recipe {
@@ -24,6 +27,11 @@ public class Recipe {
 	@Column(insertable=false)
 	private Date regDate;
 	private String memberId;
+	
+	
+	
+	@Transient 
+	private List<RecipeComment> comments;
 	
 	public Recipe() {
 		// TODO Auto-generated constructor stub
@@ -129,6 +137,15 @@ public class Recipe {
 		return "Recipe [id=" + id + ", title=" + title + ", description=" + description + ", representativeImage="
 				+ representativeImage + ", sortNational=" + sortNational + ", sortTime=" + sortTime + ", sortSituation="
 				+ sortSituation + ", ggulTip=" + ggulTip + ", regDate=" + regDate + ", memberId=" + memberId + "]";
+	}
+
+	public List<RecipeComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<RecipeComment> comments) {
+		this.comments = comments;
+		
 	}
 	
 	

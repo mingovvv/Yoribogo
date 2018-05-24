@@ -70,7 +70,11 @@
 				
 					<li>
 						<div class = "frame">
-							<div><img src="${ctx}${recipe.representativeImage}"></div>
+							<div>
+								<a href="${recipe.id}">
+									<img src="${ctx}${recipe.representativeImage}">
+								</a>
+							</div>
 							<div>${recipe.title}</div>
 							<div>
 								<div>${recipe.memberId}</div>

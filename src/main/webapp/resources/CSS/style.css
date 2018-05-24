@@ -1133,7 +1133,6 @@ body .container .content .signup-cont {
     display: block;
     width: 250px;
     height: 200px;
-    border: 3px solid green;
  }
  
  .step-order span{
@@ -1149,22 +1148,28 @@ body .container .content .signup-cont {
 }
 
 .reply-window{
-	border: 3px solid;
     min-height: 150px;
     margin-top: 20px;
     padding: 5%;
     
+}
+.reply-window .cut .aa{
+	    margin-left: 70px;
+}
+
+.reply-window .cut .bb{
+	float: right;
 }
  
  .reply-window>p{ 
     font-size: 24px;
     font-weight: bold;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e6e7e8;
+    border-bottom: 1px solid #8f9ead
 }
 
 .reply-window>div{
-	border-bottom: 1px solid #e6e7e8;
+	border-bottom: 1px solid #8f9ead;
 }
 
 .reply-window>div>div{
@@ -1179,6 +1184,10 @@ body .container .content .signup-cont {
  	position: relative;
     right: -65px;
     margin-right: 70px;
+    min-height: 80px;
+    bottom: -20px;
+        font-size: 18px;
+    
     }
     
      .comment-form{

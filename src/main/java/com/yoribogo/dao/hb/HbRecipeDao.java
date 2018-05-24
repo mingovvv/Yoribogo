@@ -42,6 +42,16 @@ public class HbRecipeDao implements RecipeDao{
 		return list;
 	}
 	
+	@Transactional
+	@Override
+	public Recipe get(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Recipe recipe = session.get(Recipe.class, id);
+		
+		return recipe;
+	}
+	
 	
 	
 

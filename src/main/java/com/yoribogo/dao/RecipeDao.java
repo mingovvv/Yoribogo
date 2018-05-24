@@ -10,6 +10,8 @@ public interface RecipeDao {
 
 	List<Recipe> getList();
 
+	Recipe get(Integer id);
+
 
 
 
