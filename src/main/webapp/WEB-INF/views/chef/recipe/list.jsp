@@ -66,14 +66,14 @@
 			<h1 class="hidden">레시피목록</h1>
 			<ul>
 			
-				<c:forEach begin="0" end="30">
+				<c:forEach var="recipe" items="${recipe}">
 				
 					<li>
 						<div class = "frame">
-							<div><img src="${ctx}/resources/images/sample-images.png"></div>
-							<div>모두가 좋아하는 등갈비 </div>
+							<div><img src="${ctx}${recipe.representativeImage}"></div>
+							<div>${recipe.title}</div>
 							<div>
-								<div>by 자취왕</div>
+								<div>${recipe.memberId}</div>
 								<div><a href="#"><img class="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
 							</div>
 						</div>

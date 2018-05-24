@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yoribogo.entity.Member;
 import com.yoribogo.service.MemberService;
@@ -16,6 +17,7 @@ import com.yoribogo.service.MemberService;
 
 @RequestMapping("/chef/")
 @Controller("ChefHomeController") /*식별자 한쪽만 / 식별 가능하면 됨 / 노트 컨트롤러가 두개가 존재하기에 생기는 문제*/
+@SessionAttributes({"member"})
 public class HomeController {
 	
 	@Autowired

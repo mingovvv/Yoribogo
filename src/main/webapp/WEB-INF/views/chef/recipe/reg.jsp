@@ -128,7 +128,7 @@ $(function(){
 		$("<p><b style=\"font-size: 25px;\">step "+n+"</b></p>").appendTo(recipeBox);
 		$("<img class=\"btn-cancel\" name=\"step-image-"+n+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(recipeBox);
 		$("<textarea name=\"content\" id= class= placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=resize: none></textarea>").css("width","270px").css("height","100px").appendTo(recipeBox);
-		$("<img src=http://recipe.ezmember.co.kr/img/pic_none2.gif>").css("width","270px").css("heigth","250px").appendTo(recipeBox);
+		$("<img id=\"photo\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\" style=\"width: 270px; height: 250px; cursor:pointer\">").appendTo(recipeBox);
 		$("<input id=\"file\" style=\"border: none\" type=\"file\" name=\"file\" class=\"inpt addchapter\" >").appendTo(recipeBox);
 	});
 	
@@ -141,22 +141,123 @@ $(function(){
 		
 <script>
 
-function readURL(input) {
-	 
+/* alert($("input[name=file]").length); */
+
+/* for(var i = 0; i<$("input[name=file]").length; i++){
+} */
+
+
+/* function readURL(input) {
+    
     if (input.files && input.files[0]) {
         var reader = new FileReader();
- 		
+       
         reader.onload = function (e) {
-            $('#photo').attr('src', e.target.result);
+            $("img[id=photo]").eq(0).attr('src', e.target.result);
         }
  
         reader.readAsDataURL(input.files[0]);
     }    
 }
  
-$("#file").change(function(){
+$("input[name=file]").eq(0).change(function(){
     readURL(this);
 });
+ */
+/* function readURL(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 		
+        reader.onload = function (e) {
+        	 $("img[id=photo]").attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }    
+}
+ 
+$("input[name=file]").change(function(){
+    readURL(this);
+}); */
+
+
+/* function readURL(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 		
+        reader.onload = function (e) {
+        	 $("img[id=photo]").eq(0).attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }    
+}
+ 
+$("input[name=file]").eq(0).change(function(){
+    readURL(this);
+});
+
+
+function readURL1(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 		
+        reader.onload = function (e) {
+        	 $("img[id=photo]").eq(1).attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }    
+}
+ 
+$("input[name=file]").eq(1).change(function(){
+    readURL1(this);
+});
+
+
+function readURL2(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 		
+        reader.onload = function (e) {
+        	 $("img[id=photo]").eq(2).attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }    
+}
+ 
+$("input[name=file]").eq(2).change(function(){
+    readURL2(this);
+});
+
+
+function readURL3(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 		
+        reader.onload = function (e) {
+        	 $("img[id=photo]").eq(3).attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }    
+}
+ 
+$("input[name=file]").eq(3).change(function(){
+    readURL3(this);
+}); */
+
+
+
+ 
+
+
 </script>
 
 
@@ -176,5 +277,5 @@ $(document).ready(function(){
         $(this).siblings('.upload-name').val(filename);
     });
 }); 
-</script> -->
+</script>  -->
 

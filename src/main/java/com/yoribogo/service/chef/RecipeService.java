@@ -1,5 +1,7 @@
 package com.yoribogo.service.chef;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,14 @@ public class RecipeService {
 	@Transactional
 	public void insertFoodOrder(FoodOrder foodOrder) {
 		foodOrderDao.insert(foodOrder);
+	}
+
+	public List<Recipe> getRecipe() {
+		
+		List<Recipe> list = recipeDao.getList();
+		return list;
+
+		
 	}
 	
 }

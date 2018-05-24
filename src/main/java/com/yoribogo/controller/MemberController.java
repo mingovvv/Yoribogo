@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yoribogo.entity.Member;
@@ -72,6 +73,7 @@ public class MemberController {
      
      
 	@PostMapping("join")
+	
 	public String join(MultipartFile file
 									, Model model
 									, Member member
@@ -81,7 +83,7 @@ public class MemberController {
 	
 		System.out.println(file);
 		ServletContext ctx = request.getServletContext();
-		System.out.println(ctx);
+		System.out.println(member.getId());
 		String fpath = "/resources/profiles/"+member.getId();
 	    String path = ctx.getRealPath(fpath); //물리경로
 	    

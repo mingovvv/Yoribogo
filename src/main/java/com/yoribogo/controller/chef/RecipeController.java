@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -33,66 +34,56 @@ public class RecipeController {
 	
 	@RequestMapping("list")
 	public String list(@RequestParam(value="p", defaultValue="1") Integer page, Model model) {
-
+		List<Recipe> recipe = service.getRecipe();
+		model.addAttribute("recipe",recipe);
+		
+		
 		return "chef.recipe.list";
 	}
 	
 
 	@GetMapping("reg")
 	public String reg() {
-
+		
+		
+		
 		return "chef.recipe.reg";
 	}
 	
 	@PostMapping("reg")
 	public String reg(FoodOrder foodOrder, MultipartFile file[], Recipe recipe, Principal principal, Ingredient ingredient, HttpServletRequest request) {
 		
-		
+		System.out.println("recipe ="+recipe);
+		System.out.println("foodOrder ="+foodOrder);
 		String memberId = principal.getName();
 		
-		System.out.println(memberId);
+		System.out.println("로그인한 아이디 = "+memberId);
 		recipe.setMemberId(memberId);
 		
 		
-		service.insertRecipe(recipe);
-		System.out.println(recipe);
-		
-		String[] array= ingredient.getFname().split(",");
-		for(int i=0; i < array.length;i++) {
-			System.out.println(i+"번째 재료는 ? =" +array[i]);
-			
-			ingredient.setFname(array[i]);
-			int recipeId=recipe.getId();
-			ingredient.setRecipeId(recipeId);
-			ingredient.setmemberId(memberId);
-			service.insertingredient(ingredient);
-		}
 		
 		
+		System.out.println("레시피 아이디" + recipe.getId() );
 		
 		
-		
-		
-		
-		System.out.println("file은 = "+file);
 		
 		
 		ServletContext ctx = request.getServletContext();
-		System.out.println(ctx);
 		
-		String fpath = "/resources/representativeImage/"+memberId+"/"+recipe.getId();
+		String fpath = "/resources/representativeImage/"+memberId;
+		System.out.println("레시피 아이디" + recipe.getId() );
 		String path = ctx.getRealPath(fpath);
 		
-		String fpath2 = "/resources/orderImage/"+memberId+"/"+recipe.getId()+"/"+foodOrder.getChapter();
-		String path2 = ctx.getRealPath(fpath2);
 		
 		File filepath = new File(path);
 	    if(!filepath.exists())
 	    	filepath.mkdirs();
 	    
-	    File filepath2 = new File(path2);
-	    if(!filepath2.exists())
-	    	filepath2.mkdirs();
+	    
+	    
+		
+		
+	    
 	    
 	    if(!file[0].isEmpty()) {
 			try {
@@ -122,33 +113,48 @@ public class RecipeController {
 				e.printStackTrace();
 			}
 		}
-		
 	    
+	    service.insertRecipe(recipe);
+		
+	    String[] array= ingredient.getFname().split(",");
+		for(int i=0; i < array.length;i++) {
+			System.out.println(i+"번째 재료는 ? =" +array[i]);
+			
+			ingredient.setFname(array[i]);
+			int recipeId=recipe.getId();
+			ingredient.setRecipeId(recipeId);
+			ingredient.setmemberId(memberId);
+			service.insertingredient(ingredient);
+		}
 	  //----------------------------------------------------------------
 
-		
-	  		String[] array2 = foodOrder.getContent().split(",");
-	  		for(int i=0; i < array2.length;i++) {
-	  			System.out.println(i+"번째 내용은 ? =" +array2[i]);
-	  		int recipeId=recipe.getId();
-	  		foodOrder.setContent(array2[i]);
-	  		foodOrder.setChapter(i+1);
-	  		foodOrder.setRecipeId(recipeId);
-	  		service.insertFoodOrder(foodOrder);
-	  		}
 	  		
+		String[] array2 = foodOrder.getContent().split(",");
 	  		
 	  		for(int i=1;i<file.length;i++) {
+	  			
+	  			
+	  			String fpath2 = "/resources/orderImage/"+memberId+"/"+i;
+	  		    String path2 = ctx.getRealPath(fpath2);
+	  		    
+	  		    File filepath2 = new File(path2);
+	  		    if(!filepath2.exists())
+	  		    	filepath2.mkdirs();
+	  			
+	  			
+	  			
+	  		System.out.println("input file 갯수 : " + file.length);
+	  			
 	  			if(!file[i].isEmpty()) {
 	  				try {
 	  					String fname = file[i].getOriginalFilename();  
 	  					System.out.println(fname);
 	  					
-	  					foodOrder.setImage(fpath+'/'+fname);
+	  					foodOrder.setImage(fpath2+'/'+fname);
 	  					
 	  					InputStream fis = file[i].getInputStream();
 	  					
-	  					FileOutputStream fos = new FileOutputStream(path + File.separator + fname); //File.separator 구분자 / \ 윈도우는 \ 유닉스는 / 니깐 둘중 골라주는놈 파일.세퍼레이톨
+	  					FileOutputStream fos = new FileOutputStream(path2 + File.separator + fname); //File.separator 구분자 / \ 윈도우는 \ 유닉스는 / 니깐 둘중 골라주는놈 파일.세퍼레이톨
 	  					
 	  					byte[] buf = new byte[1024]; //버퍼 만들기
 	  					
@@ -167,11 +173,20 @@ public class RecipeController {
 	  					e.printStackTrace();
 	  				}
 	  			}
+	  			
+	  			int recipeId=recipe.getId();
+		  		foodOrder.setContent(array2[i-1]);
+		  		foodOrder.setChapter(i);
+		  		foodOrder.setRecipeId(recipeId);
+		  		service.insertFoodOrder(foodOrder);
+	  			
+	  			
 	  		}
-	  		
 	  		//----------------------------------------------------------------
-		
-		return "redirect:list";
+	  		
+	  		
+	  		
+		return "redirect:../recipe/list";
 		
 	}
 
