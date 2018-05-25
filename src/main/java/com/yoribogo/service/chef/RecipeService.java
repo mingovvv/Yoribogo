@@ -74,5 +74,27 @@ public class RecipeService {
 		List<FoodOrder> foodOrders = foodOrderDao.get(recipeId);
 		return foodOrders;
 	}
+
+	
+	//댓글
+	
+	
+	public List<RecipeComment> getRecipeCommentListByNote(Integer page, Integer recipeId) {
+		
+		List<RecipeComment> result = recipeCommentDao.getListByRecipe(page, recipeId);
+		
+		for(RecipeComment r : result)
+			r.setRecipe(null);
+		
+		
+		return result;
+	}
+
+	
+	public int addComment(RecipeComment comment) {
+		int result = recipeCommentDao.insert(comment);
+		
+		return result;
+	}
 	
 }

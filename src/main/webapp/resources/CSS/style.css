@@ -1027,15 +1027,31 @@ body .container .content .signup-cont {
  
  
  /* ★detail */
+ .when{
+float: right;
+    position: relative;
+    top: -25px;
+    right: 6px;
+    display: inline;
+    /* border-bottom: 3px solid; */
+    background: #b8e8ed;
+    border: 3px solid #66c0c8;
+    border-radius: 11px;
+    width: 195px;
+    height: 50px;
+    line-height: 41px;
+    text-align: center;
+    font-size: 13px;
+ }
+ 
 .detail-container{
     width: 100%;
     height: auto;
-    border: 5px solid black;
-    /* position: relative; */
+    border: 5px solid #bfebe9;
+    margin-top: 100px;
  }
  
  .representative-img>img{
-   border: 5px solid;
     width: 80%;
     margin-top: 50px;
     margin-left: auto;
@@ -1057,39 +1073,58 @@ body .container .content .signup-cont {
  }
  
  .profile>span{
- 	width: 85px; */
-    background: white;
+	width: 85px;
     z-index: 1;
     margin-top: 43px;
     position: absolute;
     margin-left: 5%;
     min-width: 85px;
     text-align: center;
-    font-size: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #999691;
  }
  
  .detail-title{
-	position: relative;
+    position: relative;
     top: -45px;
     height: auto;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
+    color: #788b95;
+    font-weight: bold;
  }
  
  .detail-main{
 	height: auto;
-    border: 5px solid;
     top: 144px;
-    margin-top: 240px;
+    margin-top: 310px;
  }
  
  .detail-main p{
- 	padding-left: 5%;
-    padding-right: 5%;
+	padding: 30px;
+	
+}
+ 
+ .detail-content{
+ 	height: 220px;
+    min-height: 200px;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    padding: 30px;
  }
  
+ .content-wrapper{
+  background: #efe5e5;
+ }
  .detail-main .semi-box{
- 	top: -120px;
+ 	top: -215px;
+ 	position: relative;
+ }
+ 
+ .detail-main .semi-box.two{
+ 	top: -180px;
  	position: relative;
  }
  
@@ -1110,19 +1145,20 @@ body .container .content .signup-cont {
  
  .using-ingredient{
  	min-height: 150px;
-    border: 3px solid black;
     margin-top: 25px;
  }
  
  .using-ingredient span{
- 	margin-top: 15px;
- 	display: inline-block;
+    margin-top: 15px;
+    display: inline-block;
     width: 49%;
     text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #788b95;
  }
  
  .step-order{
- 	border: 3px solid;
     min-height: 200px;
     margin-top: 50px;
  }
@@ -1136,15 +1172,20 @@ body .container .content .signup-cont {
  }
  
  .step-order span{
- 	margin-left: 20px;
+margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     display: block;
+    font-size: 20px;
+    font-weight: bold;
  }
 
 .step-order p{
 	text-align: center;
     padding: 5%;
+        font-size: 20px;
+    font-weight: bold;
+    color: #788b95;
 }
 
 .reply-window{
@@ -1156,6 +1197,7 @@ body .container .content .signup-cont {
 .reply-window .cut .aa{
 	    margin-left: 70px;
 }
+
 
 .reply-window .cut .bb{
 	float: right;
@@ -1170,6 +1212,7 @@ body .container .content .signup-cont {
 
 .reply-window>div{
 	border-bottom: 1px solid #8f9ead;
+	margin-top: 20px;
 }
 
 .reply-window>div>div{
@@ -1181,12 +1224,17 @@ body .container .content .signup-cont {
 }
  
  .reply-window>div p{
- 	position: relative;
+    position: relative;
     right: -65px;
     margin-right: 70px;
     min-height: 80px;
-    bottom: -20px;
-        font-size: 18px;
+    bottom: -10px;
+    font-size: 12px;
+    background: #ffd3da;
+    margin-bottom: 50px;
+    padding: 3%;
+    color: black;
+    font-weight: bold;
     
     }
     

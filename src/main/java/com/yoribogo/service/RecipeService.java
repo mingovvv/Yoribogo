@@ -39,16 +39,6 @@ public class RecipeService {
 		
 	}
 
-	public List<RecipeComment> getRecipeCommentListByNote(Integer page, Integer recipeId, String memberId) {
-		
-		List<RecipeComment> result = recipeCommentDao.getListByRecipe(page, recipeId, memberId);
-		
-		for(RecipeComment r : result)
-			r.setRecipe(null);
-		
-		
-		return result;
-	}
 
 	public int addComment(RecipeComment comment) {
 

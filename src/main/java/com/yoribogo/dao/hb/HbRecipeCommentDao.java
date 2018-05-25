@@ -22,14 +22,13 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
 	
 	@Transactional
 	@Override
-	public List<RecipeComment> getListByRecipe(Integer page, Integer recipeId, String memberId) {
+	public List<RecipeComment> getListByRecipe(Integer page, Integer recipeId) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		  Query<RecipeComment> query 
 	         = session
 	            .createQuery("from RecipeComment where recipeId=:recipeId", RecipeComment.class)
-	            .setParameter("recipeId", recipeId)
-		  		.setParameter("memberId", memberId);
+	            .setParameter("recipeId", recipeId);
 	      
 	      List<RecipeComment> list = query.getResultList();
 	      
@@ -37,21 +36,6 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
 		return list;
 	}
 	
-	@Transactional
-	@Override
-	public int insert(RecipeComment comment) {
-		Session session = sessionFactory.getCurrentSession();
-		
-		Recipe recipe = new Recipe();
-		comment.setRecipe(recipe);
-		
-		int id = (int) session.save(comment);
-		
-		int result=0;
-		if(id>0)
-			result =1;
-		return result;
-	}
 	
 	@Transactional
 	@Override
@@ -68,5 +52,23 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
 	return list;
 	}
 
+	@Transactional
+	@Override
+	public int insert(RecipeComment comment) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Recipe recipe = new Recipe();
+		comment.setRecipe(recipe);
+		
+		int id = (int) session.save(comment);
+		
+		int result = 0;
+		if(id >0)
+				result = 1;
+		
+		
+		return result;
+	}
 
 }

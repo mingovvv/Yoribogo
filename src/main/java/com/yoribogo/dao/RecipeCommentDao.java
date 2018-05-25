@@ -6,7 +6,7 @@ import com.yoribogo.entity.RecipeComment;
 
 public interface RecipeCommentDao {
 
-	List<RecipeComment> getListByRecipe(Integer page, Integer recipeId, String memberId);
+	List<RecipeComment> getListByRecipe(Integer page, Integer recipeId);
 
 	int insert(RecipeComment comment);
 

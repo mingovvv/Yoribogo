@@ -10,11 +10,11 @@
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
-				<li><a href="${ctx}/index"><img class="logo" src="${ctx}/resources/images/yoribogo-logo.png"/></a></li>
-				<li id = "search-button"><a href="#"><img src="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></a></li>
+				<li><img class="logo" src="${ctx}/resources/images/yoribogo-logo.png"/></li>
+				<li id = "search-button"><img style="cursor: pointer;" src="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></li>
 				
 				<li id = "menu-button">
-					<a href="#"><img src="${ctx}/resources/images/ic_dehaze_black_24dp_1x.png"/></a>
+					<img style="cursor: pointer;" src="${ctx}/resources/images/ic_dehaze_black_24dp_1x.png"/>
 				</li>
 			</ul>
 		</nav>

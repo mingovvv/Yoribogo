@@ -8,7 +8,7 @@
 
 <main class="main">
 	<div class="detail-container">
-		<div>${recipe.regDate}</div>
+		<div class="when">${recipe.regDate}</div>
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
 			<div class="profile">
@@ -23,7 +23,12 @@
 				<li><img alt="" src="${ctx}/resources/images/chat.png" style="border: 3px solid #6b6bd9"><span>댓글 <b style="color:#6b6bd9 ">40개</b></span></li>
 				<li><img alt="" src="${ctx}/resources/images/kitchen.png" style="border: 3px solid #dbc77e"><span>즐겨찾기 <b style="color:#938658 ">30개</b></span></li>
 			</ul>
-			<p class="detail-title">디테일 제목</p>
+			<ul class="semi-box two">
+				<li><img alt="" src="${ctx}/resources/images/cooktime.png" style="border: 3px solid gray"><span>조리시간 ${recipe.sortTime}</span></li>
+				<li><img alt="" src="${ctx}/resources/images/bab.png" style="border: 3px solid #feab99"><span>${recipe.sortNational}</span></li>
+				<li><img alt="" src="${ctx}/resources/images/tray2.png" style="border: 3px solid #3bb244"><span>${recipe.sortSituation}</span></li>
+			</ul>
+			<p class="detail-title">${recipe.title}</p>
 			<p class="detail-content">${recipe.description}</p>
 		</div>
 		
@@ -35,7 +40,7 @@
 		</div>
 		
 		<div class="step-order">
-			<h1>Step</h1>
+			<h1>요리순서</h1>
 			<c:forEach var="foodOrder" items="${foodOrder}">
 			<span>Step ${foodOrder.chapter}</span>
 			<div>

@@ -63,42 +63,5 @@ public class RecipeController {
 	}
 	
 	
-	//댓글 작업-------------------------------------------------------------------------------
-	@RequestMapping("{id}/ajax-comment/list")
-	@ResponseBody
-	public String ajaxList(
-				@PathVariable("id") Integer recipeId
-			  	, @RequestParam(value="p", defaultValue="1") Integer page
-			  	, Principal principal) {
-		
-		String memberId = principal.getName();
-		List<RecipeComment> comments = service.getRecipeCommentListByNote(page, recipeId, memberId);
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(comments);
-		
-		return json;
-	}
-	
-	
-	@PostMapping("{id}/comment/reg")
-	@ResponseBody //ajax로 결과값을 보여주는 형식을 사용하겠다. 모델도 빼자
-	public String commentReg(RecipeComment comment
-												, @PathVariable("id") Integer recipeId
-												,Principal principal) {
-		
-		String memberId = principal.getName();
-		
-		comment.setMemberId(memberId);
-		comment.setRecipeId(recipeId);
-		
-		
-			
-		
-		int result =  service.addComment(comment);
-		
-		return String.valueOf(result);
-		
-	}
 
 }

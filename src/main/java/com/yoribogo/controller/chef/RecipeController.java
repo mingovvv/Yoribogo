@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.List;
 
@@ -18,12 +19,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
+import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.service.chef.RecipeService;
 
 @Controller("ChefRecipeController")
@@ -56,9 +60,60 @@ public class RecipeController {
 		List<FoodOrder> foodOrder = service.getFoodOrder(recipeId);
 		model.addAttribute("foodOrder",foodOrder);
 		
-		return "recipe.detail";
+		return "chef.recipe.detail";
 		
 	}
+	
+	
+	
+	//댓글 작업-------------------------------------------------------------------------------
+		
+		//댓글 겟
+		@ResponseBody
+		@RequestMapping("{id}/ajax-comment-list")
+		public String ajaxList(
+					@PathVariable("id") Integer recipeId
+				  	, @RequestParam(value="p", defaultValue="1") Integer page
+				  	){
+			
+			List<RecipeComment> comments = service.getRecipeCommentListByNote(page, recipeId);
+			
+			
+			Gson gson = new Gson();
+			String json = gson.toJson(comments);
+			
+			return json;
+		}
+		
+		//댓글 포스트 
+		@PostMapping("{id}/comment/reg")
+		@ResponseBody //ajax로 결과값을 보여주는 형식을 사용하겠다. 모델도 빼자
+		public String commentReg(RecipeComment comment
+												, @PathVariable("id") Integer recipeId
+												,Principal principal
+												){
+			
+			
+			String memberId = principal.getName();
+			
+			comment.setMemberId(memberId);
+			comment.setRecipeId(recipeId);
+			
+			System.out.println(comment);
+				
+			
+			int result =  service.addComment(comment);
+			
+			return String.valueOf(result);
+			
+		}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
