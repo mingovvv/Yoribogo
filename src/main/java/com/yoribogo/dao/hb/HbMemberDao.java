@@ -1,5 +1,7 @@
 package com.yoribogo.dao.hb;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ public class HbMemberDao implements MemberDao{
 	private SessionFactory sessionFactory;
 	
 
-
+	
 	@Override
 	public int insert(Member member) {
 
@@ -29,7 +31,7 @@ public class HbMemberDao implements MemberDao{
 	}
 
 
-
+	@Transactional
 	@Override
 	public Member get(String id) {
 

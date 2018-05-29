@@ -1065,7 +1065,6 @@ float: right;
     height: 85px;
     border: 3px solid #ada6a6;
     border-radius: 40px;
-    background: red;
     z-index: 1;
     margin-top: -45px;
     position: absolute;
@@ -1215,10 +1214,12 @@ margin-left: 20px;
 	margin-top: 20px;
 }
 
-.reply-window>div>div{
+
+
+.reply-window>div>div>img{
     width: 55px;
     height: 55px;
-    border: 1px solid;
+    border: 1px solid #a39797;
     border-radius: 35px;
     position: absolute;
 }

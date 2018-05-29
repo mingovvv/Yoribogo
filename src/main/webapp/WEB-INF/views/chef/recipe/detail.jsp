@@ -12,7 +12,12 @@
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
 			<div class="profile">
-				<img alt="" src="${ctx}/resources/images/cook-profile.png">
+				<c:if test="${c.profile !=''}">
+					<img alt="" src="${ctx}${memberf.photo}">
+				</c:if>
+				<c:if test="${c.profile ==''}">
+					<img alt="" src="${ctx}/resources/images/cook-profile.png">
+				</c:if>
 				<span>${recipe.memberId}</span> 
 			</div>
 		</div>
@@ -64,7 +69,12 @@
 						<div class="cut">
 							<c:forEach var="c" items="${recipe.comments }">
 								<c:if test="${not empty c}">
-										<div><img alt="" src=""></div>
+									<c:if test="${c.profile==''}">
+										<div><img alt="" src="${ctx}/resources/images/chef.png"></div>
+									</c:if>
+									<c:if test="${c.profile!=''}">
+										<div><img alt="" src="${ctx}${c.profile}"></div>
+									</c:if>
 										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
 										<p>${c.content} </p>
 								</c:if>
@@ -93,7 +103,7 @@
 		</div> --%>		
 				
 				<template id="comment-template">
-						<div><img alt="" src=""></div>
+						<div><img src=""></div>
 						<span class="aa"></span>  <span class="bb"></span> 
 						<p></p>
 				</template>
@@ -157,11 +167,17 @@
 	                  var cloneLi = document.importNode(template.content, true);
 	                  var spans = cloneLi.querySelectorAll("span");
 	                  var p = cloneLi.querySelector("p");
+	                  var img = cloneLi.querySelector("img")
+	                  
 	                  
                 	  spans[0].textContent=comments[i].memberId;
 	                  spans[1].textContent=comments[i].regDate;
 	                  p.textContent = comments[i].content;
-
+	                  
+	                  if(comments[i].profile !="")
+	                  	img.src="${ctx}"+comments[i].profile;
+	                  else
+	                	  img.src="${ctx}/resources/images/chef.png";
 	                  commentView.get(0).appendChild(cloneLi);
                   } 
                    

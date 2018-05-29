@@ -11,8 +11,13 @@
 		<div class="when">${recipe.regDate}</div>
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
-			<div class="profile">
-				<img alt="" src="${ctx}/resources/images/cook-profile.png">
+				<div class="profile">
+						<c:if test="${c.profile !=''}">
+							<img alt="" src="${ctx}${memberf.photo}">
+						</c:if>
+						<c:if test="${c.profile ==''}">
+							<img alt="" src="${ctx}/resources/images/cook-profile.png">
+						</c:if>
 				<span>${recipe.memberId}</span> 
 			</div>
 		</div>
@@ -56,19 +61,24 @@
 		<div class="reply-window">
 			<h1 class="hidden">댓글 창</h1>
 			<p style="color: #5fcad4">댓글 <span style="color: #5fcad4"></span></p>
-				<c:forEach var="c" items="${recipe.comments }">
-					<c:if test="${not empty c}">
 						<div class="cut">
-							<div><img alt="" src=""></div>
-							<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
-							<p>${c.content} </p>
+							<c:forEach var="c" items="${recipe.comments }">
+								<c:if test="${not empty c}">
+									<c:if test="${c.profile==''}">
+										<div><img alt="" src="${ctx}/resources/images/chef.png"></div>
+									</c:if>
+									<c:if test="${c.profile!=''}">
+										<div><img alt="" src="${ctx}${c.profile}"></div>
+									</c:if>
+										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
+										<p>${c.content} </p>
+								</c:if>
+							</c:forEach>
+							<c:if test="${empty recipe.comments}">
+								<span style="font-size: 15px; text-align: center; color: #928686; margin-bottom: 20px; display: block;">소중한 첫번째 댓글의 기회를 잡으세요 :)</span>
+							</c:if>
 						</div>
-					</c:if>
-				</c:forEach>
-					<c:if test="${empty recipe.comments}">
-						<p style="font-size: 15px; text-align: center; color: #928686;">소중한 첫번째 댓글의 기회를 잡으세요 :)</p>
-					</c:if>
-		</div>		
+		</div>			
 				
 				<template id="comment-template">
 					<div>
@@ -84,7 +94,7 @@
 		
 		<section class="comment-form" id="comment-form">
          <p style="text-align: center; color: gray;">로그인을 하시면 댓글서비스를<br> 이용할 수 있습니다.</p>
-         <a href="${ctx}/member/login"><p style="text-align: center; color: black; font-weight: bold;">로그인 하러 가기</p></a>
+         <a href="${ctx}/chef/recipe/${recipe.id}"><p style="text-align: center; color: black; font-weight: bold;">로그인 하러 가기</p></a>
       </section>
 		
 		

@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.yoribogo.dao.FoodOrderDao;
 import com.yoribogo.dao.IngredientDao;
+import com.yoribogo.dao.MemberDao;
 import com.yoribogo.dao.RecipeCommentDao;
 import com.yoribogo.dao.RecipeDao;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
+import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
 
@@ -21,6 +23,9 @@ public class RecipeService {
 	
 	@Autowired
 	private RecipeDao recipeDao;
+	
+	@Autowired
+	private MemberDao memberDao;
 	
 	@Autowired
 	private IngredientDao ingredientDao;
@@ -95,6 +100,15 @@ public class RecipeService {
 		int result = recipeCommentDao.insert(comment);
 		
 		return result;
+	}
+
+	//view 에서 맴버 프로필 사진 가져오기
+	@Transactional
+	public Member getMember(String memberId) {
+		
+		Member member = memberDao.get(memberId);
+		
+		return member;
 	}
 	
 }

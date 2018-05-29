@@ -17,7 +17,6 @@ import com.yoribogo.service.MemberService;
 
 @RequestMapping("/chef/")
 @Controller("ChefHomeController") /*식별자 한쪽만 / 식별 가능하면 됨 / 노트 컨트롤러가 두개가 존재하기에 생기는 문제*/
-@SessionAttributes({"member"})
 public class HomeController {
 	
 	@Autowired
@@ -25,7 +24,9 @@ public class HomeController {
 	
 	
 	@GetMapping("index")//최신버전 get까지가능
-	public String index(Integer page, Model model,Principal principal) {
+	public String index(Integer page
+								, Model model
+								,Principal principal) {
 		
 		
 		String mId =principal.getName();

@@ -12,7 +12,7 @@
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
-    <definition name="chef.recipe.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp">    
+    <definition name="chef.recipe.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/chef/recipe/{1}.jsp" />
     <put-attribute name="aside" value="/WEB-INF/views/chef/inc/aside.jsp" />
@@ -25,7 +25,7 @@
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
-    <definition name="chef.*" template="/WEB-INF/views/inc/layout.jsp">    
+    <definition name="chef.*" template="/WEB-INF/views/inc/layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="visual" value="/WEB-INF/views/inc/visual.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/chef/{1}.jsp" />

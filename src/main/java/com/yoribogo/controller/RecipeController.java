@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.mysql.jdbc.log.Log;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
+import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.service.RecipeService;
@@ -47,10 +48,15 @@ public class RecipeController {
 	
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
-								@PathVariable("id") Integer recipeId) { //파라미터 말고 주소 url때문에
+								@PathVariable("id") Integer recipeId
+								,Member member) { //파라미터 말고 주소 url때문에
 		
 		Recipe recipe = service.getRecipe(id);
 		model.addAttribute("recipe",recipe);
+		
+		//글쓴이 프로필 사진 가져오기
+		Member memberf= service.getMember(recipe.getMemberId());
+		model.addAttribute("memberf", memberf);
 		
 		List<Ingredient> ingredient = service.getIngridient(recipeId);
 		model.addAttribute("ingredient",ingredient);

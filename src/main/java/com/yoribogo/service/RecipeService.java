@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.yoribogo.dao.FoodOrderDao;
 import com.yoribogo.dao.IngredientDao;
+import com.yoribogo.dao.MemberDao;
 import com.yoribogo.dao.RecipeCommentDao;
 import com.yoribogo.dao.RecipeDao;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
+import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
 
@@ -30,6 +32,9 @@ public class RecipeService {
 	
 	@Autowired
 	private RecipeCommentDao recipeCommentDao;
+	
+	@Autowired
+	private MemberDao memberDao;
 
 	public List<Recipe> getRecipe() {
 		
@@ -66,6 +71,14 @@ public class RecipeService {
 	public List<FoodOrder> getFoodOrder(Integer recipeId) {
 		List<FoodOrder> foodOrders = foodOrderDao.get(recipeId);
 		return foodOrders;
+	}
+
+
+	public Member getMember(String memberId) {
+		
+		Member member = memberDao.get(memberId);
+		
+		return member;
 	}
 
 

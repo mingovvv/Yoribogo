@@ -49,19 +49,24 @@ public class RecipeController {
 	
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
-								@PathVariable("id") Integer recipeId
-								,Member member) { //파라미터 말고 주소 url때문에
+								@PathVariable("id") Integer recipeId) { //파라미터 말고 주소 url때문에
 		
-		String profile = member.getPhoto();
+		
 		
 		Recipe recipe = service.getRecipe(id);
 		model.addAttribute("recipe",recipe);
+		
+		//글쓴이 프로필 사진 가져오기
+		Member memberf= service.getMember(recipe.getMemberId());
+		model.addAttribute("memberf", memberf);
 		
 		List<Ingredient> ingredient = service.getIngridient(recipeId);
 		model.addAttribute("ingredient",ingredient);
 		
 		List<FoodOrder> foodOrder = service.getFoodOrder(recipeId);
 		model.addAttribute("foodOrder",foodOrder);
+		
+		
 		
 		return "chef.recipe.detail";
 		
@@ -99,6 +104,10 @@ public class RecipeController {
 			
 			String memberId = principal.getName();
 			
+			//댓글 프로필 사진 DB에 업로드
+			Member memberRep = service.getMember(memberId);
+			
+			comment.setProfile(memberRep.getPhoto()); 
 			comment.setMemberId(memberId);
 			comment.setRecipeId(recipeId);
 			
