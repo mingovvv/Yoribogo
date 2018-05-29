@@ -49,7 +49,10 @@ public class RecipeController {
 	
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
-								@PathVariable("id") Integer recipeId) { //파라미터 말고 주소 url때문에
+								@PathVariable("id") Integer recipeId
+								,Member member) { //파라미터 말고 주소 url때문에
+		
+		String profile = member.getPhoto();
 		
 		Recipe recipe = service.getRecipe(id);
 		model.addAttribute("recipe",recipe);

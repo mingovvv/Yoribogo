@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yoribogo.entity.Member;
+import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.service.MemberService;
 
 
@@ -113,6 +114,7 @@ public class MemberController {
 				System.out.println(fname);
 				
 				member.setPhoto(fpath+'/'+fname);
+				
 				
 				InputStream fis = file.getInputStream();
 				

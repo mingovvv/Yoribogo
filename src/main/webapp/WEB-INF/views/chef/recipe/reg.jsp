@@ -53,9 +53,9 @@
 			</div>
 			
 			<div>
-			
-				<img id="photo" name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
-				<input id="file" style="border: none" type="file" name="file" class="inpt" >
+  				  
+				<img id="photo_" name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
+				<input id="file_" style="border: none" type="file" name="file" class="inpt" onchange="document.getElementById('photo_').src = window.URL.createObjectURL(this.files[0])">
 			
 			</div>
 			
@@ -78,8 +78,9 @@
 				<textarea name="content"  placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
 				
 				
-				<img id="photo" src="http://recipe.ezmember.co.kr/img/pic_none2.gif" style="width: 270px; height: 250px; cursor:pointer">
-				<input id="file" style="border: none" type="file" name="file" class="inpt" >
+				
+				<img id="photo_0" src="http://recipe.ezmember.co.kr/img/pic_none2.gif" style="width: 270px; height: 250px; cursor:pointer">
+				<input id="file_0" style="border: none" type="file" name="file" class="inpt" onchange="document.getElementById('photo_0').src = window.URL.createObjectURL(this.files[0])">
 				
 				<div class="recipe-box">
 				
@@ -102,6 +103,7 @@
 	</form>
 </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
 $(function(){
 	var addIngredientButton = $(".add-ingredient input[type=button]");
@@ -128,9 +130,10 @@ $(function(){
 		$("<p><b style=\"font-size: 25px;\">step "+n+"</b></p>").appendTo(recipeBox);
 		$("<img class=\"btn-cancel\" name=\"step-image-"+n+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(recipeBox);
 		$("<textarea name=\"content\" id= class= placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=resize: none></textarea>").css("width","270px").css("height","100px").appendTo(recipeBox);
-		$("<img id=\"photo\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\" style=\"width: 270px; height: 250px; cursor:pointer\">").appendTo(recipeBox);
-		$("<input id=\"file\" style=\"border: none\" type=\"file\" name=\"file\" class=\"inpt addchapter\" >").appendTo(recipeBox);
+		$("<img id=\"photo_"+n+"\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\" style=\"width: 270px; height: 250px; cursor:pointer\">").appendTo(recipeBox);
+		$("<input id=\"file_"+n+"\" style=\"border: none\" type=\"file\" name=\"file\" class=\"inpt\" onchange=\"document.getElementById('photo_"+n+"').src = window.URL.createObjectURL(this.files[0])\">").appendTo(recipeBox);
 	});
+	
 	
 	deleteButton.click(function(){
 		$(box).children().remove();
@@ -143,139 +146,59 @@ $(function(){
 
 /* alert($("input[name=file]").length); */
 
-/* for(var i = 0; i<$("input[name=file]").length; i++){
-} */
+/* for(var i = 0; i<$("input[name=file]").length; i++){ */
 
-
+//해결할것
 /* function readURL(input) {
     
     if (input.files && input.files[0]) {
         var reader = new FileReader();
        
         reader.onload = function (e) {
-            $("img[id=photo]").eq(0).attr('src', e.target.result);
+            $("#photo0").attr('src', e.target.result);
         }
  
         reader.readAsDataURL(input.files[0]);
     }    
 }
  
-$("input[name=file]").eq(0).change(function(){
+$("#file0").change(function(){
     readURL(this);
-});
+});  */
+
+
+/* 
+} */
+
+/* $(document).ready(
+	    function() {
+	        // 태그에 onchange를 부여한다.
+	        $('#file').change(function() {
+	                addPreview($(this)); //preview form 추가하기
+	        });
+	    });
+	 
+	    // image preview 기능 구현
+	    // input = file object[]
+	    function addPreview(input) {
+	        if (input[0].files) {
+	            //파일 선택이 여러개였을 시의 대응
+	            for (var fileIndex = 0 ; fileIndex < input[0].files.length ; fileIndex++) {
+	                var file = input[0].files[fileIndex];
+	                var reader = new FileReader();
+	 
+	                reader.onload = function (img) {
+	                    //div id="preview" 내에 동적코드추가.
+	                    //이 부분을 수정해서 이미지 링크 외 파일명, 사이즈 등의 부가설명을 할 수 있을 것이다.
+	                    $("#photo").attr('src', img.target.result);
+	                };
+	                
+	                reader.readAsDataURL(file);
+	            }
+	        } else alert('invalid file input'); // 첨부클릭 후 취소시의 대응책은 세우지 않았다.
+	    }
+
  */
-/* function readURL(input) {
-	 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
- 		
-        reader.onload = function (e) {
-        	 $("img[id=photo]").attr('src', e.target.result);
-        }
  
-        reader.readAsDataURL(input.files[0]);
-    }    
-}
- 
-$("input[name=file]").change(function(){
-    readURL(this);
-}); */
-
-
-/* function readURL(input) {
-	 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
- 		
-        reader.onload = function (e) {
-        	 $("img[id=photo]").eq(0).attr('src', e.target.result);
-        }
- 
-        reader.readAsDataURL(input.files[0]);
-    }    
-}
- 
-$("input[name=file]").eq(0).change(function(){
-    readURL(this);
-});
-
-
-function readURL1(input) {
-	 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
- 		
-        reader.onload = function (e) {
-        	 $("img[id=photo]").eq(1).attr('src', e.target.result);
-        }
- 
-        reader.readAsDataURL(input.files[0]);
-    }    
-}
- 
-$("input[name=file]").eq(1).change(function(){
-    readURL1(this);
-});
-
-
-function readURL2(input) {
-	 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
- 		
-        reader.onload = function (e) {
-        	 $("img[id=photo]").eq(2).attr('src', e.target.result);
-        }
- 
-        reader.readAsDataURL(input.files[0]);
-    }    
-}
- 
-$("input[name=file]").eq(2).change(function(){
-    readURL2(this);
-});
-
-
-function readURL3(input) {
-	 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
- 		
-        reader.onload = function (e) {
-        	 $("img[id=photo]").eq(3).attr('src', e.target.result);
-        }
- 
-        reader.readAsDataURL(input.files[0]);
-    }    
-}
- 
-$("input[name=file]").eq(3).change(function(){
-    readURL3(this);
-}); */
-
-
-
- 
-
 
 </script>
-
-
-
-
-<!-- <script>
-$(document).ready(function(){
-  var fileTarget = $('.filebox .upload-hidden');
-
-    fileTarget.on('change', function(){
-        if(window.FileReader){
-            var filename = $(this)[0].files[0].name;
-        } else {
-            var filename = $(this).val().split('/').pop().split('\\').pop();
-        }
-
-        $(this).siblings('.upload-name').val(filename);
-    });
-}); 
-</script>  -->
-
