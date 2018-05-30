@@ -59,7 +59,7 @@
 					</c:if> 
 					<p><span style="color: #49c5b6"> ${member.id}</span>님 안녕하세요!</p>
 				</li>
-				<li>Mypage</li>
+				<li><a href="${ctx}/chef/mypage/entrance">Mypage</a></li>
 				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
 				<li><a href="#">Community</a></li>

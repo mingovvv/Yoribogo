@@ -14,8 +14,8 @@
 			<h1 class="hidden">레시피목록</h1>
 			<ul>
 			
-			<p style="font-size: xx-large;">뭘루 채울까 고민중...</p>
-				<%-- <c:forEach begin="0" end="11">
+		<!-- 	<p style="font-size: xx-large;">뭘루 채울까 고민중...</p> -->
+				<c:forEach begin="0" end="11">
 				
 					<li>
 						<div class = "frame">
@@ -28,7 +28,7 @@
 						</div>
 					</li>
 					
-				</c:forEach> --%>
+				</c:forEach>
 				
 			</ul>
 		</section>

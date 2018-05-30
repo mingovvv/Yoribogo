@@ -523,6 +523,8 @@ body .container .content form {
   position: relative;
   height: 287px;
 }
+
+#fixed-id,
 body .container .content label:first-of-type, body .container .content input:first-of-type, body .container .content .more:first-of-type {
   -moz-animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
   -webkit-animation: slideIn 0.4s cubic-bezier(0.37, 0.82, 0.2, 1);
@@ -564,6 +566,7 @@ body .container .content label {
 body .container .content label:not([for='remember']) {
   display: none;
 }
+#fixed-id,
 body .container .content input.inpt {
   font-size: 14px;
   display: block;
@@ -1338,3 +1341,79 @@ margin-left: 20px;
     background-color: #5fcad4;
     border-color: #298f98;
 }
+
+/* ------ */
+
+
+.entrance-container{
+	min-height: 800px;
+	background: #f8f8f8;
+}
+.entrance-container .profile{
+	margin-top: 125px;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.entrance-container .setting{
+	    cursor: pointer;
+    position: relative;
+    top: 6px;
+    right: -8px;
+}
+
+.entrance-container > p{
+	text-align: center;
+}
+.my-content{
+	min-height: 500px;
+	background: yellow;
+}
+
+.my-content div > span:first-child{
+    font-size: 22px;
+    margin-bottom: 50px;
+    display: block;
+    color: yellowgreen;
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 65px;
+}
+
+
+
+.my-content .written-recipe{
+	min-height: 250px;
+	background: #f8f8f8;
+}
+
+.my-content .like-recipe{
+	min-height: 250px;
+	background: #f8f8f8;
+}
+
+/* ------ */
+
+.modify-member{
+	background: #ffcfcf;
+    height: 800px;
+    position: absolute;
+    min-width: 320px;
+    max-width: 900px;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 120px;
+}
+
+.cancel-image{
+	right: 10px;
+    position: absolute;
+    top: 10px;
+}
+
+
+

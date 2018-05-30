@@ -11,13 +11,13 @@
 		<div class="when">${recipe.regDate}</div>
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
-				<div class="profile">
-						<c:if test="${c.profile !=''}">
-							<img alt="" src="${ctx}${memberf.photo}">
-						</c:if>
-						<c:if test="${c.profile ==''}">
-							<img alt="" src="${ctx}/resources/images/cook-profile.png">
-						</c:if>
+			<div class="profile">
+				<c:if test="${memberf.photo !=''}">
+					<img alt="" src="${ctx}${memberf.photo}">
+				</c:if>
+				<c:if test="${memberf.photo ==''}">
+					<img alt="" src="${ctx}/resources/images/chef.png">
+				</c:if>
 				<span>${recipe.memberId}</span> 
 			</div>
 		</div>
