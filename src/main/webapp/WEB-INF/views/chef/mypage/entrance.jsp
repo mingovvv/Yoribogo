@@ -27,10 +27,10 @@
 								</div>
 								<input id="file" style="border: none" type="file" name="file" class="inpt" > 
 								<span id="fixed-id" style="line-height: 10px;font-size: 20px;">min</span>
-								<input type="password" name="pwd" class="inpt" required="required" placeholder="Your password">
-								<input type="text" name="name" class="inpt" required="required" placeholder="Your name"> 
-								<input type="text" name="nickname" class="inpt" required="required" placeholder="Your nickname"> 
-								<input type="text" name="email" class="inpt" required="required" placeholder="Your e-mail"> 
+								<input type="password" name="pwd" class="inpt" required="required" placeholder="Change Your password">
+								<input type="text" name="name" class="inpt" required="required" placeholder="Change Your name"> 
+								<input type="text" name="nickname" class="inpt" required="required" placeholder="Change Your nickname"> 
+								<input type="text" name="email" class="inpt" required="required" placeholder="Change Your e-mail"> 
 								
 								
 								
@@ -116,45 +116,19 @@
 <script>
 window.addEventListener("load", function(){
 	var settingButton = document.querySelector(".setting");
-	var addMemu = document.querySelector(".add-memu");
-	var visual = document.querySelector(".visual");
-	var main = document.querySelector(".main");
-	var footer = document.querySelector(".footer");
+	var profileButton = document.querySelector(".profile");
+	var modifyMember = document.querySelector(".modify-member");
+	var cancelButton = document.querySelector(".cancel-image");
 	
-	var searchButton = document.querySelector("#search-button");
-	var searchRecipe = document.querySelector(".search-recipe");
 
-	
-	
-	
-	menuButton.onclick=function(){
-		if(addMemu.classList.contains("show")==false){
-			addMemu.classList.add("show");
-			
-			visual.classList.add("show");
-			main.classList.add("show");
-			footer.classList.add("show");
-			
-		}
-		else{
-			addMemu.classList.remove("show");
-			
-			visual.classList.remove("show");
-			main.classList.remove("show");
-			footer.classList.remove("show");
-		}
+	settingButton.onclick=function(){
+		modifyMember.classList.add("show");
 	}
 	
-	searchButton.onclick=function(){
-		if(searchRecipe.classList.contains("show")==false){
-			searchRecipe.classList.add("show");
-			
-		}
-		else{
-			searchRecipe.classList.remove("show");
-		}
-		
+	cancelButton.onclick=function(){
+		modifyMember.classList.remove("show");
 	}
+	
 	
 });
 </script>
