@@ -78,7 +78,8 @@
 							<div>${recipe.title}</div>
 							<div>
 								<div>${recipe.memberId}</div>
-								<div><a href="#"><img class="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
+								<%-- <div><a href="${recipe.id}/like"><img class="like-button" src="${ctx}/resources/images/unlike.png"></a></div> --%>
+								<div><img class="like-button" name="${recipe.id}" src="${ctx}/resources/images/unlike.png" style="cursor: pointer;"></div>
 							</div>
 						</div>
 					</li>
@@ -88,7 +89,40 @@
 			</ul>
 		</section>
 	</main>
-
+	
+	
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+  $(".like-button").click(function(){
+    var recipeId = $(this).attr('name')
+    console.log(recipeId);
+    console.log("${ctx}/chef/recipe/"+recipeId+"/like");
+    $.ajax({ // .like-button 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+      type: "GET", // 데이터를 전송하는 방법을 지정
+      url: "${ctx}/chef/recipe/"+recipeId+"/like",
+      data: {'recipeId': recipeId}, // 서버로 데이터 전송시 옵션
+      dataType: "json", // 서버측에서 전송한 데이터를 어떤 형식의 데이터로서 해석할 것인가를 지정, 없으면 알아서 판단
+      // 서버측에서 전송한 Response 데이터 형식 (json)
+      // {'likes_count': post.like_count, 'message': message }
+      
+      success: function(result){ // 통신 성공시 - 동적으로 좋아요 갯수 변경, 유저 목록 변경
+        alert("성공");
+        //$("#count-"+pk).html(response.like_count+"개");
+        //var users = $("#like-user-"+pk).text();
+        //if(users.indexOf(response.nickname) != -1){
+        //  $("#like-user-"+pk).text(users.replace(response.nickname, ""));
+        //}else{
+        //  $("#like-user-"+pk).text(response.nickname+users);
+        //}
+      },
+      error: function(request, status, error){ // 통신 실패시 - 로그인 페이지 리다이렉트
+        alert("감이안와")
+        window.location.replace("/yoribogo/chef/recipe/list")
+        //  alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+      },
+    });
+  })
+</script>
 <script>
 window.addEventListener("load", function(){
 	var likeButton = document.querySelectorAll(".like-button");
@@ -101,7 +135,7 @@ window.addEventListener("load", function(){
 	var ranButton = document.querySelector(".ran-button");
 	
 	
-    for(var i=0;i<likeButton.length;i++){
+    /* for(var i=0;i<likeButton.length;i++){
     	(function(m) {
     		likeButton[m].onclick = function(){
     			if(likeButton[m].src.match("unlike")){
@@ -114,7 +148,7 @@ window.addEventListener("load", function(){
     			}
     		}
     	})(i);
-	}; 
+	};  */
 	
 	dateButton.onclick = function(){
 		dateButton.style.background="#5fcad4";

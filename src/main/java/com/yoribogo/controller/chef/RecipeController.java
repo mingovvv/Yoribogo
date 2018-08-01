@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
@@ -123,14 +125,39 @@ public class RecipeController {
 	
 	
 	
+		//좋아요 작업-------------------------------------------------------------------------------
+	
+		@GetMapping("{id}/like")
+		public String like(@PathVariable("id") Integer recipeId
+															, Principal principal
+															, Model model) {
+			
+			String memberId = principal.getName();
+			service.setRecipeLike(recipeId, memberId);
+			
+			return "redirect:../list";
+			
+		}
 	
 	
+	/*	//좋아요 ajax
+		@ResponseBody
+		@GetMapping("{id}/like")
+		public String like(@PathVariable("id") Integer recipeId, Principal principal) {
 	
+			String memberId = principal.getName();
+			
+			JsonObject obj = new JsonObject();
+			
+			HashMap<String, Object> hashMap = new HashMap<String, Object>();
+			hashMap.put("recipeId", recipeId);
+			hashMap.put("memberId", memberId);
+
+			obj.put("recipeId",recipeId);
+			
+			return "json";
 	
-	
-	
-	
-	
+		}*/
 	
 	
 	
