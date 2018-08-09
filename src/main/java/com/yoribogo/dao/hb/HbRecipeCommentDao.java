@@ -30,8 +30,9 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
 	            .createQuery("from RecipeComment where recipeId=:recipeId", RecipeComment.class)
 	            .setParameter("recipeId", recipeId);
 	      
+		  System.out.println("댓글 실험 1 "+query); //org.hibernate.query.internal.QueryImpl@6ebb33fe
 	      List<RecipeComment> list = query.getResultList();
-	      
+	      System.out.println("댓글 실험 2 "+list);
 	      
 		return list;
 	}
@@ -48,7 +49,6 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
       
       List<RecipeComment> list = query.getResultList();
       
-      
 	return list;
 	}
 
@@ -58,17 +58,14 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		Recipe recipe = new Recipe();
-		comment.setRecipe(recipe);
-		
-		int id = (int) session.save(comment);
-		
+		int id = (int) session.save(comment); //세션에 저장된 코멘트의 갯수 // 최초의 갯수가 0개이므로 아이디를 등록할때 무조건 1이상이 됨
+		System.out.println(id);
 		int result = 0;
 		if(id >0)
 				result = 1;
 		
 		
-		return result;
+		return result; //result값은 무조건 1이 반환
 	}
 
 }

@@ -87,8 +87,6 @@ public class RecipeService {
 
 	
 	//댓글
-	
-	
 	public List<RecipeComment> getRecipeCommentListByNote(Integer page, Integer recipeId) {
 		
 		List<RecipeComment> result = recipeCommentDao.getListByRecipe(page, recipeId);
@@ -125,6 +123,24 @@ public class RecipeService {
 			recipeLikeDao.insert(new RecipeLike(recipeId, memberId));
 		else
 			recipeLikeDao.delete(recipeLike);
+	}
+
+	//리스트에서 좋아요 표시를 보기 위해
+	@Transactional
+	public List<RecipeLike> getRecipeLike(String memberId) {
+		
+		List<RecipeLike> list = recipeLikeDao.getList(memberId);
+		
+		return list;
+	}
+	
+	//좋아요 갯수
+	@Transactional
+	public int getLikeCount(Integer recipeId) {
+		
+		int likeCount = recipeLikeDao.getLikeCount(recipeId);
+		
+		return likeCount;
 	}
 	
 }

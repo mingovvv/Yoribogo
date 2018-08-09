@@ -30,6 +30,7 @@ import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
+import com.yoribogo.entity.RecipeLike;
 import com.yoribogo.service.chef.RecipeService;
 
 @Controller("ChefRecipeController")
@@ -40,23 +41,38 @@ public class RecipeController {
 	private RecipeService service;
 	
 	@RequestMapping("list")
-	public String list(@RequestParam(value="p", defaultValue="1") Integer page, Model model) {
+	public String list(@RequestParam(value="p", defaultValue="1") Integer page, Model model, Principal principal) {
+		
+		String memberId = principal.getName();
+		
 		List<Recipe> recipe = service.getRecipe();
 		model.addAttribute("recipe",recipe);
+		
+		System.out.println("recipe : "+recipe);
+		
+		List<RecipeLike> recipeLike = service.getRecipeLike(memberId);
+		model.addAttribute("recipeLike",recipeLike);
+		
+		System.out.println("recipeLike : "+recipeLike);
+		
+		//실험2
 		
 		
 		return "chef.recipe.list";
 	}
+	  
 	
 	
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
-								@PathVariable("id") Integer recipeId) { //파라미터 말고 주소 url때문에
+								@PathVariable("id") Integer recipeId,
+								Principal principal) { //파라미터 말고 주소 url때문에
 		
-		
+		String memberId = principal.getName();
 		
 		Recipe recipe = service.getRecipe(id);
 		model.addAttribute("recipe",recipe);
+		
 		
 		//글쓴이 프로필 사진 가져오기
 		Member memberf= service.getMember(recipe.getMemberId());
@@ -68,7 +84,11 @@ public class RecipeController {
 		List<FoodOrder> foodOrder = service.getFoodOrder(recipeId);
 		model.addAttribute("foodOrder",foodOrder);
 		
+		List<RecipeLike> recipeLike = service.getRecipeLike(memberId);
+		model.addAttribute("recipeLike",recipeLike);
 		
+		int likeCount = service.getLikeCount(recipeId);
+		model.addAttribute("likeCount",likeCount);
 		
 		return "chef.recipe.detail";
 		
@@ -88,20 +108,19 @@ public class RecipeController {
 			
 			List<RecipeComment> comments = service.getRecipeCommentListByNote(page, recipeId);
 			
-			
+			System.out.println("comments : "+comments);
 			Gson gson = new Gson();
 			String json = gson.toJson(comments);
-			
-			return json;
-		}
+			System.out.println("json : "+json);
+			return json;  
+		}   
 		
 		//댓글 포스트 
 		@PostMapping("{id}/comment/reg")
 		@ResponseBody //ajax로 결과값을 보여주는 형식을 사용하겠다. 모델도 빼자
 		public String commentReg(RecipeComment comment
 												, @PathVariable("id") Integer recipeId
-												,Principal principal
-												){
+												,Principal principal){
 			
 			
 			String memberId = principal.getName();
@@ -118,7 +137,7 @@ public class RecipeController {
 			
 			int result =  service.addComment(comment);
 			
-			return String.valueOf(result);
+			return String.valueOf(result); //문자열에 대한 원시데이터형을 리턴
 			
 		}
 	
@@ -127,7 +146,7 @@ public class RecipeController {
 	
 		//좋아요 작업-------------------------------------------------------------------------------
 	
-		@GetMapping("{id}/like")
+		/*@GetMapping("{id}/like")
 		public String like(@PathVariable("id") Integer recipeId
 															, Principal principal
 															, Model model) {
@@ -137,27 +156,26 @@ public class RecipeController {
 			
 			return "redirect:../list";
 			
-		}
+		}*/
 	
-	
-	/*	//좋아요 ajax
+		//좋아요 ajax
 		@ResponseBody
-		@GetMapping("{id}/like")
+		@PostMapping("{id}/like")
 		public String like(@PathVariable("id") Integer recipeId, Principal principal) {
 	
 			String memberId = principal.getName();
 			
-			JsonObject obj = new JsonObject();
+			service.setRecipeLike(recipeId, memberId);
 			
-			HashMap<String, Object> hashMap = new HashMap<String, Object>();
-			hashMap.put("recipeId", recipeId);
-			hashMap.put("memberId", memberId);
-
-			obj.put("recipeId",recipeId);
+			List<RecipeLike> recipeLike = service.getRecipeLike(memberId);
 			
-			return "json";
+			Gson gson = new Gson();
+			String json = gson.toJson(recipeLike);
+			
+			System.out.println("like json 는 ? :"+json);
+			return json;
 	
-		}*/
+		}
 	
 	
 	

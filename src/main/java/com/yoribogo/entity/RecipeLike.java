@@ -39,5 +39,8 @@ public class RecipeLike implements Serializable{
 		this.memberId = memberId;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "RecipeLike [recipeId=" + recipeId + ", memberId=" + memberId + "]";
+	}
 }

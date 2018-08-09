@@ -93,8 +93,8 @@
 		
 		
 		<section class="comment-form" id="comment-form">
-         <p style="text-align: center; color: gray;">로그인을 하시면 댓글서비스를<br> 이용할 수 있습니다.</p>
-         <a href="${ctx}/chef/recipe/${recipe.id}"><p style="text-align: center; color: black; font-weight: bold;">로그인 하러 가기</p></a>
+         	<p style="text-align: center; color: gray;">로그인을 하시면 댓글서비스를<br> 이용할 수 있습니다.</p>
+       		  <a href="${ctx}/chef/recipe/${recipe.id}"><p style="text-align: center; color: black; font-weight: bold;">로그인 하러 가기</p></a>
       </section>
 		
 		

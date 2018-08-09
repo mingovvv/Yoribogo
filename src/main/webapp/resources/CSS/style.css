@@ -1143,25 +1143,28 @@ float: right;
  }
  
  .detail-title{
-    position: relative;
-    top: -45px;
+	position: relative;
     height: auto;
-    text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     color: #788b95;
     font-weight: bold;
+    display: inline-block;
+    margin-top: 100px;
+    margin-bottom: 100px;
  }
  
  .detail-main{
 	height: auto;
     top: 144px;
     margin-top: 310px;
+    text-align: center;
  }
  
  .detail-main p{
 	padding: 30px;
+	margin-top: 110px;
 	
-}
+} 
  
  .detail-content{
  	height: 220px;
@@ -1344,11 +1347,35 @@ margin-left: 20px;
 	margin: 0px
 }
     
-    
-    
+.like-button.detail{
+	width: 50px;
+	display: block;
+    margin: 25px 10px;
+	
+}
+
+.like-button-section {
+    cursor: pointer;
+    width: 160px;
+    height: 100px;
+    border: 3px solid #dbc77e;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -50px;
+    border-radius: 25px;
+}
+.like-button-section:hover{
+	border:3px solid #ccae48;
+} 
+  
+.like-button-section span{
+    position: relative;
+    top: -60px;
+    right: -29px;
+    font-weight: 600;
+}
+
 /* ------ */
-
-
 .filebox input[type="file"] {
     position: absolute;
     width: 1px;

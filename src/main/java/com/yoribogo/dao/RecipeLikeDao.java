@@ -1,5 +1,7 @@
 package com.yoribogo.dao;
 
+import java.util.List;
+
 import com.yoribogo.entity.RecipeLike;
 
 public interface RecipeLikeDao {
@@ -9,5 +11,11 @@ public interface RecipeLikeDao {
 	int insert(RecipeLike recipeLike);
 
 	int delete(RecipeLike recipeLike);
+
+	//List에서 좋아요 
+	List<RecipeLike> getList(String memberId);
+
+	//좋아요 count
+	int getLikeCount(Integer recipeId);
 
 }
