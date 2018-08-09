@@ -1470,13 +1470,149 @@ margin-left: 20px;
 	transition:500ms;
 
 }
-
+  
 .cancel-image{
 	right: 10px;
     position: absolute;
     top: 10px;
     cursor: pointer;
 }
-
-
-
+    
+/* --------------join--------------------------------- */
+.check-id{
+	font-size:7px;      
+	margin-bottom: 10px;
+	margin-top:-10px;
+}
+.check-pwd{
+	font-size:7px;      
+	margin-bottom: 10px;
+	margin-top:-10px;
+}
+/*----------------community-list----------------------*/
+.community-view-style-btn{
+	
+}             
+#community-section{
+	display: flex;
+	flex-direction:column;
+	height:400px;
+	width:100%;
+	align-self: center;
+	border: 0.5px solid black;
+	padding:0px;
+}
+	#community-section .community-main{
+		display: flex;
+		flex-direction: row;
+		height:93%;             
+		width:100%;
+		padding: 3px;
+		border: 0.5px solid black;		
+	}
+		.community-main .member-info{
+			display: flex;
+			flex-direction:column;
+			border: 0.5px solid black;
+			padding-right:3px;
+			margin-top:5%;      
+			width:20%;    
+		}               
+			.member-info .member-img{
+				padding-top: 100%;
+				border-radius:100%;
+				align-content:center;
+				border: 0.5px solid black;
+			}   
+			.member-info .member-id{
+				font-size:160%;
+				height:15%;
+				width:100%;
+				text-align:center;
+				text-overflow:ellipsis;
+				overflow:hidden;
+				justify-content:center;
+				margin-top:10px;
+				border: 0.5px solid black;
+			}
+		.community-main .content-main{
+			display: flex;
+			flex-direction:column;                
+			width:80%;
+			padding:1px;
+			border: 0.5px solid black;
+		}                
+			.content-main .reg-date{
+				height:6%;
+				text-align:right;
+				padding-right:4px;                 
+				border: 0.5px solid black;
+			}    
+			.content-main .content{
+				display: flex;
+				flex-direction:column;
+				align-items:center;
+				height:94%;
+				width:100%;
+				border: 0.5px solid black;
+			}
+				.content .content-img{
+					height:80%;
+					width:90%;
+					border-radius:5px;
+					border: 0.5px solid black;
+				}
+				.content .content-text{
+					height:20%;
+					width:90%;
+					text-overflow:ellipsis;
+					border: 0.5px solid black;
+				}
+		.community-main .comment-section{
+		
+		}
+			.comment-section .comment-main{
+			}
+				.comment-main .comment-profile{
+				}
+				.comment-main .comment-content{
+				}
+					.comment-content .content-top{
+					}
+						.content-top .comment-id{
+						}
+						.content-top .comment-regdate{
+						}
+					.comment-content .content-bottom{
+					}
+						.content-bottom .comment-text{
+						}
+			#comment-section .comment-reg{
+			}
+				.comment-reg .input-text{
+				}
+				.comment-reg .reg-btn{
+				}
+	#community-section .community-more{
+		height:7%;
+		display: flex;
+		flex-direction: row;
+	}
+	
+		.community-more .more-icon{
+			height:100%;
+			width:80%;
+			border: 0.5px solid black;
+		}
+		.community-more .comment{
+			display:flex;
+			flex-direction:row;           
+			height:100%;
+			width:20%;
+			padding: 2px;
+			border: 0.5px solid black;
+		}
+			.community-more .comment .icon{
+			}
+			.community-more .comment .cnt{
+			}

@@ -49,7 +49,16 @@ public class MemberService {
 		return member;
 	}
 
+
+	/*public Member getMemberId(Member id) {
+		
+		Member member = memberDao.getMemberId(id);
+		
+		return member;
+	}*/
+
 	
+
 
 
 /*	@Transactional

@@ -12,34 +12,46 @@
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
-    <definition name="chef.recipe.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
+  <definition name="chef.recipe.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/chef/recipe/{1}.jsp" />
     <put-attribute name="aside" value="/WEB-INF/views/chef/inc/aside.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
-    <definition name="chef.mypage.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
+  <definition name="chef.mypage.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/chef/mypage/{1}.jsp" />
     <put-attribute name="aside" value="/WEB-INF/views/chef/inc/aside.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
-    <definition name="recipe.*" template="/WEB-INF/views/recipe/inc/recipe-layout.jsp">    
+  <definition name="chef.community.*" template="/WEB-INF/views/chef/inc/chef-layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
-    <put-attribute name="main" value="/WEB-INF/views/recipe/{1}.jsp" />
+    <put-attribute name="main" value="/WEB-INF/views/chef/community/{1}.jsp" />
+    <put-attribute name="aside" value="/WEB-INF/views/chef/community/inc/aside.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
   
-  
-    <definition name="chef.*" template="/WEB-INF/views/inc/layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
+  <definition name="chef.*" template="/WEB-INF/views/inc/layout.jsp" preparer="com.yoribogo.config.YoribogoPre">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="visual" value="/WEB-INF/views/inc/visual.jsp" />
     <put-attribute name="main" value="/WEB-INF/views/chef/{1}.jsp" />
     <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
   </definition>
-	
+  
+  <definition name="recipe.*" template="/WEB-INF/views/recipe/inc/recipe-layout.jsp">    
+    <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+    <put-attribute name="main" value="/WEB-INF/views/recipe/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+  </definition>
+
+  <definition name="community.*" template="/WEB-INF/views/community/inc/community-layout.jsp">    
+    <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
+    <put-attribute name="main" value="/WEB-INF/views/community/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/views/inc/footer.jsp" />
+  </definition>
+  
   <definition name="*" template="/WEB-INF/views/inc/layout.jsp">    
     <put-attribute name="header" value="/WEB-INF/views/inc/header.jsp" />
     <put-attribute name="visual" value="/WEB-INF/views/inc/visual.jsp" />
