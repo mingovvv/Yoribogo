@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,8 +24,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.RecipeComment;
@@ -64,17 +68,24 @@ public class MemberController {
          return "member.join";
       } 
       
-     
-     
-     
-     
-     
-     
-     
+     //-------------Ajax 아이디 중복검사 컨트롤러--------------------
+     @ResponseBody
+     @RequestMapping(value="join/checkId", method=RequestMethod.POST)
+     public String IdCheck(@RequestParam("memberId")String memberId, Model model) {
+    	 
+    	  String result = "";
+    	  Member data = service.getMemberInfo(memberId);
+    	  
+          if(data!=null) 
+        	 result="exist";
+          else
+        	 result="none";
+          
+          return result;
+     }
      
      
 	@PostMapping("join")
-	
 	public String join(MultipartFile file
 									, Model model
 									, Member member

@@ -31,7 +31,9 @@ public class HibernateConfig {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		
 		dataSource.setDriverClass("com.mysql.jdbc.Driver");
+
 		dataSource.setJdbcUrl("jdbc:mysql://211.58.161.171:3306/yoribogodb?serverTimezone=UTC&autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8");
+
 		dataSource.setUser("min");
 		dataSource.setPassword("minmin");
 		

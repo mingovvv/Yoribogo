@@ -28,7 +28,7 @@
 				</div>
 			</div>
 		</form>
-		
+		  
 	<!-- 로그인 되지 않았을때 -->	
 	<sec:authorize access="!isAuthenticated()">	
 		<div class="add-memu">
@@ -36,7 +36,7 @@
 				<li><a href="${ctx}/member/login">Login / Register</a></li>
 				<li><a href="${ctx}/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/recipe/list">Recipe</a></li>
-				<li>Community</li>
+				<li><a href="${ctx}/community/list">Community</a></li>
 				<li>냉장고를 부탁해</li>
 				<li>About us</li>
 			</ul>
@@ -62,7 +62,7 @@
 				<li><a href="${ctx}/chef/mypage/entrance">Mypage</a></li>
 				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
-				<li><a href="#">Community</a></li>
+				<li><a href="${ctx}/chef/community/list">Community</a></li>
 				<li><a href="#">냉장고를 부탁해</a></li>
 				<li><a href="#">About us</a></li>
 				<li><a href="${ctx}/logout">Log-Out</a></li>

@@ -1,13 +1,17 @@
 package com.yoribogo.dao.hb;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yoribogo.dao.MemberDao;
+import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
 
 @Repository
@@ -41,6 +45,23 @@ public class HbMemberDao implements MemberDao{
 		
 		return member;
 	}
+
+	/*@Transactional
+	@Override
+	public Member getMemberId(Member id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		 
+		Query<Member> query = session.createQuery("from member where id=:id", Member.class).setParameter("id", id);
+		
+		List<Member> list = query.getResultList();
+		
+		return (Member) list;
+	}*/
+
+
+
+
 
 
 
