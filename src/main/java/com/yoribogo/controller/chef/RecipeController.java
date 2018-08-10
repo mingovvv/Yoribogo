@@ -5,12 +5,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
@@ -32,6 +33,8 @@ import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.entity.RecipeLike;
 import com.yoribogo.service.chef.RecipeService;
+
+import antlr.StringUtils;
 
 @Controller("ChefRecipeController")
 @RequestMapping("/chef/recipe/")
@@ -66,7 +69,9 @@ public class RecipeController {
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
 								@PathVariable("id") Integer recipeId,
-								Principal principal) { //파라미터 말고 주소 url때문에
+								Principal principal,
+								HttpServletRequest req,
+								HttpServletResponse res) { //파라미터 말고 주소 url때문에
 		
 		String memberId = principal.getName();
 		
@@ -87,8 +92,42 @@ public class RecipeController {
 		List<RecipeLike> recipeLike = service.getRecipeLike(memberId);
 		model.addAttribute("recipeLike",recipeLike);
 		
+		//좋아요 숫자(디테일페이지)
 		int likeCount = service.getLikeCount(recipeId);
 		model.addAttribute("likeCount",likeCount);
+		
+		//쿠키사용 조회수 확인하기
+		//readCount = service.getReadCount(recipeId);
+		
+		
+		Cookie cookies[] = req.getCookies();
+		Map map = new HashMap<>();
+		if(req.getCookies()!=null) {
+			for (int i = 0; i < cookies.length; i++) {
+			    Cookie obj = cookies[i];
+			    map.put(obj.getName(),obj.getValue());
+			    System.out.println(cookies[i]);
+			    }
+			    
+		}
+		// 저장된 쿠키중에 read_count 만 불러오기
+	    String readCount = (String) map.get("readCount");
+	    System.out.println(readCount);
+	     // 저장될 새로운 쿠키값 생성
+	    
+	    String newReadCount = "/"+id;
+	    System.out.println(newReadCount);
+
+	    // 저장된 쿠키에 새로운 쿠키값이 존재하는 지 검사
+	    //if (StringUtils.indexOfIgnoreCase(readCount, newReadCount) == -1 ) {
+	          // 없을 경우 쿠키 생성
+	          Cookie cookie = new Cookie("readCount", readCount + newReadCount);
+	         
+	          res.addCookie(cookie);
+	          System.out.println(cookie);
+	          service.getReadCount(recipeId);
+	    //}
+			
 		
 		return "chef.recipe.detail";
 		

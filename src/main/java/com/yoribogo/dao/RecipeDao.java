@@ -12,6 +12,9 @@ public interface RecipeDao {
 
 	Recipe get(Integer id);
 
+	//조회수 확인(디테일 페이지)
+	int getReadCount(Integer recipeId);
+
 
 
 

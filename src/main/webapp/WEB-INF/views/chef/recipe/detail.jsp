@@ -25,7 +25,7 @@
 			<ul class="semi-box">
 				<li><img alt="" src="${ctx}/resources/images/eye.png" style="border: 3px solid black"><span>조회수 <b style="color:black ">30회</b></span></li>
 				<li><img alt="" src="${ctx}/resources/images/chat.png" style="border: 3px solid #6b6bd9"><span>댓글 <b style="color:#6b6bd9 ">40개</b></span></li>
-				<li><img alt="" src="${ctx}/resources/images/kitchen.png" style="border: 3px solid #dbc77e"><span>즐겨찾기 <b class="likeCount" style="color:#938658 ">${likeCount}</b></span></li>
+				<li><img alt="" src="${ctx}/resources/images/kitchen.png" style="border: 3px solid #dbc77e"><span style="color:#938658 ">즐겨찾기 <b class="likeCount" style="color:#938658 ">${likeCount}</b>개</span></li>
 			</ul>
 			<ul class="semi-box two">
 				<li><img alt="" src="${ctx}/resources/images/cooktime.png" style="border: 3px solid gray"><span>조리시간 ${recipe.sortTime}</span></li>
