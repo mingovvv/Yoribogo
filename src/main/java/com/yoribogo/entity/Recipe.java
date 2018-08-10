@@ -147,6 +147,10 @@ public class Recipe {
 		this.comments = comments;
 		
 	}
+
+	public String getMemberId(Integer id2) {
+		return memberId;
+	}
 	
 	
 	

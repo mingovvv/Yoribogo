@@ -122,6 +122,12 @@ public class Member {
 	public String toString() {
 		return "Member [nickname=" + nickname + ", regDate=" + regDate + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", file=" + file + "]";
 	}
+
+
+	public String getPhoto(String writerId) {
+		return file;
+		
+	}
 	
 	
 	

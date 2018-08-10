@@ -10,9 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.yoribogo.dao.MemberDao;
 import com.yoribogo.dao.RecipeDao;
-import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 
 @Repository
@@ -38,6 +36,12 @@ public class HbRecipeDao implements RecipeDao{
 		
 		Query<Recipe> query = session.createQuery("from Recipe",Recipe.class); //임포트 하이버네이트 쿼리
 		List<Recipe> list = query.getResultList();
+		
+		
+		
+		
+		
+		
 		
 		return list;
 	}

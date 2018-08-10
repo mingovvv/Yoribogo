@@ -22,7 +22,7 @@ public class RecipeComment {
 	private Date regDate;
 	private int recipeId;
 	
-	@Transient
+	@Transient //값을 데이터에 저장하지 않으려는 경우에 사용됨
 	private Recipe recipe;
 	
 	

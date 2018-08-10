@@ -12,11 +12,13 @@ import com.yoribogo.dao.IngredientDao;
 import com.yoribogo.dao.MemberDao;
 import com.yoribogo.dao.RecipeCommentDao;
 import com.yoribogo.dao.RecipeDao;
+import com.yoribogo.dao.RecipeLikeDao;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
+import com.yoribogo.entity.RecipeLike;
 
 @Service("chefRecipeService")
 public class RecipeService {
@@ -35,6 +37,9 @@ public class RecipeService {
 	
 	@Autowired
 	private RecipeCommentDao recipeCommentDao;
+	
+	@Autowired
+	private RecipeLikeDao recipeLikeDao;
 	
 	@Transactional
 	public void insertRecipe(Recipe recipe) {
@@ -82,8 +87,6 @@ public class RecipeService {
 
 	
 	//댓글
-	
-	
 	public List<RecipeComment> getRecipeCommentListByNote(Integer page, Integer recipeId) {
 		
 		List<RecipeComment> result = recipeCommentDao.getListByRecipe(page, recipeId);
@@ -109,6 +112,35 @@ public class RecipeService {
 		Member member = memberDao.get(memberId);
 		
 		return member;
+	}
+
+	//좋아요
+	public void setRecipeLike(Integer recipeId, String memberId) {
+		
+		RecipeLike recipeLike = recipeLikeDao.get(recipeId, memberId);
+		
+		if (recipeLike == null)
+			recipeLikeDao.insert(new RecipeLike(recipeId, memberId));
+		else
+			recipeLikeDao.delete(recipeLike);
+	}
+
+	//리스트에서 좋아요 표시를 보기 위해
+	@Transactional
+	public List<RecipeLike> getRecipeLike(String memberId) {
+		
+		List<RecipeLike> list = recipeLikeDao.getList(memberId);
+		
+		return list;
+	}
+	
+	//좋아요 갯수
+	@Transactional
+	public int getLikeCount(Integer recipeId) {
+		
+		int likeCount = recipeLikeDao.getLikeCount(recipeId);
+		
+		return likeCount;
 	}
 	
 }
