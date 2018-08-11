@@ -12,10 +12,10 @@
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
 			<div class="profile">
-				<c:if test="${memberf.photo !=''}">
+				<c:if test="${memberf.photo !=null}">
 					<img alt="" src="${ctx}${memberf.photo}">
 				</c:if>
-				<c:if test="${memberf.photo ==''}">
+				<c:if test="${memberf.photo ==null}">
 					<img alt="" src="${ctx}/resources/images/chef.png">
 				</c:if>
 				<span>${recipe.memberId}</span> 
@@ -64,10 +64,10 @@
 						<div class="cut">
 							<c:forEach var="c" items="${recipe.comments }">
 								<c:if test="${not empty c}">
-									<c:if test="${c.profile==''}">
+									<c:if test="${c.profile=='null'}">
 										<div><img alt="" src="${ctx}/resources/images/chef.png"></div>
 									</c:if>
-									<c:if test="${c.profile!=''}">
+									<c:if test="${c.profile!='null'}">
 										<div><img alt="" src="${ctx}${c.profile}"></div>
 									</c:if>
 										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 

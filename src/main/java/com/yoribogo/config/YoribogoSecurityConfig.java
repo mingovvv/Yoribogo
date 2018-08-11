@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
@@ -24,6 +25,10 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired /*콩에 담긴거 쓰기*/
 	private AuthenticationSuccessHandler successHandler;
+
+	@Autowired /*콩에 담긴거 쓰기*/
+	private AuthenticationFailureHandler failHandler;
+	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -41,11 +46,12 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 		.formLogin()//로그인 폼 설정
 			.loginPage("/member/login") // get
 			.loginProcessingUrl("/member/login") //post
+			
+			.failureHandler(failHandler)
+			
 			.successHandler(successHandler) // 로그인성공하고 발생하는 핸들러
 			//.defaultSuccessUrl("/index")//로그인시 디폴트 이동값
 			.permitAll()
-			
-			
 			.and()
 		.logout()
 			//.logoutUrl("/member/logout") //내가 정해주는 로그아웃 URL

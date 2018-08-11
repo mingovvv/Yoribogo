@@ -23,8 +23,8 @@
 		</div>
 		<div class="detail-main">
 			<ul class="semi-box">
-				<li><img alt="" src="${ctx}/resources/images/eye.png" style="border: 3px solid black"><span>조회수 <b style="color:black ">30회</b></span></li>
-				<li><img alt="" src="${ctx}/resources/images/chat.png" style="border: 3px solid #6b6bd9"><span>댓글 <b style="color:#6b6bd9 ">40개</b></span></li>
+				<li><img alt="" src="${ctx}/resources/images/eye.png" style="border: 3px solid black"><span>조회수 <b style="color:black ">${recipe.readCount}회</b></span></li>
+				<li><img alt="" src="${ctx}/resources/images/chat.png" style="border: 3px solid #6b6bd9"><span>댓글 <b style="color:#6b6bd9 ">${commentCount}개</b></span></li>
 				<li><img alt="" src="${ctx}/resources/images/kitchen.png" style="border: 3px solid #dbc77e"><span style="color:#938658 ">즐겨찾기 <b class="likeCount" style="color:#938658 ">${likeCount}</b>개</span></li>
 			</ul>
 			<ul class="semi-box two">
@@ -96,14 +96,14 @@
 		
 		<div class="reply-window">
 			<h1 class="hidden">댓글 창</h1>
-			<p style="color: #5fcad4">댓글 <span style="color: #5fcad4"></span></p>
+			<p style="color: #5fcad4">댓글   <span style="color: #066871">${commentCount}</span></p>
 						<div class="cut">
 							<c:forEach var="c" items="${recipe.comments }">
 								<c:if test="${not empty c}">
-									<c:if test="${c.profile==''}">
+									<c:if test="${empty c.profile}">
 										<div><img alt="" src="${ctx}/resources/images/chef.png"></div>
 									</c:if>
-									<c:if test="${c.profile!=''}">
+									<c:if test="${not empty c.profile}">
 										<div><img alt="" src="${ctx}${c.profile}"></div>
 									</c:if>
 										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
@@ -230,7 +230,8 @@
 	                  spans[1].textContent=comments[i].regDate;
 	                  p.textContent = comments[i].content;
 	                  
-	                  if(comments[i].profile !="")
+	                  
+	                  if(comments[i].profile != undefined)
 	                  	img.src="${ctx}"+comments[i].profile;
 	                  else
 	                	  img.src="${ctx}/resources/images/chef.png";

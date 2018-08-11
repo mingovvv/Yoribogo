@@ -42,8 +42,18 @@ public class HbMemberDao implements MemberDao{
 		Session session = sessionFactory.getCurrentSession();
 		
 		Member member = session.get(Member.class, id);
-		
 		return member;
+	}
+
+	//프로필 수정
+	@Override
+	public int update(Member member) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.saveOrUpdate(member);
+		
+		return 1;
 	}
 
 	/*@Transactional

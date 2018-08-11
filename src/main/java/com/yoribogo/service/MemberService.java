@@ -49,6 +49,17 @@ public class MemberService {
 		return member;
 	}
 
+	//프로필 수정
+	@Transactional
+	public int updateProfile(Member member) {
+		
+		int result = memberDao.update(member);
+		
+		return result;
+		
+		
+	}
+
 
 	/*public Member getMemberId(Member id) {
 		

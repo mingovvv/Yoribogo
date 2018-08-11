@@ -152,5 +152,14 @@ public class RecipeService {
 		return readCount;
 		
 	}
+
+	//댓글수
+	@Transactional
+	public int getCommentCount(Integer recipeId) {
+		
+		int commentCount = recipeCommentDao.getCommentCount(recipeId);
+		return commentCount;
+	}
+
 	
 }

@@ -17,7 +17,7 @@
 		<div class="content">
 			<div class="signin-cont cont">
 				<form method="post" enctype="multipart/form-data" id="form">  <!-- enctype="multipart/form-data" -->
-					<input type="text" id="id" class="inpt" required="required" placeholder="your id"> 
+					<input type="text" id="id" class="inpt" required="required" placeholder="your id" autocomplete=off> 
 					<!-- <input type="button" class="checkbtn" style="width:100px; height:30px;" value="check"> -->
 					<div class="check-id">*영문,숫자 포함  4~12자</div>
 					                                     
@@ -86,6 +86,7 @@ function readURL(input) {
  
 $("#file").change(function(){
     readURL(this);
+    
 });
 </script>
 

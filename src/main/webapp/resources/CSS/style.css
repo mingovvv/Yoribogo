@@ -1430,6 +1430,7 @@ margin-left: 20px;
 .entrance-container{
 	min-height: 800px;
 	background: #f8f8f8;
+	margin-top: -230px;
 }
 .entrance-container .profile{
 	margin-top: 125px;
@@ -1495,6 +1496,7 @@ margin-left: 20px;
 .modify-member.show{
 	top: 120px;
 	transition:500ms;
+	border: 2px solid pink;
 
 }
   

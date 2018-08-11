@@ -161,12 +161,10 @@ public class MemberController {
 		
 		service.insertMember(member);
 		
-		System.out.println(model);
+		model.addAttribute("msg", "회원가입이 완료되었습니다 :)"); 
+		model.addAttribute("url", "index");
 		
-		PrintWriter out = response.getWriter();
-		out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='login';</script>");
-		
-		return "index";
+		return "result";
 
 	}
 	
