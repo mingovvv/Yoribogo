@@ -12,7 +12,7 @@
 				<input type="button" class="btn" value="change-style"/>
 			</form>
 		</div>         
-		<!-- 게시글 디폴트 형식 -->      
+		<!-- 게시글 디폴트 형식 -->
 		<section id="community-section">
 			<div class="community-main">        
 				<div class="member-info">
@@ -23,12 +23,61 @@
 					<div class="reg-date">regdate</div>
 					<div class="content">
 						<div class="content-img"></div>
-						<div class="content-text">안녕하세요 요리보고 장민규 사장님의 동생 황상진입니다. 잘 부탁드려요~~ 제가만든 요리입니다~</div>
-					</div>	
-				</div>
-				<!-- more 클릭 시 css auto로 확장, 댓글섹션 생성 -->
-				<section class="comment-section">
-				<!-- foreach로 댓글 모두 불러올 것. -->
+						<div class="content-text">제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다~제가만든 요리입니다$#%$%^$^$%^~~~!@#!@#!@#!@#!@#!@#~~~~~~~~$^$^$%^$%^~~~~~~~~~</div>
+					</div>	                
+				</div>       
+			</div>   
+			
+		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ댓글ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+		<section class="comment-section">    
+		<div class="reply-window">
+			<h1 class="hidden">댓글 창</h1>
+			<p style="color: #5fcad4">댓글 <span style="color: #5fcad4"></span></p>
+						<div class="cut">
+							<c:forEach var="c" items="${recipe.comments}">
+								<c:if test="${not empty c}">
+									<c:if test="${c.profile==''}">
+										<div><img alt="" src="${ctx}/resources/images/chef.png"></div>
+									</c:if>
+									<c:if test="${c.profile!=''}">
+										<div><img alt="" src="${ctx}${c.profile}"></div>
+									</c:if>
+										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
+										<p>${c.content} </p>
+								</c:if>
+							</c:forEach>
+							<c:if test="${empty recipe.comments}">
+								<span style="font-size: 15px; text-align: center; color: #928686; margin-bottom: 20px; display: block;">소중한 첫번째 댓글의 기회를 잡으세요 :)</span>
+							</c:if>
+						</div>
+		</div>		
+		
+			
+				
+				<template id="comment-template">
+						<div><img src=""></div>
+						<span class="aa"></span>  <span class="bb"></span> 
+						<p></p>
+				</template>
+
+		<section class="comment-form" id="comment-form">
+         <form action="${recipe.id}/comment/reg/" method="post">
+            <div>
+               <label class="hidden">댓글</label>
+               <textarea cols="48" rows="5" name="content" placeholder="댓글을 남겨주세요 :)"></textarea>
+            </div>
+            <div>
+               <input type="submit" value="등록" class="btn" />
+            </div>
+         </form>
+      </section>
+   
+   		</section>
+      	     
+			           
+				<!-- <section class="comment-section" style="display: none;">      
+				<div>Hello more!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</div>               
+				foreach로 댓글 모두 불러올 것.           
 					<div class="comment-main">
 						<div class="comment-profile"></div>
 						<div class="comment-content">
@@ -41,21 +90,22 @@
 							</div>
 						</div>
 					</div>
-				<!-- 댓글 입력 구현(ajax post) -->	
+				
 					<div class="comment-reg">
 						<div class="input-text"></div>
 						<div class="reg-btn"></div>
 					</div>
-				</section>
-			</div>
+				</section> -->
+				
+				
 			<!-- 하단 more버튼, 클릭 반복시 이모티콘 바뀐다. -->	
 			<div class="community-more">
-				<div class="more-icon"></div>
+				<input class="more-icon" type="button"></input>
 				<div class="comment">
 					<div>icon</div>
 					<span>cnt</span>        
-				</div>
-			</div>	        
+				</div>      
+			</div>
 		</section>
 		<!-- 게시글 style 버튼에 디폴트(숫자로 페이지이동) -->
 		<div class="next"></div>
@@ -64,5 +114,92 @@
 	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){                        
+	//0.text가 채워진 만큼만 community-main 확장할 수 있도록 한다.(o)
+	$('#community-section').css('height','400px');
+	$('.comment-section').hide();
+	$('.more-icon').click(function(){
+		$('.comment-section').toggle();      
+		if($('.more-icon').attr('id') == null){
+			$('.more-icon').attr('id','recover');
+			$('#community-section').css({'min-height':'400px','height':'auto'});
+			$('.community-main').attr('class','more-community-main');
+			//content-main > (reg-date/content) > (content-img/content-text)
+			$('.content-main').attr('class','more-content-main');
+				$('.reg-date').attr('class','more-reg-date');
+				$('.content').attr('class','more-content');
+					$('.content-text').attr('class','more-content-text');
+		} else{
+			$('.more-icon').removeAttr('id');   
+			$('#community-section').css({'min-height':'0px','height':'396px'});  
+			$('.community-main').attr('class','more-community-main');
+			$('.more-content-main').attr('class','content-main');
+				$('.more-reg-date').attr('class','reg-date');
+				$('.more-content').attr('class','content');
+					$('.more-content-text').attr('class','content-text');
+		}
+	});              
+	
+	//	$('.more-icon').unbind();                  
+		//$('.').attr('class','more-icon');            
+		//$('.comment-section').css({'display':'none','transition':'600ms'});
+		//$('#community-section').css({'height':'400px','transition':'600ms'});
+		//$('.more-community-main').attr('class','community-main');
+		//$('.more-content-main').attr('class','content-main');
+		//	$('.more-reg-date').attr('class','reg-date');
+		//	$('.more-content').attr('class','content');
+		//		$('.more-content-text').attr('class','content-text');
+	//});   
+});
+</script>
+<!-- <script>
+   
+   $(function(){
+      var submitButton  = $(".comment-form input[type='submit']");
+      var commentView  = $(".reply-window .cut");
+      
+      submitButton.click(function(e){
+         e.preventDefault();
+		
+         var data = $(".comment-form form").serialize();
+         console.log(data);//data에는 내가 입력한 댓글의 내용이 들어간다
+         $.post("${community.id}/comment/reg", data, function(result){ //result에는 결과값 1이 들어가 있따
+        	 console.log(result);
+               if(parseInt(result)==1){
+            	   
+            	   //&getjson 사용
+            	   $.getJSON("${community.id}/ajax-comment-list", function(comments){
+            		
+            		   
+            		commentView.empty();
+                  
+                  //1) template 얻어오기
+                  var template = document.querySelector('#comment-template');
+                  
+                  
+                  
+                  for(var i=0; i < comments.length; i++ ){
+	                  var cloneLi = document.importNode(template.content, true);
+	                  var spans = cloneLi.querySelectorAll("span");
+	                  var p = cloneLi.querySelector("p");
+	                  var img = cloneLi.querySelector("img")
+	                  
+	                  
+                	  spans[0].textContent=comments[i].memberId;
+	                  spans[1].textContent=comments[i].regDate;
+	                  p.textContent = comments[i].content;
+	                  
+	                  if(comments[i].profile !="")
+	                  	img.src="${ctx}"+comments[i].profile;
+	                  else
+	                	  img.src="${ctx}/resources/images/chef.png";
+	                  commentView.get(0).appendChild(cloneLi);
+                  } 
+                   
+            	   });
+               }
+         });
+      });
+   });
 
-  </script>
+</script> -->

@@ -1523,7 +1523,6 @@ margin-left: 20px;
 #community-section{
 	display: flex;
 	flex-direction:column;
-	height:400px;
 	width:100%;
 	align-self: center;
 	border: 0.5px solid black;
@@ -1532,22 +1531,31 @@ margin-left: 20px;
 	#community-section .community-main{
 		display: flex;
 		flex-direction: row;
-		height:93%;             
+		height:371px;             
 		width:100%;
 		padding: 3px;
 		border: 0.5px solid black;		
 	}
-		.community-main .member-info{
+	.more-community-main{
+		display: flex;
+		flex-direction: row;
+		min-height:330px;
+		height:auto;             
+		width:100%;
+		padding: 3px;
+		border: 0.5px solid black;
+	}
+		.member-info{
 			display: flex;
 			flex-direction:column;
 			border: 0.5px solid black;
-			padding-right:3px;
-			margin-top:5%;      
+			padding-right:3px;     
 			width:20%;    
 		}               
 			.member-info .member-img{
-				padding-top: 100%;
-				border-radius:100%;
+				margin:6px;
+				padding-top: 50%;
+				border-radius:100px;
 				align-content:center;
 				border: 0.5px solid black;
 			}   
@@ -1568,35 +1576,71 @@ margin-left: 20px;
 			width:80%;
 			padding:1px;
 			border: 0.5px solid black;
-		}                
+		}       
+		.more-content-main{
+			display: flex;
+			flex-direction:column;                
+			width:80%;
+			padding:1px;
+			border: 0.5px solid black;
+		}    
 			.content-main .reg-date{
-				height:6%;
+				height:27px;
 				text-align:right;
 				padding-right:4px;                 
 				border: 0.5px solid black;
-			}    
+			} 
+			.more-reg-date{
+				height:27px;
+				text-align:right;
+				padding-right:4px;                 
+				border: 0.5px solid black;
+			}   
 			.content-main .content{
 				display: flex;
 				flex-direction:column;
 				align-items:center;
-				height:94%;
+				height:334px;
 				width:100%;
 				border: 0.5px solid black;
 			}
-				.content .content-img{
-					height:80%;
+			.more-content{
+				display: flex;
+				flex-direction:column;
+				align-items:center;
+				min-height:330px;
+				height:auto;
+				width:100%;
+				border: 0.5px solid black;
+			}       
+				.content-img{
+					height:220px;
 					width:90%;
 					border-radius:5px;
 					border: 0.5px solid black;
 				}
+				
 				.content .content-text{
-					height:20%;
+					font-size:75%;
+					height:113px;
 					width:90%;
-					text-overflow:ellipsis;
+					word-break:break-word;
+					overflow:hidden;
+					/* text-overflow:ellipsis; */
 					border: 0.5px solid black;
 				}
-		.community-main .comment-section{
-		
+				.more-content-text{
+					min-height:113px;
+					height:auto;
+					font-size:75%;
+					width:90%;
+					word-break:break-word;
+					overflow:hidden;
+					/* text-overflow:ellipsis; */
+					border: 0.5px solid black;
+				}
+		.comment-section{
+					border: 0.5px solid black;
 		}
 			.comment-section .comment-main{
 			}
@@ -1621,16 +1665,20 @@ margin-left: 20px;
 				.comment-reg .reg-btn{
 				}
 	#community-section .community-more{
-		height:7%;
+		height:28px;
 		display: flex;
 		flex-direction: row;
-	}
-	
-		.community-more .more-icon{
-			height:100%;
-			width:80%;
-			border: 0.5px solid black;
-		}
+	}       
+			.more-icon{
+				height:100%;
+				width:80%;
+				border: 0.5px solid black;
+			}
+			.recover-icon{
+				height:100%;
+				width:80%;
+				border: 0.5px solid black;
+			}
 		.community-more .comment{
 			display:flex;
 			flex-direction:row;           
