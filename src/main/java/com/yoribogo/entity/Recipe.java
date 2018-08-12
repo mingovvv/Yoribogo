@@ -28,9 +28,12 @@ public class Recipe {
 	private Date regDate;
 	private String memberId;
 	
+
+	@Column(insertable=false) 
+	private int readCount;
 	
 	
-	@Transient 
+	@Transient//DB에 저장하지 않는 속성을 의미함 ex) 패스워드 확인
 	private List<RecipeComment> comments;
 	
 	public Recipe() {
@@ -52,6 +55,14 @@ public class Recipe {
 		this.memberId = memberId;
 	}
 
+	public int getReadCount() {
+		return readCount;
+	}
+	
+	public void setReadCount(int readCount) {
+		this.readCount = readCount;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -136,7 +147,8 @@ public class Recipe {
 	public String toString() {
 		return "Recipe [id=" + id + ", title=" + title + ", description=" + description + ", representativeImage="
 				+ representativeImage + ", sortNational=" + sortNational + ", sortTime=" + sortTime + ", sortSituation="
-				+ sortSituation + ", ggulTip=" + ggulTip + ", regDate=" + regDate + ", memberId=" + memberId + "]";
+				+ sortSituation + ", ggulTip=" + ggulTip + ", regDate=" + regDate + ", memberId=" + memberId
+				+ ", readCount=" + readCount + ", comments=" + comments + "]";
 	}
 
 	public List<RecipeComment> getComments() {
@@ -150,6 +162,11 @@ public class Recipe {
 
 	public String getMemberId(Integer id2) {
 		return memberId;
+	}
+
+	public int intValue() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

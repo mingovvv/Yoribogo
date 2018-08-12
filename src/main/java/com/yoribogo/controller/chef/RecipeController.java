@@ -5,12 +5,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
@@ -32,6 +33,8 @@ import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.entity.RecipeLike;
 import com.yoribogo.service.chef.RecipeService;
+
+import antlr.StringUtils;
 
 @Controller("ChefRecipeController")
 @RequestMapping("/chef/recipe/")
@@ -55,7 +58,6 @@ public class RecipeController {
 		
 		System.out.println("recipeLike : "+recipeLike);
 		
-		//실험2
 		
 		
 		return "chef.recipe.list";
@@ -66,7 +68,9 @@ public class RecipeController {
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
 								@PathVariable("id") Integer recipeId,
-								Principal principal) { //파라미터 말고 주소 url때문에
+								Principal principal,
+								HttpServletRequest req,
+								HttpServletResponse res) { //파라미터 말고 주소 url때문에
 		
 		String memberId = principal.getName();
 		
@@ -87,9 +91,50 @@ public class RecipeController {
 		List<RecipeLike> recipeLike = service.getRecipeLike(memberId);
 		model.addAttribute("recipeLike",recipeLike);
 		
+		//--------------------------------------------------------------------------------------
+		//좋아요 숫자(디테일페이지)
 		int likeCount = service.getLikeCount(recipeId);
 		model.addAttribute("likeCount",likeCount);
 		
+		//--------------------------------------------------------------------------------------
+		//쿠키사용 조회수 확인하기
+		 boolean isGet=false;
+		 int readCount = 0;
+		  Cookie[] cookies=req.getCookies();
+		  System.out.println("쿠키의 갯수 : "+cookies.length);
+		  if(cookies!=null){   
+		   for(Cookie c: cookies){//    
+			   System.out.println("존재하는 쿠키의 이름 : "+c.getName());
+			   System.out.println("존재하는 쿠키의 값 : "+c.getValue());
+		    //id 쿠키가 있는 경우
+		    if(c.getName().equals(String.valueOf(id))){
+		    	System.out.println("쿠키가 존재합니다");
+		    	System.out.println("해당게시물의 쿠키의 이름 : "+c.getName());
+		    	System.out.println("해당게시물의 쿠키의 값 : "+c.getValue());
+		    	
+		     isGet=true; 
+		    }
+		   }
+		   
+		   // id 쿠키가 없는 경우
+		   if(!isGet) {
+			   System.out.println("쿠키가 없습니다. 생성하겠습니다");
+			readCount = service.getReadCount(recipeId); // 조회수 1 올리는 로직
+		    Cookie c1 = new Cookie(String.valueOf(id), String.valueOf(id)); 
+		    c1.setMaxAge(1*24*60*60);//하루저장
+		    res.addCookie(c1);    
+		   }
+		  }
+		
+		  model.addAttribute("readCount",readCount);
+		  
+		//--------------------------------------------------------------------------------------
+		//댓글 갯수
+		
+		  int commentCount = service.getCommentCount(recipeId);
+		  model.addAttribute("commentCount",commentCount);
+		  
+				
 		return "chef.recipe.detail";
 		
 	}
@@ -102,9 +147,8 @@ public class RecipeController {
 		@ResponseBody
 		@RequestMapping("{id}/ajax-comment-list")
 		public String ajaxList(
-					@PathVariable("id") Integer recipeId
-				  	, @RequestParam(value="p", defaultValue="1") Integer page
-				  	){
+					@PathVariable("id") Integer recipeId,
+				  	@RequestParam(value="p", defaultValue="1") Integer page){
 			
 			List<RecipeComment> comments = service.getRecipeCommentListByNote(page, recipeId);
 			
@@ -128,15 +172,16 @@ public class RecipeController {
 			//댓글 프로필 사진 DB에 업로드
 			Member memberRep = service.getMember(memberId);
 			
+			System.out.println("memberRep : " + memberRep);
+			
 			comment.setProfile(memberRep.getPhoto()); 
 			comment.setMemberId(memberId);
 			comment.setRecipeId(recipeId);
 			
-			System.out.println(comment);
+			System.out.println("comment : "+comment);
 				
 			
 			int result =  service.addComment(comment);
-			
 			return String.valueOf(result); //문자열에 대한 원시데이터형을 리턴
 			
 		}
@@ -144,19 +189,7 @@ public class RecipeController {
 	
 	
 	
-		//좋아요 작업-------------------------------------------------------------------------------
 	
-		/*@GetMapping("{id}/like")
-		public String like(@PathVariable("id") Integer recipeId
-															, Principal principal
-															, Model model) {
-			
-			String memberId = principal.getName();
-			service.setRecipeLike(recipeId, memberId);
-			
-			return "redirect:../list";
-			
-		}*/
 	
 		//좋아요 ajax
 		@ResponseBody
@@ -176,27 +209,6 @@ public class RecipeController {
 			return json;
 	
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -336,6 +348,7 @@ public class RecipeController {
 	  				} catch (IOException e) {
 	  					// TODO Auto-generated catch block
 	  					e.printStackTrace();
+	  					
 	  				}
 	  			}
 	  			

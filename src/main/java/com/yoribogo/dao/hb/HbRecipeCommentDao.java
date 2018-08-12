@@ -68,4 +68,18 @@ public class HbRecipeCommentDao implements RecipeCommentDao {
 		return result; //result값은 무조건 1이 반환
 	}
 
+	//댓글 수
+	@Override
+	public int getCommentCount(Integer recipeId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		int count = ((Long)session
+				.createQuery("select count(*) from RecipeComment where recipeId=:recipeId")
+				.setParameter("recipeId",recipeId)
+				.uniqueResult()).intValue();
+		
+		return count;
+	}
+
 }

@@ -55,6 +55,21 @@ public class HbRecipeDao implements RecipeDao{
 		
 		return recipe;
 	}
+
+	//조회수(디테일 페이지)
+	@Override
+	public int getReadCount(Integer recipeId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query query = session.createQuery("update Recipe set readCount = readCount +1 where id =:recipeId")
+				.setParameter("recipeId", recipeId); 
+		
+		int readCount = query.executeUpdate();
+		//업데이트가 되면 +1이 증가됨 int 변수 안에는 증가한 값 1이 들어감
+		//1을 리턴하면 업데이트가 완료 된것.
+		return readCount;
+		
+	}
 	
 	
 	

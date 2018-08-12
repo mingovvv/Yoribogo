@@ -143,4 +143,23 @@ public class RecipeService {
 		return likeCount;
 	}
 	
+	//조회수
+	@Transactional
+	public int getReadCount(Integer recipeId) {
+
+		int readCount = recipeDao.getReadCount(recipeId);
+		
+		return readCount;
+		
+	}
+
+	//댓글수
+	@Transactional
+	public int getCommentCount(Integer recipeId) {
+		
+		int commentCount = recipeCommentDao.getCommentCount(recipeId);
+		return commentCount;
+	}
+
+	
 }

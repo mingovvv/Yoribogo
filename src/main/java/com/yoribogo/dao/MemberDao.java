@@ -9,6 +9,9 @@ public interface MemberDao {
 
 	Member get(String memberId);
 
+	//프로필 수정
+	int update(Member member);
+
 	/*Member getMemberId(Member id);*/
 
 

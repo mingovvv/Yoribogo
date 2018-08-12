@@ -30,7 +30,6 @@ public class RecipeComment {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public RecipeComment(int id, String memberId, String profile, String content, Date regDate, int recipeId,
 			Recipe recipe) {
 		super();

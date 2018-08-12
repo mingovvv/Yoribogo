@@ -12,6 +12,9 @@ public interface RecipeCommentDao {
 
 	List<RecipeComment> getListByRecipe(Integer id);
 
+	//댓글 수
+	int getCommentCount(Integer recipeId);
+
 
 
 

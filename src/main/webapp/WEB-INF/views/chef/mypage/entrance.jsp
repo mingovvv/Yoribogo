@@ -5,9 +5,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <main class="main">
+
+	<img src="${ctx}/resources/images/mypage_main(2).png" style="width: 100%">
 	<div class="entrance-container">
-		<img class="profile" src="${ctx}/resources/images/chef.png">
-		<p>min<img class="setting" src="${ctx}/resources/images/settings.png"></p>
+					<c:if test="${member.photo == null}">
+					<img class="profile" src="${ctx}/resources/images/chef.png">
+					</c:if>
+					
+					<c:if test="${member.photo != null}">
+					<img class="profile" src="${ctx}${member.photo}" style="border-radius:  195px;margin-top: 155px;" width="195px" height="195px">
+					</c:if> 
+		<p>${member.id}
+			<img class="setting" src="${ctx}/resources/images/settings.png">
+		</p>
 		
 		<div class="modify-member">
 			<img class="cancel-image" src="${ctx}/resources/images/remove-symbol.png">
@@ -21,12 +31,21 @@
 							<form method="post" enctype="multipart/form-data">
 								<div class = "l-box">
 								
+								<c:if test="${member.photo == null}">
 								<img id="photo"
-									src="${ctx}/resources/images/profile.png"
+									src="${ctx}/resources/images/chef.png"
 									style="width: 120px; height: 120px; margin-left: auto; margin-right: auto; border-radius: 60px" />
+								</c:if>
+								
+								<c:if test="${member.photo != null}">
+								<img id="photo"
+									src="${ctx}${member.photo}"
+									style="width: 120px; height: 120px; margin-left: auto; margin-right: auto; border-radius: 60px" />
+								</c:if> 
+								
 								</div>
 								<input id="file" style="border: none" type="file" name="file" class="inpt" > 
-								<span id="fixed-id" style="line-height: 10px;font-size: 20px;">min</span>
+								<span id="fixed-id" style="line-height: 10px;font-size: 20px;">${member.id}</span>
 								<input type="password" name="pwd" class="inpt" required="required" placeholder="Change Your password">
 								<input type="text" name="name" class="inpt" required="required" placeholder="Change Your name"> 
 								<input type="text" name="nickname" class="inpt" required="required" placeholder="Change Your nickname"> 
@@ -112,7 +131,7 @@
 		</div>
 	</div>
 </main>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
 <script>
 window.addEventListener("load", function(){
 	var settingButton = document.querySelector(".setting");
@@ -129,7 +148,25 @@ window.addEventListener("load", function(){
 		modifyMember.classList.remove("show");
 	}
 	
-	
 });
 </script>
+<script>
+function readURL(input) {
+	 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            $('#photo').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+ 
+$("#file").change(function(){
+    readURL(this);
+    console.log(this);
+});
 
+</script>
