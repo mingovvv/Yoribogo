@@ -160,6 +160,23 @@ public class RecipeService {
 		int commentCount = recipeCommentDao.getCommentCount(recipeId);
 		return commentCount;
 	}
+	
+	//mypage 내가 작성한 레시피
+	@Transactional
+	public List<Recipe> getRecipe(String memberId) {
+		
+		List<Recipe> list = recipeDao.getList(memberId);
+		
+		return list;
+	}
+
+	//mypage 내가 좋아요 누른 레시피
+	@Transactional
+	public List<Recipe> getLikeRecipe(String memberId) {
+		
+		List<Recipe> list = recipeDao.getLikeRecipe(memberId);
+		return list;
+	}
 
 	
 }

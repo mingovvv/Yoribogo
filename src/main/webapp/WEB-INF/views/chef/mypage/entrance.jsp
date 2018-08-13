@@ -84,24 +84,63 @@
 				<span>내가 작성한 레시피</span>
 						<section class="recipe-list">
 							<h1 class="hidden">레시피목록</h1>
-							<ul>
 							
-								<c:forEach begin="0" end="3">
-								
-									<li>
-										<div class = "frame">
-											<div><img src="${ctx}/resources/images/sample-images.png"></div>
-											<div>모두가 좋아하는 등갈비 </div>
-											<div>
-												<div>by 자취왕</div>
-												<div><a href="#"><img class="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
+								<c:if test="${empty recipe}">
+									<span class="fix"> 등록하신 레시피가 없습니다 :)</span><br />
+									<a href="${ctx}/chef/recipe/reg">
+									<span class="fix" style="font-size: 15px; color: #ff4b6a;"><b>레시피를 등록하기</b>
+									<img src="${ctx}/resources/images/pen.png">
+									</span>
+									</a>
+								</c:if>   
+
+								<c:if test="${not empty recipe}">
+							<ul>
+				
+			
+									<c:forEach var="recipe" items="${recipe}">
+				
+										<li>
+											<div class="frame">
+												<div>
+													<a href="${ctx}/chef/recipe/${recipe.id}"> <img
+														src="${ctx}${recipe.representativeImage}">
+													</a>
+												</div>
+												<div>${recipe.title}</div>
+												<div>
+													<div>${recipe.memberId}</div>
+													<div>
+				
+				
+														<c:set var="test" value="0" />
+				
+														<c:forEach var="recipeLike" items="${recipeLike}">
+															<c:if test="${recipeLike.recipeId == recipe.id}">
+																<c:set var="test" value="1" />
+															</c:if>
+														</c:forEach>
+				
+				
+														<c:if test="${test==1}">
+															<img class="like-button" name="${recipe.id}"
+																src="${ctx}/resources/images/like.png"
+																style="cursor: pointer;">
+														</c:if>
+														<c:if test="${test==0}">
+															<img class="like-button" name="${recipe.id}"
+																src="${ctx}/resources/images/unlike.png"
+																style="cursor: pointer;">
+														</c:if>
+													</div>
+												</div>
 											</div>
-										</div>
-									</li>
-									
-								</c:forEach>
-								
-							</ul>
+										</li>
+				
+									</c:forEach>
+			</ul>
+								</c:if>
+
 						</section>
 			</div>
 			<div class="like-recipe">
@@ -109,46 +148,117 @@
 						<section class="recipe-list">
 							<h1 class="hidden">레시피목록</h1>
 							<ul>
-							
-								<c:forEach begin="0" end="3">
-								
-									<li>
-										<div class = "frame">
-											<div><img src="${ctx}/resources/images/sample-images.png"></div>
-											<div>모두가 좋아하는 등갈비 </div>
-											<div>
-												<div>by 자취왕</div>
-												<div><a href="#"><img class="like-button" src="${ctx}/resources/images/unlike.png"></a></div>
+
+								<c:if test="${empty likeRecipe}">
+									<span> 즐겨찾기 하신 레시피가 없습니다 :) </span>
+								</c:if>
+								<c:if test="${not empty likeRecipe}">
+				
+				
+				
+									<c:forEach var="likeRecipe" items="${likeRecipe}">
+				
+										<li>
+											<div class="frame">
+												<div>
+													<a href="${ctx}/chef/recipe/${likeRecipe.id}"> <img
+														src="${ctx}${likeRecipe.representativeImage}">
+													</a>
+												</div>
+												<div>${likeRecipe.title}</div>
+												<div>
+													<div>${likeRecipe.memberId}</div>
+													<div>
+				
+				
+														<c:set var="test" value="0" />
+				
+														<c:forEach var="recipeLike" items="${recipeLike}">
+															<c:if test="${recipeLike.recipeId == likeRecipe.id}">
+																<c:set var="test" value="1" />
+															</c:if>
+														</c:forEach>
+				
+				
+														<c:if test="${test==1}">
+															<img class="like-button" name="${likeRecipe.id}"
+																src="${ctx}/resources/images/like.png"
+																style="cursor: pointer;">
+														</c:if>
+														<c:if test="${test==0}">
+															<img class="like-button" name="${likeRecipe.id}"
+																src="${ctx}/resources/images/unlike.png"
+																style="cursor: pointer;">
+														</c:if>
+													</div>
+												</div>
 											</div>
-										</div>
-									</li>
-									
-								</c:forEach>
-								
-							</ul>
+										</li>
+				
+									</c:forEach>
+								</c:if>
+
+			</ul>
 						</section>
 			</div>
 		</div>
 	</div>
 </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script type="text/javascript">
+  $(".like-button").click(function(){
+    var recipeId = $(this).attr('name')
+    
+    $.ajax({ // .like-button 버튼을 클릭하면 <새로고침> 없이 ajax로 서버와 통신하겠다.
+      type: "POST", // 데이터를 전송하는 방법을 지정
+      url: "${ctx}/chef/recipe/"+recipeId+"/like",
+      data: {"recipeId": recipeId}, // 서버로 데이터 전송시 옵션
+      dataType: "json", // 서버측에서 전송한 데이터를 어떤 형식의 데이터로서 해석할 것인가를 지정, 없으면 알아서 판단
+      // 서버측에서 전송한 Response 데이터 형식 (json)
+      
+      
+      success: function(data){ // 통신 성공시 - 동적으로 좋아요 갯수 변경, 유저 목록 변경
+        var selector = $("img[name="+recipeId+"]");
+        console.log(data);
+        
+      	if(selector.attr('src')=='/yoribogo/resources/images/like.png'){
+        	$("img[name="+recipeId+"]").attr("src","${ctx}/resources/images/unlike.png")
+        	alert("즐겨찾기에 삭제 하셨습니다");
+        console.log(selector.attr('src'));} 
+      	else//(selector.attr('src')=='/yoribogo/resources/images/unlike.png')
+        	{$("img[name="+recipeId+"]").attr("src","${ctx}/resources/images/like.png")   
+      		alert("즐겨찾기에서 추가 하셨습니다");
+        console.log(selector.attr('src'));}   
+       //$("#count-"+pk).html(response.like_count+"개");
+        //var users = $("#like-user-"+pk).text();
+        //if(users.indexOf(response.nickname) != -1){
+        //  $("#like-user-"+pk).text(users.replace(response.nickname, ""));
+        //}else{
+        //  $("#like-user-"+pk).text(response.nickname+users);
+        //}      
+      },
+      error: function(request, status, error){ // 통신 실패시 - 로그인 페이지 리다이렉트
+        alert("통신실패")
+      },
+    });      
+  })
+</script>
 <script>
-window.addEventListener("load", function(){
-	var settingButton = document.querySelector(".setting");
-	var profileButton = document.querySelector(".profile");
-	var modifyMember = document.querySelector(".modify-member");
-	var cancelButton = document.querySelector(".cancel-image");
-	
+	window.addEventListener("load", function() {
+		var settingButton = document.querySelector(".setting");
+		var profileButton = document.querySelector(".profile");
+		var modifyMember = document.querySelector(".modify-member");
+		var cancelButton = document.querySelector(".cancel-image");
 
-	settingButton.onclick=function(){
-		modifyMember.classList.add("show");
-	}
-	
-	cancelButton.onclick=function(){
-		modifyMember.classList.remove("show");
-	}
-	
-});
+		settingButton.onclick = function() {
+			modifyMember.classList.add("show");
+		}
+
+		cancelButton.onclick = function() {
+			modifyMember.classList.remove("show");
+		}
+
+	});
 </script>
 <script>
 function readURL(input) {

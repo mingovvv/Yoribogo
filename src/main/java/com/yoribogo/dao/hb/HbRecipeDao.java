@@ -70,6 +70,34 @@ public class HbRecipeDao implements RecipeDao{
 		return readCount;
 		
 	}
+
+	//mypage 내가 작성한 글
+	@Override
+	public List<Recipe> getList(String memberId) {
+
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("from Recipe where memberId =:memberId",Recipe.class)
+														.setParameter("memberId", memberId);
+		
+		List<Recipe> list = query.getResultList();
+		
+		return list;
+	}
+
+	//mypage 내가 좋아요 누른 레시피
+	@Override
+	public List<Recipe> getLikeRecipe(String memberId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("from Recipe where id in (select recipeId from RecipeLike where memberId =:memberId)",Recipe.class)
+				.setParameter("memberId", memberId);
+
+		List<Recipe> list = query.getResultList();
+		
+		return list;
+	}
 	
 	
 	

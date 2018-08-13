@@ -30,6 +30,7 @@ public class YoribogoLoginFailureHandler implements AuthenticationFailureHandler
 
 		System.out.println("로그인 실패");
 		response.sendRedirect("/yoribogo/member/login"); 
+		authentication.getMessage();
 		
 	}
 }

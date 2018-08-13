@@ -1460,7 +1460,7 @@ margin-left: 20px;
     display: block;
     color: yellowgreen;
     font-weight: bolder;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid #bfbaba;
     margin-left: 20px;
     margin-right: 20px;
     line-height: 65px;
@@ -1505,6 +1505,11 @@ margin-left: 20px;
     position: absolute;
     top: 10px;
     cursor: pointer;
+}
+
+.fix{
+	text-align: center;
+	display: block;
 }
     
 /* --------------join--------------------------------- */
