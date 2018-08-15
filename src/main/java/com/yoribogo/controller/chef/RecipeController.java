@@ -71,6 +71,7 @@ public class RecipeController {
 								HttpServletResponse res) { //파라미터 말고 주소 url때문에
 		
 		String memberId = principal.getName();
+		model.addAttribute("loginId",memberId);
 		
 		Recipe recipe = service.getRecipe(id);
 		model.addAttribute("recipe",recipe);
@@ -228,11 +229,13 @@ public class RecipeController {
 	@PostMapping("reg")
 	public String reg(FoodOrder foodOrder, MultipartFile file[], Recipe recipe, Principal principal, Ingredient ingredient, HttpServletRequest request) {
 		
-		System.out.println("recipe ="+recipe);
-		System.out.println("foodOrder ="+foodOrder);
-		String memberId = principal.getName();
+		System.out.println("recipe 는 "+recipe);
+		System.out.println("foodOrder 는 "+foodOrder);
+		System.out.println("ingredient 는 "+ingredient);
 		
-		System.out.println("로그인한 아이디 = "+memberId);
+		String memberId = principal.getName();
+		System.out.println("당신의 로그인 아이디 = "+memberId);
+		
 		recipe.setMemberId(memberId);
 		
 		
@@ -257,11 +260,13 @@ public class RecipeController {
 	    
 	    
 		
+	    System.out.println("파일1"+file[0]);
 		
 	    
 	    
 	    if(!file[0].isEmpty()) {
 			try {
+				System.out.println("동작가능?");
 				String fname = file[0].getOriginalFilename();  
 				System.out.println(fname);
 				

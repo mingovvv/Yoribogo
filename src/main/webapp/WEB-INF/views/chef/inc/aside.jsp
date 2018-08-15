@@ -7,9 +7,14 @@
 		<nav>
 			<h1 class="hidden">간편조작 버튼</h1>
 			<ul>
-				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></a></li>
+				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></li>
 				<li class="write-button"><a href="${ctx}/chef/recipe/reg"><img src="${ctx}/resources/images/write.png" /></a></li>
-				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></a></li>
+				
+					<%-- <c:if test="${recipe.memberId==loginId}"> --%>
+						<li class="edit-button"><a href="${ctx}/chef/recipe/edit"><img src="${ctx}/resources/images/edit-icon.png" /></a></li>
+					<%-- </c:if> --%>
+				
+				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></li>
 			</ul>
 		</nav>
 		
@@ -32,6 +37,7 @@
 window.addEventListener("load", function(){
 	var plusButton = document.querySelector(".plus-button");
 	var writeButton = document.querySelector(".write-button");
+	var editButton = document.querySelector(".edit-button");
 	var timerButton = document.querySelector(".timer-button");
 	var timer =document.querySelector(".timer");
 	
@@ -39,10 +45,12 @@ window.addEventListener("load", function(){
 		if(writeButton.classList.contains("show")==false){
 			writeButton.classList.add("show");
 			timerButton.classList.add("show");
+			editButton.classList.add("show");
 		}
 		else{
 			writeButton.classList.remove("show");
 			timerButton.classList.remove("show");
+			editButton.classList.remove("show");
 		}
 	}
 	
