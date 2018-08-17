@@ -175,16 +175,16 @@ a:visited { color: white; text-decoration: none;}
 
 
 
-
 .add-memu ul li:hover,
-.add-memu ul li:focus,
-.add-memu ul li:active {
+.add-memu ul li a:focus,
+.add-memu ul li a:active {
 	letter-spacing: 5px;
+	color:#8afbf8;
 }
 .add-memu ul li:after,
 .add-memu ul li:before {
-	border: 1px solid rgba(255, 255, 255, 0);
-	bottom: 0;
+	border: 3px solid rgba(255, 255, 255, 0);
+	bottom: 9px;
 	content: " ";
 	display: block;
 	margin: 0 auto;
@@ -195,7 +195,7 @@ a:visited { color: white; text-decoration: none;}
 }
 .add-memu ul li:hover:after,
 .add-memu ul li:hover:before {
-	border-color: #fff;
+	border-color: #8afbf8;
 	-webkit-transition: width 350ms ease-in-out;
 	transition: width 350ms ease-in-out;
 	width: 100%;
@@ -1006,6 +1006,11 @@ body .container .content .signup-cont {
  }
  
  /* ★reg */
+ 
+#noplz{
+	margin-bottom: 100px;
+}
+ 
 *:focus {
     outline: none;
 } 
@@ -1033,6 +1038,10 @@ body .container .content .signup-cont {
  	padding: 10px;
  	border: 3px solid #252525;
  	text-align: center;
+ }
+ 
+ .reg-frame.edit >div{
+	 background: #e6e6e6;
  }
  
  .reg-frame > div >span{
@@ -1090,6 +1099,13 @@ body .container .content .signup-cont {
 } 
  
  
+.add-ingredient .ingre-ex{
+	font-size: 12px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #5d5959;
+    font-weight: 600;
+}
 
 .add-ingredient .btn-cancel{
 	position: relative;
@@ -1255,7 +1271,7 @@ float: right;
  }
  
  .using-ingredient span{
-    margin-top: 15px;
+    margin-top: 20px;
     display: inline-block;
     width: 49%;
     text-align: center;
@@ -1273,8 +1289,7 @@ float: right;
  	margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 250px;
-    height: 200px;
+    width: 80%;
  }
  
  .step-order span{
@@ -1549,6 +1564,16 @@ margin-left: 20px;
 	border-style:solid;
 }
 
+.ingadd.editv,
+.orderadd.editv{
+	box-shadow:inset #ffffff 0px 5px 8px -1px,#de97ae 1px 5px 2px;
+	o-box-shadow:inset #ffffff 0px 5px 8px -1px,#de97ae 1px 5px 2px;
+	-moz-box-shadow:inset #ffffff 0px 5px 8px -1px,#de97ae 1px 5px 2px;
+	-webkit-box-shadow:inset #ffffff 0px 5px 8px -1px,#7977ec 1px 5px 2px;
+	text-shadow: #5f638e -1px -1px 0px;
+	color: #969ada;
+}
+	
 .ingadd:active,
 .orderadd:active{
 	box-shadow:inset #ffffff 0px 5px 8px -1px,#de97ae 1px 0 2px;

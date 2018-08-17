@@ -2,10 +2,10 @@ package com.yoribogo.service.chef;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yoribogo.dao.FoodOrderDao;
 import com.yoribogo.dao.IngredientDao;
@@ -49,7 +49,6 @@ public class RecipeService {
 	@Transactional
 	public void insertingredient(Ingredient ingredient) {
 		ingredientDao.insert(ingredient);
-		System.out.println("서비스 단 : " + ingredient);
 	}
 	
 	@Transactional
@@ -176,6 +175,25 @@ public class RecipeService {
 		
 		List<Recipe> list = recipeDao.getLikeRecipe(memberId);
 		return list;
+	}
+	
+	//recipe update
+	
+	@Transactional
+	public void updateRecipe(Recipe recipe) {
+		recipeDao.update(recipe);
+		
+	}
+	
+	@Transactional
+	public void deleteIngredient(Integer recipeId) {
+		recipeDao.deleteIngredient(recipeId);
+	}
+	
+	@Transactional
+	public void deleteFoodOrder(Integer recipeId) {
+		recipeDao.deleteFoodOrder(recipeId);
+		
 	}
 
 	

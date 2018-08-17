@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 
 	<aside class="chef-aside">
@@ -10,10 +11,11 @@
 				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></li>
 				<li class="write-button"><a href="${ctx}/chef/recipe/reg"><img src="${ctx}/resources/images/write.png" /></a></li>
 				
-					<%-- <c:if test="${recipe.memberId==loginId}"> --%>
-						<li class="edit-button"><a href="${ctx}/chef/recipe/edit"><img src="${ctx}/resources/images/edit-icon.png" /></a></li>
-					<%-- </c:if> --%>
-				
+				 <c:if test="${checkDetail==2}"> 
+					 <c:if test="${recipe.memberId==loginId}"> 
+						<li class="edit-button"><a href="${recipe.id}/edit"><img src="${ctx}/resources/images/edit-icon.png" /></a></li>
+					 </c:if> 
+				 </c:if> 
 				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></li>
 			</ul>
 		</nav>

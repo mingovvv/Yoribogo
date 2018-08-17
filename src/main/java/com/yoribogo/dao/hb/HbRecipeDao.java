@@ -2,7 +2,7 @@ package com.yoribogo.dao.hb;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yoribogo.dao.RecipeDao;
+import com.yoribogo.entity.FoodOrder;
+import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Recipe;
 
 @Repository
@@ -97,6 +99,35 @@ public class HbRecipeDao implements RecipeDao{
 		List<Recipe> list = query.getResultList();
 		
 		return list;
+	}
+
+	//recipe update
+	@Override
+	public void update(Recipe recipe) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.saveOrUpdate(recipe);
+		
+	}
+	
+
+	@Override
+	public void deleteIngredient(Integer recipeId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.createQuery("delete Ingredient where recipeId=:recipeId")
+				.setParameter("recipeId", recipeId).executeUpdate();
+		
+		
+	}
+
+	@Override
+	public void deleteFoodOrder(Integer recipeId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.createQuery("delete FoodOrder where recipeId=:recipeId")
+				.setParameter("recipeId", recipeId).executeUpdate();
+		
 	}
 	
 	
