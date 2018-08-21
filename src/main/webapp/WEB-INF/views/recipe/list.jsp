@@ -92,8 +92,9 @@
 				
 					</c:forEach>
 				
-</ul>
+			</ul>
 		</section>
+		
 	</main>
 
 <script>

@@ -195,6 +195,11 @@ public class RecipeService {
 		recipeDao.deleteFoodOrder(recipeId);
 		
 	}
+	@Transactional
+	public void deleteRecipe(Integer recipeId) {
+		recipeDao.deleteRecipe(recipeId);
+		
+	}
 
 	
 }

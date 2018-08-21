@@ -5,8 +5,15 @@
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 
 	<header class="header">
-		<h1><img src="${ctx}/resources/images/yoribogo.png" height="50px"></h1>
-
+	
+		<sec:authorize access="isAuthenticated()">	
+		<h1><a href="${ctx}/chef/index" style="z-index: 100"><img src="${ctx}/resources/images/yoribogo.png" height="50px"></a></h1>
+		</sec:authorize>
+		
+		<sec:authorize access="!isAuthenticated()">	
+		<h1><a href="${ctx}/index" style="z-index: 100"><img src="${ctx}/resources/images/yoribogo.png" height="50px"></a></h1>
+		</sec:authorize>
+		 
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
@@ -27,6 +34,7 @@
 					
 				</div>
 			</div>
+			
 		</form>
 		  
 	<!-- 로그인 되지 않았을때 -->	
@@ -37,7 +45,7 @@
 				<li><a href="${ctx}/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/recipe/list">Recipe</a></li>
 				<li><a href="${ctx}/community/list">Community</a></li>
-				<li>냉장고를 부탁해</li>
+				<li><a href="${ctx}/refrigerator/genie">냉장고를 부탁해</a></li>
 				<li>About us</li>
 			</ul>
 		</div>
@@ -63,7 +71,7 @@
 				<li><a href="${ctx}/chef/index" style="color: #49c5b6">Home</a></li>
 				<li><a href="${ctx}/chef/recipe/list">Recipe</a></li>
 				<li><a href="${ctx}/chef/community/list">Community</a></li>
-				<li><a href="#">냉장고를 부탁해</a></li>
+				<li><a href="${ctx}/refrigerator/genie">냉장고를 부탁해</a></li>
 				<li><a href="#">About us</a></li>
 				<li><a href="${ctx}/logout">Log-Out</a></li>
 			</ul>

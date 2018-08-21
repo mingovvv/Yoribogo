@@ -229,6 +229,9 @@
                   var template = document.querySelector('#comment-template');
                   
                   
+            	   
+			
+			
                   
                   for(var i=0; i < comments.length; i++ ){
 	                  var cloneLi = document.importNode(template.content, true);

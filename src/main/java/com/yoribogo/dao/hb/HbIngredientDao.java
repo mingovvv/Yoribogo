@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.yoribogo.dao.IngredientDao;
 import com.yoribogo.entity.Ingredient;
+import com.yoribogo.entity.Recipe;
 @Repository
 public class HbIngredientDao implements IngredientDao{
 
@@ -38,6 +39,20 @@ public class HbIngredientDao implements IngredientDao{
 		Query<Ingredient> query = session.createQuery("from Ingredient where recipeId=:recipeId",Ingredient.class)
 				.setParameter("recipeId", recipeId);
 		List<Ingredient> ingredients = query.getResultList();
+		return ingredients;
+	}
+
+	//지니  
+	@Override
+	public List<Ingredient> getIngridient(String[] list) {
+		System.out.println("여까진 오지?");
+		Session session = sessionFactory.getCurrentSession();
+		Query<Ingredient> query = session.createQuery("from Ingredient where fname in (:list)",Ingredient.class)
+				.setParameterList("list", list);
+		
+		List<Ingredient> ingredients = query.getResultList();
+		System.out.println("실험 : "+ingredients);
+		
 		return ingredients;
 	}
 

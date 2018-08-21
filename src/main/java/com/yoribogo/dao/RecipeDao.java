@@ -30,6 +30,11 @@ public interface RecipeDao {
 	//레시피 순서 삭제
 	void deleteFoodOrder(Integer recipeId);
 
+	void deleteRecipe(Integer recipeId);
+
+	//지니레시피
+	List<Recipe> getGenieRecipe(String[] list);
+
 
 
 

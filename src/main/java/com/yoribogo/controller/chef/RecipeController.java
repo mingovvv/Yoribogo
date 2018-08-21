@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -121,7 +122,7 @@ public class RecipeController {
 			   System.out.println("쿠키가 없습니다. 생성하겠습니다");
 			readCount = service.getReadCount(recipeId); // 조회수 1 올리는 로직
 		    Cookie c1 = new Cookie(String.valueOf(id), String.valueOf(id)); 
-		    c1.setMaxAge(1*24*60*60);//하루저장
+		    c1.setMaxAge(60);//1분저장 (악의적 조회수 올리기 제한)
 		    res.addCookie(c1);    
 		   }
 		  }
@@ -162,6 +163,9 @@ public class RecipeController {
 		
 		return "chef.recipe.edit";
 	}
+	
+
+	
 	
 	@PostMapping("{id}/edit")
 	public String edit(FoodOrder foodOrder,
@@ -368,11 +372,35 @@ public class RecipeController {
 		return "redirect:../"+recipeId;
 	}
 	
+	//레시피 삭제하기--------------------------------------------------------------------------------
 	
 	
+	@RequestMapping("{id}/delete")
+	public String delete(@PathVariable("id") Integer recipeId) {
+
+		service.deleteIngredient(recipeId);
+		service.deleteFoodOrder(recipeId);
+		service.deleteRecipe(recipeId);
+		
+		return "redirect:../list";
+	}
 	
-	
-	
+	/*@GetMapping("{id}/delete")
+	public String delete(FoodOrder foodOrder,
+								Recipe recipe,
+								Principal principal,
+								Ingredient ingredient,
+								@PathVariable("id") Integer recipeId){
+									
+		
+		
+		service.deleteIngredient(recipeId);
+		service.deleteFoodOrder(recipeId);
+		service.deleteRecipe(recipeId);
+		
+		return "chef.recipe.list";
+		
+	}*/
 	
 	
 	
@@ -404,6 +432,7 @@ public class RecipeController {
 												, @PathVariable("id") Integer recipeId
 												,Principal principal){
 			
+			System.out.println("여기서 이미 있냐?"+comment.getContent());
 			
 			String memberId = principal.getName();
 			
