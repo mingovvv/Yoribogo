@@ -83,6 +83,26 @@ public class MemberController {
           
           return result;
      }
+    /*@ResponseBody
+    @RequestMapping(value="login/checkMember", method=RequestMethod.POST)
+    public String CheckMember(@RequestBody Map<String, String> data, @RequestParam("memberPwd")Member pwd, Model model) {
+		
+		String memberId = data.get("memberId");
+		String memberPwd = data.get("memberPwd");
+    	String result = "";
+    	//비밀번호는 암호화 된 데이터를 비교해야 한다. 받은 비밀번호를 여기서 암호화 해야할까
+		//아이디와 비밀번호 동시에 받아낼 수 있는가.(requestParam 2)
+    	//프론트에서 받아온 비밀번호와 데이터베이스의 비밀번호를 비교하는 방법 ->Member 형식으로 받아왔다
+    	//아이디에 대한 비밀번호를 select하여 컨트롤러에서 비밀번호 비교->일치하면 성공반환
+    	Member memberPwd = service.getMemberPwd(memberId);
+    	if(memberPwd == pwd) {
+    		result = "OK";
+    	}
+    	else result = "NG";
+    	
+    	return result;
+    	
+    }*/
      
      
 	@PostMapping("join")
@@ -97,15 +117,14 @@ public class MemberController {
 		ServletContext ctx = request.getServletContext();
 		System.out.println(member.getId());
 		String fpath = "/resources/profiles/"+member.getId();
-	    String path = ctx.getRealPath(fpath); //물리경로
-	    
+	    String path = ctx.getRealPath(fpath); //물리경로    
 
 	    //String folder = ctx.getRealPath("/resources/profiles/");
-	    
+
 	   /* File filefolder = new File(folder);
 	    if(!filefolder.exists())
 	    	filefolder.mkdir();
-	    
+
 	    File filepath = new File(path);
 	    if(!filepath.exists())
 	    	filepath.mkdir();*/

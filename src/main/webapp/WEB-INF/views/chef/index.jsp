@@ -5,7 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <main class="main">
+<%-- <% Cookie[] cookie = request.getCookies();
+	if(cookie[0].getValue() == "ok"){
 		
+	}
+%> --%>
 		<div>
 			<p class="line"></p>
 		</div>
@@ -32,7 +36,7 @@
 			</ul>
 		</section>
 	</main>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
 window.addEventListener("load", function(){
 	/* var likeButton = document.querySelector("#like-button"); */
@@ -40,6 +44,10 @@ window.addEventListener("load", function(){
 	/* var likeButton = document.getElementsByClassName("like-button"); */
 	var likeButton = document.querySelectorAll(".like-button");
 	
+	if($.cookie('login') == "ok"){
+		alert("success");
+		$.cookie('login', null);
+	};
 	
     for(var i=0;i<likeButton.length;i++){
     	(function(m) {

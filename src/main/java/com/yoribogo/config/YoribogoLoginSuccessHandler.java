@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -52,11 +53,16 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 			if(savedReqeust != null) {
 				String returnUrl = savedReqeust.getRedirectUrl();
 				System.out.println(returnUrl);
+				Cookie cookie = new Cookie("login", "ok");
+				renponse.addCookie(cookie);
 				
 				redirectStrategy.sendRedirect(request, renponse, returnUrl);
 			}
 			else { //직접 로그인창으로 간 경우
 				
+				Cookie cookie = new Cookie("login", "ok");
+				renponse.addCookie(cookie);
+				System.out.println(renponse);
 				redirectStrategy.sendRedirect(request, renponse, "/chef/index");
 				
 				
@@ -78,7 +84,6 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 				}*/
 				//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------
 			}
-					
 					
 					/*
 					

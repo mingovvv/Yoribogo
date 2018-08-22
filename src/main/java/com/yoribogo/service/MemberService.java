@@ -60,6 +60,22 @@ public class MemberService {
 		
 	}
 
+	@Transactional
+	public Member getMemberPwd(String memberId) {
+		
+		Member memberPwd = memberDao.getMemberPwd(memberId);
+		
+		return memberPwd;
+	}
+
+	@Transactional
+	public Member getMember(String memberId) {
+		
+		Member member = memberDao.getMember(memberId);
+		
+		return member;
+	}
+
 
 	/*public Member getMemberId(Member id) {
 		

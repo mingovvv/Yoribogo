@@ -2,7 +2,11 @@ package com.yoribogo.controller.chef;
 
 import java.security.Principal;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +30,10 @@ public class HomeController {
 	@GetMapping("index")//최신버전 get까지가능
 	public String index(Integer page
 								, Model model
-								,Principal principal) {
-		
-		
+								,Principal principal
+								,HttpServletResponse response
+								,HttpServletRequest request) {
+		/*Cookie cookie = request.*/
 		String mId =principal.getName();
 		Member member = service.getMemberInfo(mId);
 		

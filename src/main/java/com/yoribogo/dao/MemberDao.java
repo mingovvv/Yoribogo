@@ -12,6 +12,10 @@ public interface MemberDao {
 	//프로필 수정
 	int update(Member member);
 
+	Member getMemberPwd(String memberId);
+
+	Member getMember(String memberId);
+
 	/*Member getMemberId(Member id);*/
 
 

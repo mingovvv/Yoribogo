@@ -1518,7 +1518,7 @@ margin-left: 20px;
 	margin-bottom: 10px;
 	margin-top:-10px;
 }
-/*----------------community-list----------------------*/
+/*----------------community-list/reg----------------------*/
 .community-view-style-btn{
 	
 }             
@@ -1526,6 +1526,15 @@ margin-left: 20px;
 	display: flex;
 	flex-direction:column;
 	width:100%;
+	align-self: center;
+	border: 0.5px solid black;
+	padding:0px;
+}
+#reg-section{
+	display: flex;
+	flex-direction:column;
+	width:100%;
+	height:auto;
 	align-self: center;
 	border: 0.5px solid black;
 	padding:0px;
@@ -1547,29 +1556,56 @@ margin-left: 20px;
 		padding: 3px;
 		border: 0.5px solid black;
 	}
-		.member-info{
+		.member-info{  
 			display: flex;
 			flex-direction:column;
+			align-items: center;
 			border: 0.5px solid black;
 			padding-right:3px;     
 			width:20%;    
-		}               
-			.member-info .member-img{
+		}
+		.reg-member-info{
+			display: flex;
+			flex-direction:row;
+			border: 0.5px solid black;
+			height:120px;     
+			width:100%;
+		}
+			.reg-member-img{
 				margin:6px;
-				padding-top: 50%;
+				width:90px;
+				height:90px;
+				/* padding-top: 30%; */
 				border-radius:100px;
 				align-content:center;
 				border: 0.5px solid black;
+			}      
+			.reg-member-id{
+				display:flex;
+				flex-direction:column;
+				height:100%;
+				width:70%;
+				align-items:center;
+				justify-content:center;
+				border: 0.5px solid black;
+			}               
+			.member-info .member-img{
+				margin:6px;  
+				/* padding-top: 50%; */
+				width:45px;
+				height:45px;
+				border-radius:100px;
+				/* align-content:center; */
+				border: 0.5px solid black;
 			}   
-			.member-info .member-id{
+			.member-id{
 				font-size:160%;
-				height:15%;
-				width:100%;
+				height:100%;
+				width:55%;
 				text-align:center;
 				text-overflow:ellipsis;
 				overflow:hidden;
-				justify-content:center;
-				margin-top:10px;
+				justify-content:center; 
 				border: 0.5px solid black;
 			}
 		.community-main .content-main{
@@ -1579,6 +1615,14 @@ margin-left: 20px;
 			padding:1px;
 			border: 0.5px solid black;
 		}       
+		.reg-content-main{
+			display: flex;
+			flex-direction:column;                
+			height:auto;
+			width:100%;
+			padding:1px;
+			border: 0.5px solid black;
+		}
 		.more-content-main{
 			display: flex;
 			flex-direction:column;                
@@ -1587,13 +1631,13 @@ margin-left: 20px;
 			border: 0.5px solid black;
 		}    
 			.content-main .reg-date{
-				height:27px;
+				height:60px;
 				text-align:right;
 				padding-right:4px;                 
 				border: 0.5px solid black;
 			} 
 			.more-reg-date{
-				height:27px;
+				height:60px;
 				text-align:right;
 				padding-right:4px;                 
 				border: 0.5px solid black;
@@ -1603,6 +1647,14 @@ margin-left: 20px;
 				flex-direction:column;
 				align-items:center;
 				height:334px;
+				width:100%;
+				border: 0.5px solid black;
+			}
+			.reg-content{
+				display: flex;
+				flex-direction:column;
+				align-items:center;
+				height:auto;
 				width:100%;
 				border: 0.5px solid black;
 			}
@@ -1621,6 +1673,12 @@ margin-left: 20px;
 					border-radius:5px;
 					border: 0.5px solid black;
 				}
+				.reg-content-img{
+					height:220px;
+					width:80%;
+					border-radius:5px;
+					border: 0.5px solid black;
+				}
 				
 				.content .content-text{
 					font-size:75%;
@@ -1630,6 +1688,13 @@ margin-left: 20px;
 					overflow:hidden;
 					/* text-overflow:ellipsis; */
 					border: 0.5px solid black;
+				}    
+				.reg-content-text{
+					font-size:75%;
+					height:120px;  
+					width:90%;
+					border: 0.5px solid black;
+					margin-bottom: 10px;
 				}
 				.more-content-text{
 					min-height:113px;
@@ -1693,3 +1758,9 @@ margin-left: 20px;
 			}
 			.community-more .comment .cnt{
 			}
+			
+.two-btn{
+	display:flex;  
+	flex-direction: row;
+	justify-content: center; 
+}

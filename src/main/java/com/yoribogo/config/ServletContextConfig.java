@@ -1,10 +1,12 @@
 package com.yoribogo.config;
 
 import javax.servlet.Filter;
+import javax.servlet.http.HttpFilter;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.web.server.header.HttpHeaderWriterWebFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -45,6 +47,7 @@ public class ServletContextConfig {
 	    resolver.setDefaultEncoding("utf-8");
 	    resolver.setMaxUploadSize(10485760);
 	    resolver.setMaxInMemorySize(10485760);
+	
 	    return resolver;
 	}
 	

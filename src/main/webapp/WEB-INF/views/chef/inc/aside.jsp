@@ -10,7 +10,7 @@
 				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></a></li>
 				<li class="write-button"><a href="${ctx}/chef/recipe/reg"><img src="${ctx}/resources/images/write.png" /></a></li>
 				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></a></li>
-			</ul>
+			</ul>    
 		</nav>
 		
 		<div class="timer">

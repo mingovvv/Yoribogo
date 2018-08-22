@@ -3,6 +3,7 @@ package com.yoribogo.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -32,15 +33,17 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	
+		/*---iframe 사용 위한 설정---*/
+		http.headers().frameOptions().disable();
+		/*-----인증 권한부여---------------------*/
 		http
 			.csrf().disable()
 			.authorizeRequests()//인증을 요청
-			//-----------------------------------
+			//------------------------------------------------------
 			.antMatchers("/*","/recipe/**","/member/**").permitAll()
 			.antMatchers("/resources/**").permitAll()
 			.antMatchers("/chef/**").hasRole("CHEF")//access("hasRole('AUTHOR') or hasRole('ADMIN')").hasRole("AUTHOR")
-			//-----------------------------------
+			//------------------------------------------------------
 			//.anyRequest().authenticated()//기본 설정(모든것을 다 막아버리기)
 			.and()
 		.formLogin()//로그인 폼 설정
@@ -58,8 +61,6 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 			.logoutSuccessUrl("/index")
 			.invalidateHttpSession(true);
 	}
-	
-	
 	
 	
 	/* 인증을 위한*/ 
