@@ -13,6 +13,7 @@
 
 
 html{ /* //바디보다 더 상위개념 */
+
 	height: 100%;
 }
 
@@ -183,15 +184,15 @@ a:visited { color: white; text-decoration: none;}
 }
 .add-memu ul li:after,
 .add-memu ul li:before {
-	border: 1px solid rgba(255, 255, 255, 0);
-	bottom: 0;
-	content: " ";
-	display: block;
-	margin: 0 auto;
-	position: relative;
-	-webkit-transition: all .28s ease-in-out;
-	transition: all .28s ease-in-out;
-	width: 0;
+	border: 3px solid rgba(255, 255, 255, 0);
+    bottom: 7px;
+    content: " ";
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    -webkit-transition: all .28s ease-in-out;
+    transition: all .28s ease-in-out;
+    width: 0;
 }
 .add-memu ul li:hover:after,
 .add-memu ul li:hover:before {
