@@ -61,7 +61,6 @@
 				<li class="ran-button">Random</li>
 			</ul>
 		</nav>
-		
  		<section class="recipe-list">  
 			<h1 class="hidden">레시피목록</h1>
 			<ul>

@@ -1,17 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 
+<sec:authorize access="isAuthenticated()">
 	<aside class="chef-aside">
 		<nav>
 			<h1 class="hidden">간편조작 버튼</h1>
 			<ul>
-				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></a></li>
+				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></li>
 				<li class="write-button"><a href="${ctx}/chef/recipe/reg"><img src="${ctx}/resources/images/write.png" /></a></li>
-				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></a></li>
+				
+				 <c:if test="${checkDetail==2}"> 
+					 <c:if test="${recipe.memberId==loginId}"> 
+						<li class="edit-button"><a href="${recipe.id}/edit"><img src="${ctx}/resources/images/edit-icon.png" /></a></li>
+					 </c:if> 
+				 </c:if> 
+				 
+				 <c:if test="${checkDetail==2}"> 
+					 <c:if test="${recipe.memberId==loginId}"> 
+						<li class="delete-button" value="${recipe.id}"><img src="${ctx}/resources/images/garbage-can.png" /></li>
+					 </c:if> 
+				 </c:if> 
+				 
+				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></li>
 			</ul>    
-		</nav>
+		</nav>  
 		
 		<div class="timer">
 			<input type="text" id="expireMin">
@@ -27,11 +43,30 @@
 		</div>
 		<img class="time-end" src="${ctx}/resources/images/cookcook.png">
 	</aside>
+</sec:authorize>
+
+<sec:authorize access="!isAuthenticated()">
+</sec:authorize>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(".delete-button").on("click", function(){
+	var message = confirm("해당 게시물을 삭제하시겠습니까?");
 	
+	var value = $(".delete-button").val();
+	
+	if(message){
+		location.replace(value+"/delete");
+	}
+});
+
+</script>	
 <script>
 window.addEventListener("load", function(){
 	var plusButton = document.querySelector(".plus-button");
 	var writeButton = document.querySelector(".write-button");
+	var editButton = document.querySelector(".edit-button");
+	var deleteButton = document.querySelector(".delete-button");
 	var timerButton = document.querySelector(".timer-button");
 	var timer =document.querySelector(".timer");
 	
@@ -39,10 +74,14 @@ window.addEventListener("load", function(){
 		if(writeButton.classList.contains("show")==false){
 			writeButton.classList.add("show");
 			timerButton.classList.add("show");
+			editButton.classList.add("show");
+			deleteButton.classList.add("show");
 		}
 		else{
 			writeButton.classList.remove("show");
 			timerButton.classList.remove("show");
+			editButton.classList.remove("show");
+			deleteButton.classList.remove("show");
 		}
 	}
 	

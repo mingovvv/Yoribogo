@@ -1,15 +1,13 @@
 package com.yoribogo.service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import com.yoribogo.dao.MemberDao;
 import com.yoribogo.dao.MemberRoleDao;
 import com.yoribogo.entity.Member;
-import com.yoribogo.entity.MemberRole;
 
 @Service
 public class MemberService {

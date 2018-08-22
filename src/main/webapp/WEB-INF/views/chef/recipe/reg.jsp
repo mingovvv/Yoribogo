@@ -4,18 +4,18 @@
 <c:set var="ctx" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<main class="main">
+<main class="main reg-main">
 	<form method="post" class="reg-form" enctype="multipart/form-data">
 		<div class="reg-frame">
 			<div>
 			<span>요리제목</span>
-			<input type="text" name="title" placeholder="ex)베이컨샌드위치 만들기" />
+			<input type="text" name="title" required="required" placeholder="&nbsp;ex)베이컨샌드위치 만들기" />
 			</div>
 			
 			<div>
 			<span>간단한 설명</span>
-			<textarea name="description" placeholder="레시피를 간단하게 소개해주세요 ex)문득 좋은 아이디어가 생각나서 창작요리를 해보았답니다~" style="resize: none;"></textarea>
-			</div>
+			<textarea required name="description" required="required" placeholder="&nbsp;레시피를 간단하게 소개해주세요 &#13;&#10;&#13;&#10;ex)문득 좋은 아이디어가 생각나서 창작요리를 해보았답니다~" style="resize: none;"></textarea>
+			</div> 
 			
 			<div>
 			<span>분류</span>
@@ -52,40 +52,50 @@
 			
 			</div>
 			
-			<div>
-  				  
-				<img id="photo_" name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif" style="width: 270px; height: 250px; cursor:pointer">
-				<input id="file_" style="border: none" type="file" name="file" class="inpt" onchange="document.getElementById('photo_').src = window.URL.createObjectURL(this.files[0])">
+			<div class="filebox">
+  				   
+
+				<img id="photo_" name="representativeImage" src="http://recipe.ezmember.co.kr/img/pic_none4.gif">
+  				 <input class="upload-name" value="파일선택" disabled="disabled"> 
+  				 <label for=file_>업로드</label> 
+  				 <input name="file" type="file" id="file_" class="upload-hidden" onchange="document.getElementById('photo_').src = window.URL.createObjectURL(this.files[0])"> 
 			
 			</div>
 			
+			   
 			<div class="add-ingredient">
-				<span>재료</span>
+				<span>재료</span><div class="ingre-ex">* 재료이름만 간단하게 적어주세요 :)</div>
 				<div class="box">
-					<input name="fname" type="text" placeholder="ex)돼지고기" />
-					<img class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
-				
+					<input id="ingredient_1" name="fname" type="text" placeholder="&nbsp;&nbsp;ex)돼지고기" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"/>
+					<img id="ingrdeient_del_1" class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
 				</div>
-				<input type="button" value="추가" />
+				
+				<input class="ingadd" type="button" value="재료추가" />
 			</div>
-			
-			<div class="recipe-order">
-				<span>요리순서</span>
-				<p><b style="font-size: 25px;">step 1</b></p>
-				<img class="btn-cancel" name="step-image-1" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
+			 
+			<div class="recipe-order">  
+				<span>요리순서</span> 
+				<div id="noplz">
+					<p>
+						<b class="stepCount" style="font-size: 25px;">step 1</b>
+					</p>
+					<img class="btn-cancel" name="step-image-1" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
+					
+					
+					<textarea required name="content"  placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
+					
+					
+					<div class="filebox">
+	
+					<img class="step-image" id="photo_0" src="http://recipe.ezmember.co.kr/img/pic_none2.gif">
+	  				 <input class="upload-name" value="파일선택" disabled="disabled"> 
+	  				 <label for="ex_filename1">업로드</label> 
+	  				 <input name="file" type="file" id="ex_filename1" class="upload-hidden" onchange="document.getElementById('photo_0').src = window.URL.createObjectURL(this.files[0])"> 
 				
-				
-				<textarea name="content"  placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
-				
-				
-				
-				<img id="photo_0" src="http://recipe.ezmember.co.kr/img/pic_none2.gif" style="width: 270px; height: 250px; cursor:pointer">
-				<input id="file_0" style="border: none" type="file" name="file" class="inpt" onchange="document.getElementById('photo_0').src = window.URL.createObjectURL(this.files[0])">
-				
-				<div class="recipe-box">
-				
+					</div>
 				</div>
-				<input type="button" value="추가" />
+				
+				<input class="orderadd" type="button" value="Step 추가" style="margin-top: 30px;"/>
 			</div>
 			
 			<div>
@@ -95,15 +105,15 @@
 		</div>
 		
 		<div class="button-container">
-			<input class="btn btn-ok" type="submit" value="글쓰기" />
+			<input id="submit" class="btn btn-ok" type="submit" value="글쓰기" />
 			<input class="btn btn-cancel" type="button" value="취소하기" />
 		</div>
 	
 	
 	</form>
 </main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(function(){
 	var addIngredientButton = $(".add-ingredient input[type=button]");
@@ -115,33 +125,83 @@ $(function(){
 	
 	var deleteButton = $(".btn-cancel");
 	
+	var Count =$(".stepCount").text().replace(/[^0-9]/gi,"");
 	
-	//var i=1;
+	var i=1;
 	addIngredientButton.click(function(){ 
-		//i++;
-		$("<input name=\"fname\" type=\"text\" placeholder=\"ex)돼지고기\" />").appendTo(box);
-		$("<img class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(box);
+		i++;
+		
+		$("	<div class=\"box\"><input id=\"ingredient_"+n+"\" name=\"fname\" type=\"text\" placeholder=\"&nbsp;&nbsp;ex)돼지고기\" onkeyup=\"noSpaceForm(this);\" onchange=\"noSpaceForm(this);\"/><img id=\"ingrdeient_del_"+n+"\" class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\"></div>	").insertBefore($(".ingadd"));
+	
 		
 	});
 	
 	var n=1;
+	var stepCount=$(".stepCount").text();
 	addRecipeOrderButton.click(function(){
-		n++;
-		$("<p><b style=\"font-size: 25px;\">step "+n+"</b></p>").appendTo(recipeBox);
-		$("<img class=\"btn-cancel\" name=\"step-image-"+n+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\">").appendTo(recipeBox);
-		$("<textarea name=\"content\" id= class= placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=resize: none></textarea>").css("width","270px").css("height","100px").appendTo(recipeBox);
-		$("<img id=\"photo_"+n+"\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\" style=\"width: 270px; height: 250px; cursor:pointer\">").appendTo(recipeBox);
-		$("<input id=\"file_"+n+"\" style=\"border: none\" type=\"file\" name=\"file\" class=\"inpt\" onchange=\"document.getElementById('photo_"+n+"').src = window.URL.createObjectURL(this.files[0])\">").appendTo(recipeBox);
+		/* n++; */
+		var m=parseInt($(".stepCount").last().text().replace(/[^0-9]/gi,""))+1;
+		
+		if(isNaN(m)==true)
+			m=1;
+		$("	<div id=\"noplz\"><p><b class=\"stepCount\" style=\"font-size: 25px;\">Step "+m+"</b></p><img class=\"btn-cancel\" name=\"step-image-"+m+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\"><textarea required name=\"content\"  placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=\"resize: none;\"></textarea><div class=\"filebox\"><img class=\"step-image\" id=\"photo_"+m+"\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\"><input class=\"upload-name\" value=\"파일선택\" disabled=\"disabled\"> <label for=\"ex_filename"+m+"\">업로드</label> <input name=\"file\" type=\"file\" id=\"ex_filename"+m+"\" class=\"upload-hidden\" onchange=\"document.getElementById('photo_"+m+"').src = window.URL.createObjectURL(this.files[0])\"> </div></div> ").insertBefore($(".orderadd"))
+		
 	});
 	
 	
-	deleteButton.click(function(){
-		$(box).children().remove();
+	$(document).on("click",".btn-cancel",function(){ //함수 바인딩
+		
+		
+		$(this).siblings().remove();
+		$(this).remove();
+		
+		for(var i=0; i<$(".stepCount").length;i++){
+			$(".stepCount").eq(i).text("Step "+(i+1));
+		}
+		
 	})
+	   
+	$(document).on("change",".upload-hidden",function(){
+		if(window.FileReader){  
+			var filename = $(this)[0].files[0].name; 
+			} else {
+				var filename = $(this).val().split('/').pop().split('\\').pop(); 
+				} 
+ 		$(this).siblings('.upload-name').val(filename); 
+	})
+	
+	
+	
 });
+
+	function noSpaceForm(obj) { // 공백사용못하게
+	    var str_space = /\s/;  // 공백체크
+	    if(str_space.exec(obj.value)) { //공백 체크
+	        alert("해당 항목에는 공백을 사용할수 없습니다. \n공백은 자동적으로 제거 됩니다. :)");
+	        obj.focus();
+	        obj.value = obj.value.replace(' ',''); // 공백제거
+	        return false;
+	    }
+	 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
+	}
+
 </script>
-		
-		
+	
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#submit').bind("click",function() 
+    { 
+        var imgVal = $('#file_').val(); 
+        if(imgVal=='') 
+        { 
+            alert("대표사진을 추가해주세요 :)"); 
+            return false; 
+        } 
+
+ 
+    }); 
+});
+</script> 		
 <script>
 
 /* alert($("input[name=file]").length); */

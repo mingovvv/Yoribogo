@@ -33,6 +33,9 @@
 				<li><img alt="" src="${ctx}/resources/images/tray2.png" style="border: 3px solid #3bb244"><span>${recipe.sortSituation}</span></li>
 			</ul>
 		
+		
+
+		
 		<div class="like-button-section">
 		
 		
@@ -57,9 +60,13 @@
 		<span>즐겨찾기 </span>
 		</div>
 		
-			<img class="quote" src="${ctx}/resources/images/quote-l.png" style="margin-right: 20px">  
-			<p class="detail-title">${recipe.title}</p>
-			<img class="quote" src="${ctx}/resources/images/quote-r.png" style="margin-left: 20px">
+			
+			<p class="detail-title">
+				<img class="quote" src="${ctx}/resources/images/quote-l.png" style="margin-right: 20px">  
+					${recipe.title}
+				<img class="quote" src="${ctx}/resources/images/quote-r.png" style="margin-left: 20px">
+			</p>
+			
 			<div class="content-wrapper"><p class="detail-content">${recipe.description}</p></div>
 		</div>
 		
@@ -77,7 +84,11 @@
 			<c:forEach var="foodOrder" items="${foodOrder}">
 			<span>Step ${foodOrder.chapter}</span>
 			<div>
+				<c:if test="${foodOrder.image=='null'}">
+				</c:if>
+				<c:if test="${foodOrder.image!='null'}">
 				<img src="${ctx}${foodOrder.image}">
+				</c:if>
 			</div>
 			<p>${foodOrder.content}</p>
 			</c:forEach>
@@ -215,6 +226,9 @@
                   var template = document.querySelector('#comment-template');
                   
                   
+            	   
+			
+			
                   
                   for(var i=0; i < comments.length; i++ ){
 	                  var cloneLi = document.importNode(template.content, true);

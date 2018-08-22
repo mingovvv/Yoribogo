@@ -24,12 +24,13 @@ public class Recipe {
 	private String sortTime;
 	private String sortSituation;
 	private String ggulTip;
-	@Column(insertable=false)
+	@Column(insertable=false,updatable=false)
 	private Date regDate;
+	@Column(updatable=false)
 	private String memberId;
 	
 
-	@Column(insertable=false) 
+	@Column(insertable=false,updatable=false) 
 	private int readCount;
 	
 	
