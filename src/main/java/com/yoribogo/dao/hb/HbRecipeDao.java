@@ -2,7 +2,7 @@ package com.yoribogo.dao.hb;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yoribogo.dao.RecipeDao;
+import com.yoribogo.entity.FoodOrder;
+import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Recipe;
 
 @Repository
@@ -97,6 +99,57 @@ public class HbRecipeDao implements RecipeDao{
 		List<Recipe> list = query.getResultList();
 		
 		return list;
+	}
+
+	//recipe update
+	@Override
+	public void update(Recipe recipe) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.saveOrUpdate(recipe);
+		
+	}
+	
+
+	@Override
+	public void deleteIngredient(Integer recipeId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.createQuery("delete Ingredient where recipeId=:recipeId")
+				.setParameter("recipeId", recipeId).executeUpdate();
+		
+	}
+
+	@Override
+	public void deleteFoodOrder(Integer recipeId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.createQuery("delete FoodOrder where recipeId=:recipeId")
+				.setParameter("recipeId", recipeId).executeUpdate();
+		
+	}
+
+	@Override
+	public void deleteRecipe(Integer recipeId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.createQuery("delete Recipe where id=:recipeId")
+				.setParameter("recipeId", recipeId).executeUpdate();
+		
+	}
+
+	@Override
+	public List<Recipe> getGenieRecipe(String[] list) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Query<Recipe> query = session.createQuery("from Recipe where id in (select recipeId from Ingredient where fname in (:list))",Recipe.class)
+				.setParameterList("list", list);
+		
+		List<Recipe> genieRecipe = query.getResultList();
+		System.out.println("실험 : "+genieRecipe);
+		
+		
+		return genieRecipe;
 	}
 	
 	

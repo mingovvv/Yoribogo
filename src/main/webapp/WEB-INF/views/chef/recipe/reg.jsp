@@ -9,12 +9,12 @@
 		<div class="reg-frame">
 			<div>
 			<span>요리제목</span>
-			<input type="text" name="title" placeholder="&nbsp;ex)베이컨샌드위치 만들기" />
+			<input type="text" name="title" required="required" placeholder="&nbsp;ex)베이컨샌드위치 만들기" />
 			</div>
 			
 			<div>
 			<span>간단한 설명</span>
-			<textarea name="description" placeholder="&nbsp;레시피를 간단하게 소개해주세요 &#13;&#10;&#13;&#10;ex)문득 좋은 아이디어가 생각나서 창작요리를 해보았답니다~" style="resize: none;"></textarea>
+			<textarea required name="description" required="required" placeholder="&nbsp;레시피를 간단하게 소개해주세요 &#13;&#10;&#13;&#10;ex)문득 좋은 아이디어가 생각나서 창작요리를 해보았답니다~" style="resize: none;"></textarea>
 			</div> 
 			
 			<div>
@@ -64,25 +64,25 @@
 			
 			   
 			<div class="add-ingredient">
-				<span>재료</span>
+				<span>재료</span><div class="ingre-ex">* 재료이름만 간단하게 적어주세요 :)</div>
 				<div class="box">
-					<input id="ingredient_1" name="fname" type="text" placeholder="&nbsp;&nbsp;ex)돼지고기" />
+					<input id="ingredient_1" name="fname" type="text" placeholder="&nbsp;&nbsp;ex)돼지고기" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"/>
 					<img id="ingrdeient_del_1" class="btn-cancel" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
 				</div>
 				
 				<input class="ingadd" type="button" value="재료추가" />
 			</div>
-			
-			<div class="recipe-order">
-				<span>요리순서</span>
-				<div>
+			 
+			<div class="recipe-order">  
+				<span>요리순서</span> 
+				<div id="noplz">
 					<p>
 						<b class="stepCount" style="font-size: 25px;">step 1</b>
 					</p>
 					<img class="btn-cancel" name="step-image-1" src="${ctx}/resources/images/ic_cancel_black_24dp_1x.png">
 					
 					
-					<textarea name="content"  placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
+					<textarea required name="content"  placeholder="예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요." style="resize: none;"></textarea>
 					
 					
 					<div class="filebox">
@@ -105,7 +105,7 @@
 		</div>
 		
 		<div class="button-container">
-			<input class="btn btn-ok" type="submit" value="글쓰기" />
+			<input id="submit" class="btn btn-ok" type="submit" value="글쓰기" />
 			<input class="btn btn-cancel" type="button" value="취소하기" />
 		</div>
 	
@@ -125,12 +125,13 @@ $(function(){
 	
 	var deleteButton = $(".btn-cancel");
 	
+	var Count =$(".stepCount").text().replace(/[^0-9]/gi,"");
 	
 	var i=1;
 	addIngredientButton.click(function(){ 
 		i++;
 		
-		$("	<div class=\"box\"><input id=\"ingredient_"+n+"\" name=\"fname\" type=\"text\" placeholder=\"&nbsp;&nbsp;ex)돼지고기\" /><img id=\"ingrdeient_del_"+n+"\" class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\"></div>	").insertBefore($(".ingadd"));
+		$("	<div class=\"box\"><input id=\"ingredient_"+n+"\" name=\"fname\" type=\"text\" placeholder=\"&nbsp;&nbsp;ex)돼지고기\" onkeyup=\"noSpaceForm(this);\" onchange=\"noSpaceForm(this);\"/><img id=\"ingrdeient_del_"+n+"\" class=\"btn-cancel\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\"></div>	").insertBefore($(".ingadd"));
 	
 		
 	});
@@ -138,16 +139,26 @@ $(function(){
 	var n=1;
 	var stepCount=$(".stepCount").text();
 	addRecipeOrderButton.click(function(){
-		n++;
+		/* n++; */
+		var m=parseInt($(".stepCount").last().text().replace(/[^0-9]/gi,""))+1;
 		
-		$("	<div><p><b class=\"stepCount\" style=\"font-size: 25px;\">step "+n+"</b></p><img class=\"btn-cancel\" name=\"step-image-"+n+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\"><textarea name=\"content\"  placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=\"resize: none;\"></textarea><div class=\"filebox\"><img class=\"step-image\" id=\"photo_"+n+"\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\"><input class=\"upload-name\" value=\"파일선택\" disabled=\"disabled\"> <label for=\"ex_filename"+n+"\">업로드</label> <input name=\"file\" type=\"file\" id=\"ex_filename"+n+"\" class=\"upload-hidden\" onchange=\"document.getElementById('photo_"+n+"').src = window.URL.createObjectURL(this.files[0])\"> </div></div> ").insertBefore($(".orderadd"))
+		if(isNaN(m)==true)
+			m=1;
+		$("	<div id=\"noplz\"><p><b class=\"stepCount\" style=\"font-size: 25px;\">Step "+m+"</b></p><img class=\"btn-cancel\" name=\"step-image-"+m+"\" src=\"${ctx}/resources/images/ic_cancel_black_24dp_1x.png\"><textarea required name=\"content\"  placeholder=\"예) 소고기는 기름기를 떼어내고 적당한 크기로 썰어주세요.\" style=\"resize: none;\"></textarea><div class=\"filebox\"><img class=\"step-image\" id=\"photo_"+m+"\" src=\"http://recipe.ezmember.co.kr/img/pic_none2.gif\"><input class=\"upload-name\" value=\"파일선택\" disabled=\"disabled\"> <label for=\"ex_filename"+m+"\">업로드</label> <input name=\"file\" type=\"file\" id=\"ex_filename"+m+"\" class=\"upload-hidden\" onchange=\"document.getElementById('photo_"+m+"').src = window.URL.createObjectURL(this.files[0])\"> </div></div> ").insertBefore($(".orderadd"))
 		
 	});
 	
 	
 	$(document).on("click",".btn-cancel",function(){ //함수 바인딩
+		
+		
 		$(this).siblings().remove();
 		$(this).remove();
+		
+		for(var i=0; i<$(".stepCount").length;i++){
+			$(".stepCount").eq(i).text("Step "+(i+1));
+		}
+		
 	})
 	   
 	$(document).on("change",".upload-hidden",function(){
@@ -160,12 +171,37 @@ $(function(){
 	})
 	
 	
+	
 });
 
+	function noSpaceForm(obj) { // 공백사용못하게
+	    var str_space = /\s/;  // 공백체크
+	    if(str_space.exec(obj.value)) { //공백 체크
+	        alert("해당 항목에는 공백을 사용할수 없습니다. \n공백은 자동적으로 제거 됩니다. :)");
+	        obj.focus();
+	        obj.value = obj.value.replace(' ',''); // 공백제거
+	        return false;
+	    }
+	 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
+	}
 
 </script>
-		
-		
+	
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#submit').bind("click",function() 
+    { 
+        var imgVal = $('#file_').val(); 
+        if(imgVal=='') 
+        { 
+            alert("대표사진을 추가해주세요 :)"); 
+            return false; 
+        } 
+
+ 
+    }); 
+});
+</script> 		
 <script>
 
 /* alert($("input[name=file]").length); */

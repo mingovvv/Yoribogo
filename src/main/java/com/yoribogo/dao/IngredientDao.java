@@ -9,6 +9,9 @@ public interface IngredientDao {
 	int insert(Ingredient ingredient);
 
 	List<Ingredient> get(Integer recipeId);
+
+	//지니
+	List<Ingredient> getIngridient(String[] list);
 	
 
 }

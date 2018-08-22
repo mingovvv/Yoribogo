@@ -21,6 +21,20 @@ public interface RecipeDao {
 	//mypage 내가 좋아요 누른 레시피
 	List<Recipe> getLikeRecipe(String memberId);
 
+	//recipe update
+	void update(Recipe recipe);
+
+
+	//레시피 재료 삭제
+	void deleteIngredient(Integer recipeId);
+	//레시피 순서 삭제
+	void deleteFoodOrder(Integer recipeId);
+
+	void deleteRecipe(Integer recipeId);
+
+	//지니레시피
+	List<Recipe> getGenieRecipe(String[] list);
+
 
 
 

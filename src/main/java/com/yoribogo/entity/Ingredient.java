@@ -1,5 +1,6 @@
 package com.yoribogo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ public class Ingredient {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(insertable=false)
 	private int id;
 	private String memberId;
 	private String fname;
