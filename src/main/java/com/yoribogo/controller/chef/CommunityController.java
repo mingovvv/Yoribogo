@@ -17,16 +17,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.yoribogo.entity.Community;
+import com.yoribogo.entity.CommunityComment;
 import com.yoribogo.entity.CommunityContents;
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
+import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.model.Editor;
 import com.yoribogo.service.MemberService;
 import com.yoribogo.service.chef.CommunityService;
@@ -48,33 +53,79 @@ public class CommunityController {
 //----------------------------------- list --------------------------------------------------
       @RequestMapping("list")
       public String list(@RequestParam(value="p", defaultValue="1")Integer page,
-    		  			 Model model,
-    		  			 Principal principal) {
-    	 String memberId = principal.getName();
+    		  			 Model model) {
+    	 
+    	 List<Community> list = service.getCommunity();
 
-    	/* Member member = mservice.getMember(memberId);
-    	 model.addAttribute("member", member);*/
+    	 model.addAttribute("communityList", list);
     	 
-    	 /*List<Community> community = service.getCommunity();
-    	 model.addAttribute("community", community);*/
-    	/*List<Recipe> recipe = rservice.getRecipe();
-    	 
-    	 model.addAttribute("recipe", recipe);*/
-    	 
+    	 //List<Commen>
          return "chef.community.list";
          
       }
       
-      /*------------------------편집기 이용한 싱글이미지업로더 -------------------------------*/
       
-      
-      
-      @RequestMapping(value="reg", method=RequestMethod.GET)
-      public String reg(Model model) {
-    	
-    	 //이전 페이지에서 memberId를 받아와야 한다.
+      @RequestMapping("list/commentList")
+      @ResponseBody
+      public String commentList(@RequestParam("listId") Integer listId) {
     	 
-    	  
+    	List<CommunityComment> commentList = service.getComment(listId);
+    	 
+    	 Gson gson = new Gson();
+    	 String json = gson.toJson(commentList);
+    	 
+    	 System.out.println(json);
+         return json;
+         
+      }
+    //댓글 겟
+      @ResponseBody
+      @RequestMapping("{id}/ajax-comment-list")
+    		public String ajaxList(
+    					@PathVariable("id") Integer listId){
+    			
+    			List<CommunityComment> comments = service.getComment(listId);
+    			
+    			System.out.println("comments : "+comments);
+    			Gson gson = new Gson();
+    			String json = gson.toJson(comments);
+    			System.out.println("json : "+json);
+    			return json;  
+    		}
+    		
+    		//댓글 포스트 
+    		@PostMapping("{id}/comment/reg")
+    		@ResponseBody //ajax로 결과값을 보여주는 형식을 사용하겠다. 모델도 빼자
+    		public String commentReg(CommunityComment comment
+    												, @PathVariable("id") Integer listId
+    												,Principal principal){
+    			
+    			//System.out.println("여기서 이미 있냐?"+comment.getContent());
+    			
+    			String memberId = principal.getName();
+    			
+    			//댓글 프로필 사진 DB에 업로드
+    			Member member = mservice.getMember(memberId);
+    			
+    			System.out.println("memberRep : " + member);
+    			//CommunityCommentView와 DB View를 만들어서 hb 대입할 것. 
+    			//comment.setProfile(member.getPhoto()); 
+    			comment.setMemberId(memberId);
+    			comment.setCommunityId(listId);
+    			
+    			System.out.println("comment : "+comment);
+				
+    			int result =  service.addComment(comment);
+    			return String.valueOf(result); //문자열에 대한 원시데이터형을 리턴
+    			
+    		}
+
+      @RequestMapping(value="reg", method=RequestMethod.GET)
+      public String reg(Model model, Principal principal, Member member) {
+    	
+    	 String memberId = principal.getName();
+    	 Member regInfo = mservice.get(memberId);
+    	 model.addAttribute("member", regInfo); 
          return "chef.community.reg";
          
       }
@@ -84,108 +135,18 @@ public class CommunityController {
       public String insert(MultipartFile file[], 
     		  			   Principal principal, 
     		  			   Community community,
-    		  			   /*CommunityContents subContents,*/
     		  			   HttpServletRequest request) {
     	  //memberId 담기
     	  String memberId = principal.getName();
-    	  
+    	  Member member = mservice.get(memberId);
     	  community.setMemberId(memberId);
-  /*-----------------------image 담기------------------------------*/
-    	  ServletContext ctx = request.getServletContext();
-  		
-  		  String fpath = "/resources/communityImage/"+memberId;
-
-   		  String path = ctx.getRealPath(fpath);
-  		
-  		
-  		File filepath = new File(path);
-  	    if(!filepath.exists())
-  	    	filepath.mkdirs();
-  	    
-  	    if(!file[0].isEmpty()) {
-  			try {
-  				String fname = file[0].getOriginalFilename();  
-  				
-  				community.setImage(fpath+'/'+fname);
-  				
-  				InputStream fis = file[0].getInputStream();
-  				
-  				FileOutputStream fos = new FileOutputStream(path + File.separator + fname); //File.separator 구분자 / \ 윈도우는 \ 유닉스는 / 니깐 둘중 골라주는놈 파일.세퍼레이톨
-  				
-  				byte[] buf = new byte[1024]; //버퍼 만들기
-  				
-  				int size = 0;
-  				
-  				while((size = fis.read(buf,0,1024)) != -1)
-  						fos.write(buf,0,size);
-  				
-  				fis.read(buf, 0, 1024);
-  				
-  				fis.close();
-  				fos.close();
-  				
-  			} catch (IOException e) {
-  				// TODO Auto-generated catch block
-  				e.printStackTrace();
-  			}
-  		}  
-  	  /*----------------content 담기-----------------*/  
+    	  community.setMemberPhoto(member.getPhoto());
+  
   	  String content = community.getContent();
   	  community.setContent(content);
-  	    
+  	  
   	  service.insertCommunity(community); 
-  	   
-  	  /*-----------subImage 담기 나중구현----------------------*/
-  	  /*String[] array = community.getContent().split(",");
-		
-		for(int i=1;i<file.length;i++) {
-			
-			String fpath2 = "/resources/communitySubImage/"+memberId+"/"+i;
-		    String path2 = ctx.getRealPath(fpath2);
-		    
-		    File filepath2 = new File(path2);
-		    if(!filepath2.exists())
-		    	filepath2.mkdirs();
-			
-			if(!file[i].isEmpty()) {
-				try {
-					String fname = file[i].getOriginalFilename();  
-					
-					community.setImage(fpath2+'/'+fname);
-					
-					InputStream fis = file[i].getInputStream();
-					
-					FileOutputStream fos = new FileOutputStream(path2 + File.separator + fname); //File.separator 구분자 / \ 윈도우는 \ 유닉스는 / 니깐 둘중 골라주는놈 파일.세퍼레이톨
-					
-					byte[] buf = new byte[1024]; //버퍼 만들기
-					
-					int size = 0;
-					
-					while((size = fis.read(buf,0,1024)) != -1)
-							fos.write(buf,0,size);
-					
-					fis.read(buf, 0, 1024);
-					
-					fis.close();
-					fos.close();
-					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					
-				}
-			}
-			//자동으로 id가 생성되는 것인가??로직상 위의 커뮤니티가 생성 된 후에 실행되기 때문에 문제없다.
-			
-			subContents.setSubContent(array[i-1]);
-			int communityId = community.getId();	
-  	  		subContents.setCommunityId(communityId);
-  	  		subContents.setIndex(0);
-			service.insertSubContents(subContents);
-	  		
-	  		-subcontent 담기-*/
-  	  	
-		
+
          return "redirect:../community/list";
          
       }

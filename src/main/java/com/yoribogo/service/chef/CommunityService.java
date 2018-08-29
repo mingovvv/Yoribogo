@@ -7,10 +7,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yoribogo.dao.CommunityContentsDao;
+import com.yoribogo.dao.CommunityCommentDao;
 import com.yoribogo.dao.CommunityDao;
 import com.yoribogo.dao.MemberDao;
 import com.yoribogo.entity.Community;
+import com.yoribogo.entity.CommunityComment;
 import com.yoribogo.entity.CommunityContents;
 
 
@@ -21,7 +22,7 @@ public class CommunityService {
 	private CommunityDao communityDao;
 	
 	@Autowired
-	private CommunityContentsDao contentDao;
+	private CommunityCommentDao commentDao;
 	
 	@Transactional
 	public List<Community> getCommunity() {
@@ -37,12 +38,19 @@ public class CommunityService {
 		communityDao.getInsert(community);
 		
 	}
-
+	
 	@Transactional
-	public void insertSubContents(CommunityContents subContents) {
+	public List<CommunityComment> getComment(Integer listId) {
 		
-		contentDao.getInsert(subContents);
+		List<CommunityComment>  commentList = communityDao.getCommentList(listId);
 		
+		return commentList;
+	}
+
+	public int addComment(CommunityComment comment) {
+		int result = commentDao.insert(comment);
+		
+		return result;
 	}
 
 }

@@ -2,6 +2,8 @@ package com.yoribogo.service;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,6 +74,21 @@ public class MemberService {
 		Member member = memberDao.getMember(memberId);
 		
 		return member;
+	}
+
+	@Transactional
+	public Member get(String memberId) {
+		
+		Member member = memberDao.get(memberId);
+		
+		return member;
+	}
+
+	@Transactional
+	public List<Member> getMember() {
+		
+		List<Member> list = memberDao.getList();
+		return list;
 	}
 
 

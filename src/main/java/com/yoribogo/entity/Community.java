@@ -17,11 +17,11 @@ public class Community {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String memberId;
-	private String image;
 	private String content;
 	@Column(insertable=false)
 	private Date regDate;
 	private int cnt;
+	private String memberPhoto;
 	
 	@Transient //값을 데이터에 저장하지 않으려는 경우에 사용됨
 	private List<CommunityComment> comments;
@@ -30,15 +30,15 @@ public class Community {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Community(int id, String memberId, String image, String content, Date regDate, int cnt,
+	public Community(int id, String memberId, String content, Date regDate, int cnt, String memberPhoto,
 			List<CommunityComment> comments) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
-		this.image = image;
 		this.content = content;
 		this.regDate = regDate;
 		this.cnt = cnt;
+		this.memberPhoto = memberPhoto;
 		this.comments = comments;
 	}
 
@@ -56,14 +56,6 @@ public class Community {
 
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public String getContent() {
@@ -90,6 +82,14 @@ public class Community {
 		this.cnt = cnt;
 	}
 
+	public String getMemberPhoto() {
+		return memberPhoto;
+	}
+
+	public void setMemberPhoto(String memberPhoto) {
+		this.memberPhoto = memberPhoto;
+	}
+
 	public List<CommunityComment> getComments() {
 		return comments;
 	}
@@ -100,8 +100,8 @@ public class Community {
 
 	@Override
 	public String toString() {
-		return "Community [id=" + id + ", memberId=" + memberId + ", image=" + image + ", content=" + content
-				+ ", regDate=" + regDate + ", cnt=" + cnt + ", comments=" + comments + "]";
+		return "Community [id=" + id + ", memberId=" + memberId + ", content=" + content
+				+ ", regDate=" + regDate + ", cnt=" + cnt + ", memberPhoto=" + memberPhoto +", comments=" + comments + "]";
 	}
 
 }

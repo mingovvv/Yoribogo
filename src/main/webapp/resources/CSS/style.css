@@ -1971,6 +1971,7 @@ margin-left: 20px;
 	align-self: center;
 	border: 0.5px solid black;
 	padding:0px;
+	margin: 20px 0px;  
 }
 #reg-section{
 	display: flex;
@@ -2044,11 +2045,11 @@ margin-left: 20px;
 				font-size:160%;
 				height:100%;
 				width:55%;
-				text-align:center;
+				text-align:left;  
 				text-overflow:ellipsis;
 				overflow:hidden;
 				justify-content:center; 
-				border: 0.5px solid black;
+				
 			}
 		.community-main .content-main{
 			display: flex;
@@ -2074,15 +2075,23 @@ margin-left: 20px;
 		}    
 			.content-main .reg-date{
 				height:60px;
+				display:flex;
+				flex-direction:row;
+				justify-content:space-between;  
+				align-items:flex-start;
 				text-align:right;
 				padding-right:4px;                 
-				border: 0.5px solid black;
+				
 			} 
-			.more-reg-date{
+			.more-reg-date{  
 				height:60px;
+				display:flex;
+				flex-direction:row;
+				justify-content:space-between;  
+				align-items:flex-start;
 				text-align:right;
 				padding-right:4px;                 
-				border: 0.5px solid black;
+				
 			}   
 			.content-main .content{
 				display: flex;

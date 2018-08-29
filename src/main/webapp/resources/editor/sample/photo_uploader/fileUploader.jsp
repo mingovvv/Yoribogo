@@ -57,7 +57,7 @@ if (ServletFileUpload.isMultipartContent(request)){
 			   		//파일 기본경로
 		    		String dftFilePath = request.getServletContext().getRealPath("/");
 		    		//파일 기본경로 _ 상세경로 주의하자.
-		    		String filePath = dftFilePath + "editor" + File.separator +"upload" + File.separator;
+		    		String filePath = dftFilePath + "resources" + File.separator + "editor" + File.separator +"upload" + File.separator;
 		    		
 		    		File file = null;
 		    		file = new File(filePath);
@@ -89,7 +89,7 @@ if (ServletFileUpload.isMultipartContent(request)){
 		    		return3 += "&bNewLine=true";
                                 // img 태그의 title 옵션에 들어갈 원본파일명
 		    		return3 += "&sFileName="+ name;
-		    		return3 += "&sFileURL=/editor/upload/"+realFileNm;
+		    		return3 += "&sFileURL=/yoribogo/resources/editor/upload/"+realFileNm;
 			   	}
 			}else {
 				  return3 += "&errstr=error";

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.yoribogo.dao.CommunityDao;
 import com.yoribogo.dao.MemberDao;
 import com.yoribogo.entity.Community;
+import com.yoribogo.entity.CommunityComment;
 
 
 @Service("CommunityService")

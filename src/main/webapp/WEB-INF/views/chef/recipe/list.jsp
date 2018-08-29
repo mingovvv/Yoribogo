@@ -79,7 +79,6 @@
 								<div>${recipe.memberId}</div>
 								<div> 
 								
-								   
 										<c:set var="test" value="0" />
 										
 										<c:forEach var="recipeLike" items="${recipeLike}">
