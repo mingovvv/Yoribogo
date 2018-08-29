@@ -35,9 +35,6 @@ public class CommunityController {
 	@Autowired
 	private MemberService mservice;
 	
-	@Autowired
-	private RecipeService rservice;
-	
 //----------------------------------- list --------------------------------------------------
       @RequestMapping("list")
       public String list(@RequestParam(value="p", defaultValue="1")Integer page,
@@ -52,90 +49,47 @@ public class CommunityController {
          
       }
       
-      
-      @RequestMapping("list/commentList")
+   
+    //편집기 content 겟
       @ResponseBody
-      public String commentList(@RequestParam("listId") Integer listId) {
-    	 
-    	List<CommunityComment> commentList = service.getComment(listId);
-    	 
-    	 Gson gson = new Gson();
-    	 String json = gson.toJson(commentList);
-    	 
-    	 System.out.println(json);
-         return json;
-         
-      }
+      @RequestMapping("/ajax-editorContents-list")
+    		public String editorContentsList(){
+    			
+    			List<Community> community = service.getCommunity();
+    			
+    			Gson gson = new Gson();
+    			String json = gson.toJson(community);
+    			//프론트로 보내어 ajax로 community.content[i] 루프 돌리자.
+    			return json;  
+    		}
+      
+    //편집기 listId content 겟  
+      @ResponseBody
+      @RequestMapping("{id}/ajax-editorContent-list")
+    		public String editorContentList(
+    				@RequestParam("id") Integer listId){
+    			
+    			Community community = service.get(listId);
+    			
+    			Gson gson = new Gson();
+    			String json = gson.toJson(community);
+    			System.out.println("json : "+json);
+    			//프론트로 보내어 more클릭 이벤트 안에서 데이터 뽑아넣자.
+    			return json;  
+    		}
+      
     //댓글 겟
       @ResponseBody
       @RequestMapping("{id}/ajax-comment-list")
     		public String ajaxList(
     					@PathVariable("id") Integer listId){
     			
-    			/*List<CommunityComment> comments = service.getComment(listId);
+    			List<CommunityComment> comments = service.getComment(listId);
     			
     			System.out.println("comments : "+comments);
     			Gson gson = new Gson();
     			String json = gson.toJson(comments);
-    			System.out.println("json : "+json);*/
-    			return "1";  
+    			System.out.println("json : "+json);
+    			return json;  
     		}
-    		
-    		//댓글 포스트 
-    		@PostMapping("{id}/comment/reg")
-    		@ResponseBody //ajax로 결과값을 보여주는 형식을 사용하겠다. 모델도 빼자
-    		public String commentReg(CommunityComment comment
-    												, @PathVariable("id") Integer listId
-    												,Principal principal){
-    			
-    			//System.out.println("여기서 이미 있냐?"+comment.getContent());
-    			
-    			String memberId = principal.getName();
-    			
-    			//댓글 프로필 사진 DB에 업로드
-    			Member member = mservice.getMember(memberId);
-    			
-    			System.out.println("memberRep : " + member);
-    			//CommunityCommentView와 DB View를 만들어서 hb 대입할 것. 
-    			//comment.setProfile(member.getPhoto()); 
-    			comment.setMemberId(memberId);
-    			comment.setCommunityId(listId);
-    			
-    			System.out.println("comment : "+comment);
-				
-    			//int result =  service.addComment(comment);
-    			return String.valueOf(1); //문자열에 대한 원시데이터형을 리턴
-    			
-    		}
-      
-      @RequestMapping(value="reg", method=RequestMethod.GET)
-      public String reg(Model model, Principal principal, Member member) {
-    	
-    	 String memberId = principal.getName();
-    	 Member regInfo = mservice.get(memberId);
-    	 model.addAttribute("member", regInfo); 
-         return "chef.community.reg";
-         
-      }
-      
-      
-      @RequestMapping(value="reg", method=RequestMethod.POST)
-      public String insert(MultipartFile file[], 
-    		  			   Principal principal, 
-    		  			   Community community,
-    		  			   HttpServletRequest request) {
-    	  //memberId 담기
-    	  String memberId = principal.getName();
-    	  Member member = mservice.get(memberId);
-    	  community.setMemberId(memberId);
-    	  community.setMemberPhoto(member.getPhoto());
-  
-  	  String content = community.getContent();
-  	  community.setContent(content);
-  	  
-  	  service.insertCommunity(community); 
-
-         return "redirect:../community/list";
-         
-      }
 }

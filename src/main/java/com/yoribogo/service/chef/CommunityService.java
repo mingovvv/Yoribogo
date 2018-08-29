@@ -46,11 +46,19 @@ public class CommunityService {
 		
 		return commentList;
 	}
-
+	@Transactional
 	public int addComment(CommunityComment comment) {
+		
 		int result = commentDao.insert(comment);
 		
 		return result;
+	}
+
+	public Community get(Integer listId) {
+		
+		Community community = communityDao.get(listId);
+		
+		return community;
 	}
 
 }

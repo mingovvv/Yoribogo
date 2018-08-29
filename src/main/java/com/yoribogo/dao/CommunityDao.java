@@ -14,4 +14,7 @@ public interface CommunityDao {
 
 	List<CommunityComment> getCommentList(Integer listId);
 
+	Community get(Integer listId);
+
+
 }

@@ -10,18 +10,18 @@
 	<form action="..." method="GET">
 		<input type="button" class="btn" value="change-style" />
 	</form>
-</div>    
-<!-- 게시글 디폴트 형식 --> 
+</div>
+
+
+<!-- 게시글 페이징 디폴트 --> 
 <ul>
   <c:forEach var="list" items="${communityList}" >
-	<li>
+	<li>      
 		<section id="community-section" class="${list.id}">
 			<div class="community-main">  
 				<div class="member-info">  
 					<div class="member-img">
 						<!-- 포이치에서 각각의 memberId에 해당하는 photo를 가져오는 방법 -->
-			
-							     
 							<c:if test="${list.memberPhoto != null}">
 								<img alt="" src="${ctx}${list.memberPhoto}" style="width:45px; height:45px; border-radius:100px;">
 							</c:if>
@@ -36,9 +36,16 @@
 						<div class="member-id">${list.memberId}</div>
 						<div>${list.regDate}</div>      
 					</div>
+					<!-- .content 포인팅 하고 -->
+					<!-- ajax로 .content json으로 불러와서 데이터 뽑아낸다 -->
+					<!-- 스마트 에디터의 첫번째 이미지 데이터와 첫번째 글의 200자만 on되었을때 ajax로 뿌려줄 것. -->
+					<!-- 스크립트로 이미지가 없다면 <div class="content-text" style="~~~">+텍스트200자+</> -->
+					<!-- 스크립트로 이미지가 존재하면 <div class="content-img"><img src=""></></>
+											  <div class="content-text">+텍스트200자+</> 추가-->
+					<!-- more 클릭 시 해당 게시글에 한해(listId) 추가적으로 배열에 담긴 데이터들을 담아올 것. -->
 					<div class="content">
-						<div class="content-img">여기에 이미지 태그만 파싱하여 가져오기(이미지 없는경우 텍스트만 노출)</div>
-						<div class="content-text">(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)</div>
+							<div class="content-img"><img src="">여기에 이미지 태그만 파싱하여 가져오기(이미지 없는경우 텍스트만 노출)</img></div>
+							<div class="content-text">(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)(타이틀로 넣은 텍스트 혹은 content에서 불러온 텍스트 200자)</div>
 					</div>
 				</div>
 			</div>
@@ -46,54 +53,33 @@
 			<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ댓글ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ --> 
 			<section class="comment-section" id="${list.id}">  
 			<div class="reply-window">
-				<h1 class="hidden">댓글 창</h1>
 				<p style="color: #5fcad4">
 					댓글 <span style="color: #5fcad4"></span>
 				</p>
 				<div class="cut">
-				<!-- -------------Comment-List--------------- -->
-					<c:forEach var="c" items="">
-						<c:if test="">
-							<c:if test="">
-								<div>
-									<img alt="" src="${ctx}/resources/images/chef.png">
-								</div>
-							</c:if>
-							<c:if test="">
-								<div>
-									<img alt="" src="">
-								</div>
-							</c:if>
-							<span class="aa"></span>
-							<span class="bb"></span>
-							<p></p>
-						</c:if>
-					</c:forEach>
-					
-					<c:if test="">
-						<span
-							style="font-size: 15px; text-align: center; color: #928686; margin-bottom: 20px; display: block;">소중한
-							첫번째 댓글의 기회를 잡으세요 :)</span>
-					</c:if>
+				<!-- -------------Comment-List--------------- -->	
+						
+				<!-- -------------Comment-List-end--------------- -->			
 				</div>
-			</div>
+			</div>  
+			
      		<template id="comment-template">
-			<div>
-				<img src="">
-			</div>
-			<span class="aa"></span> <span class="bb"></span>
-			<p></p>
+				<div>
+					<img src="">
+				</div>
+				<span class="aa"></span> <span class="bb"></span>
+				<p></p>
 			</template>
+	<!-- ----------------comment reg---------------------- -->
 			<section class="comment-form" id="comment-form">
-		<!-- ----------------comment reg---------------------- -->
-			<form action="${ctx}/chef/community/list/${list.id}/comment/reg" method="post">
-				<div>    
+			<form action="${ctx}/member/login" method="get">  
+				<div>        
 					<label class="hidden">댓글</label>
 					<textarea cols="48" rows="5" name="content"
-						placeholder="댓글을 남겨주세요 :)"></textarea>
+						placeholder="로그인 후 이용해 주세요 :)"></textarea>
 				</div>
 				<div>
-					<input type="submit" value="등록" class="btn" />
+					<input type="submit" value="로그인" class="btn" />
 				</div>
 			</form>
 			</section> 
@@ -150,41 +136,34 @@
 												$(this).parent().parent().children().eq(0).children().eq(1).children().eq(1).children().eq(1).attr(
 														'class',
 														'more-content-text');  
-      
+  
 												/*------------댓글 ajax로 리스트 가져오기-------------------  */
-												//1.통신
-												/*  $.ajax({
-															type : 'POST',
-															url : '/yoribogo/chef/community/list/commentList',
-															data : {
-																'listId' : listId
-															},    
-															dataType : 'json',  											
-															success : function(data) {
-
-																var results = data.commentList;
-													            var str = '<TR>';
-													             $.each(results , function(i){
-													                str += '<TD>' + results[i]. + '</TD><TD>' + results[i].bdWriter + '</TD><TD>' + results[i].bdRgDt + '</TD>';
-													                str += '</TR>';
-													           });  
-    
-															},
-															error : function(
-																	request,
-																	status,
-																	error) {
-																alert("code:"
-																		+ request.status
-																		+ "\n"
-																		+ "message:"
-																		+ request.responseText
-																		+ "\n"
-																		+ "error:"
-																		+ error);
-															}
-														}); */  
-     
+											    //("<span style="font-size: 15px; text-align: center; color: #928686; margin-bottom: 20px; display: block;">소중한 첫번째 댓글의 기회를 잡으세요 :)</span>")
+													$.getJSON(listId+"/ajax-comment-list", function(comments){
+														console.log(comments.length);  
+									            	if(comments.length == 0){    
+									            		$(commentView).html("<span style=\"font-size: 15px; text-align: center; color: #928686; margin-bottom: 20px; display: block;\">소중한 첫번째 댓글의 기회를 잡으세요 :)</span>");
+									            	}else{   
+													  var template = document.querySelector('#comment-template');
+													   
+									                  for(var i=0; i < comments.length; i++ ){
+									                	  var cloneLi = document.importNode(template.content, true);
+										                  var spans = cloneLi.querySelectorAll("span");
+										                  var p = cloneLi.querySelector("p")
+										                  var img = cloneLi.querySelector("img");
+										                    
+									                	  spans[0].textContent=comments[i].memberId; 
+									                	  spans[1].textContent=comments[i].regDate;
+										                  p.textContent = comments[i].content;
+										                        
+										                  if(comments[i].profile !="")
+										                  	img.src="${ctx}"+comments[i].profile;
+										                  else
+										                	  img.src="${ctx}/resources/images/chef.png";
+										                  commentView.get(0).appendChild(cloneLi);      
+									                 	 	}  
+									            		}  
+									            	   });  
 											} else {    
 												$(this).removeAttr('id');
 												$("#"+listId).slideToggle();
@@ -211,54 +190,3 @@
 						
 					});    
 </script>     
-<script>
-   
-   $(function(){
-      var submitButton  = $(".comment-form input[type='submit']");
-      var commentView  = $(".reply-window .cut");
-      
-      submitButton.click(function(e){
-         e.preventDefault();
-		
-         var data = $(".comment-form form").serialize();
-         console.log(data);//data에는 내가 입력한 댓글의 내용이 들어간다
-         $.post("${list.id}/comment/reg", data, function(result){ //result에는 결과값 1이 들어가 있따
-        	 console.log(result);
-               if(parseInt(result)==1){
-            	   
-            	   //&getjson 사용
-            	   $.getJSON("${list.id}/ajax-comment-list", function(comments){
-            		
-            		   
-            		commentView.empty();
-                  
-                  //1) template 얻어오기
-                  var template = document.querySelector('#comment-template');
-                  
-                  
-                  
-                  for(var i=0; i < comments.length; i++ ){
-	                  var cloneLi = document.importNode(template.content, true);
-	                  var spans = cloneLi.querySelectorAll("span");
-	                  var p = cloneLi.querySelector("p");
-	                  var img = cloneLi.querySelector("img")
-	                  
-	                  
-                	  spans[0].textContent=comments[i].memberId;
-	                  spans[1].textContent=comments[i].regDate;
-	                  p.textContent = comments[i].content;
-	                  
-	                  if(comments[i].profile !="")
-	                  	img.src="${ctx}"+comments[i].profile;
-	                  else
-	                	  img.src="${ctx}/resources/images/chef.png";
-	                  commentView.get(0).appendChild(cloneLi);
-                  } 
-                   
-            	   });
-               }
-         });
-      });
-   });
-      
-</script>

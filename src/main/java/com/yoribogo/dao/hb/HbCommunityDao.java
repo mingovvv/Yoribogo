@@ -49,7 +49,18 @@ public class HbCommunityDao implements CommunityDao{
 		
 		Query<CommunityComment> query = session.createQuery("from CommunityComment where communityId=:listId", CommunityComment.class).setParameter("listId", listId);
 		List<CommunityComment> list = query.getResultList();
+		
 		return list;
+	}
+	
+	@Transactional
+	@Override
+	public Community get(Integer id) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Community community = session.get(Community.class, id);
+		
+		return community;
 	}
 
 }

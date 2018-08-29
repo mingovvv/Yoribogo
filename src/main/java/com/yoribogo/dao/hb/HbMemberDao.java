@@ -55,19 +55,6 @@ public class HbMemberDao implements MemberDao{
 		return 1;
 	}
 
-
-	@Override
-	public Member getMemberPwd(String memberId) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		
-		Query<Member> query = session.createQuery("pwd from member where id=:memberId", Member.class).setParameter("id", memberId);
-		
-		Member memberPwd = query.getSingleResult();
-		
-		return memberPwd;
-	}
-
 	@Override
 	public Member getMember(String memberId) {
 		
@@ -88,31 +75,5 @@ public class HbMemberDao implements MemberDao{
 		List<Member> list = query.getResultList();
 		return list;
 	}
-
-	/*@Transactional
-	@Override
-	public Member getMemberId(Member id) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		 
-		Query<Member> query = session.createQuery("from member where id=:id", Member.class).setParameter("id", id);
-		
-		List<Member> list = query.getResultList();
-		
-		return (Member) list;
-	}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
 }

@@ -126,8 +126,6 @@
 							</c:if>
 						</div>
 		</div>		
-		
-			
 				
 				<template id="comment-template">
 						<div><img src=""></div>
