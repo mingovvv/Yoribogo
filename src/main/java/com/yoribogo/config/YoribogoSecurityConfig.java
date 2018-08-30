@@ -48,8 +48,8 @@ public class YoribogoSecurityConfig extends WebSecurityConfigurerAdapter{
 			.loginProcessingUrl("/member/login") //post
 			
 			.failureHandler(failHandler)
-			
 			.successHandler(successHandler) // 로그인성공하고 발생하는 핸들러
+			
 			//.defaultSuccessUrl("/index")//로그인시 디폴트 이동값
 			.permitAll()
 			.and()

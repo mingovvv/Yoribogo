@@ -14,6 +14,7 @@
 
 <title>Insert title here</title>
 <link href="${ctx}/resources/CSS/style.css" type="text/css" rel="stylesheet"/>
+<link href="${ctx}/resources/CSS/liMarquee.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<!-- header -->

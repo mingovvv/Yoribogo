@@ -200,6 +200,24 @@ public class RecipeService {
 		recipeDao.deleteRecipe(recipeId);
 		
 	}
+	
+	@Transactional
+	public List<Recipe> listDate(String memberId) {
+		List<Recipe> list = recipeDao.listDate(memberId);
+		return list;
+	}
+	
+	@Transactional
+	public List<Recipe> listPop(String memberId) {
+		List<Recipe> list = recipeDao.listPop(memberId);
+		return list;
+	}
+
+	@Transactional
+	public List<Recipe> listRan(String memberId) {
+		List<Recipe> list = recipeDao.listRan(memberId);
+		return list;
+	}
 
 	
 }

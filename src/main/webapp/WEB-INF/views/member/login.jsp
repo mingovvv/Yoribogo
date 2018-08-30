@@ -22,28 +22,10 @@
 					<input type="checkbox" id="remember" class="checkbox" checked> <label for="remember">Remember me</label>
 					<div class="submit-wrap">
 						<input type="submit" value="Sign in" class="submit"> 
-						<a href="#" class="more">Forgot your password?</a>
+						<a href="#" class="more">have a nice day :)</a>
 					</div>
 				</form>
 			</div>
-			
-			
-<!-- 			<div class="signup-cont cont">
-				<form method="post">  enctype="multipart/form-data"
-
-					<input type="text" name="id" id="id" class="inpt" required="required" placeholder="Your id"> 
-					<input type="password" name="pwd" id="pwd" class="inpt" required="required" placeholder="Your password">
-					<input type="text" name="name" id="name" class="inpt" required="required" placeholder="Your name"> 
-					<input type="text" name="nickname" id="nickname" class="inpt" required="required" placeholder="Your nickname"> 
-					<input type="text" name="email" id="email" class="inpt" required="required" placeholder="Your e-mail"> 
-					<input type="file" name="photo" id="photo" class="inpt" > 
-					
-					<div class="submit-wrap">
-						<input type="submit" value="Sign up" class="submit"> <a href="#" class="more">Terms and conditions</a>
-					</div>
-				</form>
-			</div> -->
-			
 			
 		</div>
 	</article>
@@ -55,31 +37,6 @@
 </section>
 </main>
 
-<%-- <main>
-	<section>
-		<h1>로그인 폼</h1>
-		<form action="${ctx}/login" method="post">
-			<fieldset>
-				<legend>로그인필드</legend>
-				<table>
-					<tr>
-						<td>아이디 : </td>
-						<td><input type="text" name="username" placeholder="아이디를 입력하세요" /></td>
-					</tr>
-					<tr>
-						<td>패스워드 : </td>
-						<td><input type="password" name="password" placeholder="패스워드를 입력하세요" /></td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<input type="submit" value="로그인" />
-						</td>
-					</tr>
-				</table>
-			</fieldset>
-		</form>
-	</section>
-</main> --%>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 

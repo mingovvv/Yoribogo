@@ -65,6 +65,51 @@ public class RecipeController {
 	  
 	
 	
+	//date 순 정렬
+	@GetMapping("list/date")
+	@ResponseBody
+	public String listDate(Principal principal){
+		
+		String memberId = principal.getName();
+		List<Recipe> recipe = service.listDate(memberId);
+		
+		
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(recipe);
+		
+		return json;
+	}
+	
+	//인기 순 정렬
+	@GetMapping("list/pop")
+	@ResponseBody
+	public String listPop(Principal principal){
+		
+		String memberId = principal.getName();
+		List<Recipe> recipe = service.listPop(memberId);
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(recipe);
+		
+		return json;
+	}
+	
+	//랜덤 정렬
+	@GetMapping("list/ran")
+	@ResponseBody
+	public String listRan(Principal principal){
+		
+		String memberId = principal.getName();
+		List<Recipe> recipe = service.listRan(memberId);
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(recipe);
+		
+		return json;
+	}
+	
+	
 	@GetMapping("{id}")//경로 설정
 	public String detail(@PathVariable("id") Integer id, Model model,
 								@PathVariable("id") Integer recipeId,
@@ -401,6 +446,10 @@ public class RecipeController {
 		return "chef.recipe.list";
 		
 	}*/
+	
+	
+	
+	
 	
 	
 	

@@ -8,7 +8,7 @@
 
 <main class="main">
 	<div class="detail-container">
-		<div class="when">${recipe.regDate}</div>
+		<div class="when"><fmt:formatDate value="${recipe.regDate}" pattern="yyyy-MM-dd"/></div>
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
 			<div class="profile">
@@ -117,7 +117,7 @@
 									<c:if test="${not empty c.profile}">
 										<div><img alt="" src="${ctx}${c.profile}"></div>
 									</c:if>
-										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
+										<span class="aa">${c.memberId}</span>  <span class="bb"><fmt:formatDate value="${c.regDate}" pattern="yyyy-MM-dd KK:mm:ss"/></span> 
 										<p>${c.content} </p>
 								</c:if>
 							</c:forEach>

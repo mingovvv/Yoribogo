@@ -35,6 +35,20 @@ public interface RecipeDao {
 	//지니레시피
 	List<Recipe> getGenieRecipe(String[] list);
 
+	List<Recipe> listDate(String memberId);
+
+	List<Recipe> listPop(String memberId);
+
+	List<Recipe> listRan(String memberId);
+
+	List<Recipe> listDate();
+
+	List<Recipe> listPop();
+
+	List<Recipe> listRan();
+
+	List<Recipe> getRecipePaging();
+
 
 
 

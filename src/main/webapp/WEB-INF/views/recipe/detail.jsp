@@ -8,7 +8,7 @@
 
 <main class="main">
 	<div class="detail-container">
-		<div class="when">${recipe.regDate}</div>
+		<div class="when"><fmt:formatDate value="${recipe.regDate}" pattern="yyyy-MM-dd"/></div>
 		<div class="representative-img">
 			<img alt="" src="${ctx}${recipe.representativeImage}">
 			<div class="profile">
@@ -24,35 +24,62 @@
 		
 		<div class="detail-main">
 			<ul class="semi-box">
-				<li><img alt="" src="${ctx}/resources/images/eye.png" style="border: 3px solid black"><span>조회수 <b style="color:black ">30회</b></span></li>
-				<li><img alt="" src="${ctx}/resources/images/chat.png" style="border: 3px solid #6b6bd9"><span>댓글 <b style="color:#6b6bd9 ">40개</b></span></li>
-				<li><img alt="" src="${ctx}/resources/images/kitchen.png" style="border: 3px solid #dbc77e"><span>즐겨찾기 <b style="color:#938658 ">30개</b></span></li>
+				<li><img alt="" src="${ctx}/resources/images/eye.png" style="border: 3px solid black"><span>조회수 <b style="color:black ">${recipe.readCount}회</b></span></li>
+				<li><img alt="" src="${ctx}/resources/images/chat.png" style="border: 3px solid #6b6bd9"><span>댓글 <b style="color:#6b6bd9 ">${commentCount}개</b></span></li>
+				<li><img alt="" src="${ctx}/resources/images/kitchen.png" style="border: 3px solid #dbc77e"><span style="color:#938658 ">즐겨찾기 <b class="likeCount" style="color:#938658 ">${likeCount}</b>개</span></li>
 			</ul>
 			<ul class="semi-box two">
 				<li><img alt="" src="${ctx}/resources/images/cooktime.png" style="border: 3px solid gray"><span>조리시간 ${recipe.sortTime}</span></li>
 				<li><img alt="" src="${ctx}/resources/images/bab.png" style="border: 3px solid #feab99"><span>${recipe.sortNational}</span></li>
 				<li><img alt="" src="${ctx}/resources/images/tray2.png" style="border: 3px solid #3bb244"><span>${recipe.sortSituation}</span></li>
 			</ul>
-			<p class="detail-title">${recipe.title}</p>
-			<p class="detail-content">${recipe.description}</p>
+		
+		
+
+		
+		<div class="like-button-section">
+			<img class="like-button detail" name="${recipe.id}" src="${ctx}/resources/images/unlike.png" style="cursor: pointer;">
+			<span>즐겨찾기 </span>
+		</div>
+		
+			
+			<p class="detail-title">
+				<img class="quote" src="${ctx}/resources/images/quote-l.png" style="margin-right: 20px">  
+					${recipe.title}
+				<img class="quote" src="${ctx}/resources/images/quote-r.png" style="margin-left: 20px">
+			</p>
+			
+			<div class="content-wrapper"><p class="detail-content">${recipe.description}</p></div>
 		</div>
 		
 		<div class="using-ingredient">
-			<h1>사용된 재료</h1>
+			<h1 class="hidden">사용된 재료</h1>
+			<p style="color: #5fcad4;font-size: 24px;font-weight: bold; margin-left: 20px;">사용된 재료 <span style="color: #5fcad4"></span></p>
 			<c:forEach var="ingredient" items="${ingredient}">
 			<span>${ingredient.fname}</span>
 			</c:forEach>
 		</div>
 		
 		<div class="step-order">
-			<h1>요리순서</h1>
+			<h1 class="hidden">요리 순서</h1>
+			<div style="color: #5fcad4;font-size: 24px;font-weight: bold; margin-left: 20px;">요리 순서 <span style="color: #5fcad4"></span></div>
 			<c:forEach var="foodOrder" items="${foodOrder}">
 			<span>Step ${foodOrder.chapter}</span>
 			<div>
+				<c:if test="${foodOrder.image=='null'}">
+				</c:if>
+				<c:if test="${foodOrder.image!='null'}">
 				<img src="${ctx}${foodOrder.image}">
+				</c:if>
 			</div>
 			<p>${foodOrder.content}</p>
 			</c:forEach>
+		</div>
+		
+		<div class="ggul-tip">
+			<h1 class="hidden">꿀팁</h1>
+			<div style="color: #5fcad4;font-size: 24px;font-weight: bold; margin-left: 20px; margin-bottom: 20px;">꿀팁 <span style="color: #5fcad4"></span></div>
+			<div class="content-wrapper"><p class="detail-content">${recipe.ggulTip}</p></div>
 		</div>
 		
 		
@@ -70,7 +97,7 @@
 									<c:if test="${c.profile!='null'}">
 										<div><img alt="" src="${ctx}${c.profile}"></div>
 									</c:if>
-										<span class="aa">${c.memberId}</span>  <span class="bb">${c.regDate}</span> 
+										<span class="aa">${c.memberId}</span>  <span class="bb"><fmt:formatDate value="${c.regDate}" pattern="yyyy-MM-dd KK:mm:ss"/></span> 
 										<p>${c.content} </p>
 								</c:if>
 							</c:forEach>
@@ -108,59 +135,16 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script>
-   
-   $(function(){
-      var submitButton  = $(".comment-form input[type='submit']");
-      var commentView  = $(".reply-window .cut");
-      
-      submitButton.click(function(e){
-         e.preventDefault();
-         
-         var data = $(".comment-form form").serialize();
-         
-         
-         
-         $.post("${recipe.id}/comment/reg", data, function(result){
-               if(parseInt(result)==1){
-            	   
-            	   //&getjson 사용
-            	   $.getJSON("${recipe.id}/ajax-comment-list", function(comments){
-            		
-            		
-            		commentView.empty();
-                  
-                  
-                  //1) template 얻어오기
-                  var template = document.querySelector('#comment-template');
-                  
-                  
-                  
-                  for(var i=0; i < comments.length; i++ ){
-	                  var cloneLi = document.importNode(template.content, true);
-	                  var img = cloneLi.querySelector("img");
-	                  var spans = cloneLi.querySelectorAll("span");
-	                  var p = cloneLi.querySelector("p");
-	                  
-                	  spans[0].textContent=comments[i].memberId;
-	                  spans[1].textContent=comments[i].regDate;
-	                  p.textContent = comments[i].content;
-
-	                  commentView.get(0).appendChild(cloneLi);
-                  } 
-                   
-
-            	   });
-            	   
-            	   
-               }
-         });
-         
-         
-         
-      });
-   });
+	$(".like-button-section").click(function(){
+		var message = confirm("로그인 후 이용가능한 서비스입니다. 로그인 하시겠습니까?");
+		
+		var recipeId = $(".like-button").attr('name');
+		
+		if(message){
+			location.replace("${ctx}/chef/recipe/"+recipeId);
+		}
+	})
 
 </script>
 

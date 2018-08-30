@@ -28,9 +28,8 @@ public class YoribogoLoginFailureHandler implements AuthenticationFailureHandler
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException authentication)
 			throws IOException, ServletException {
 
-		System.out.println("로그인 실패");
-		response.sendRedirect("/yoribogo/member/login"); 
-		authentication.getMessage();
+		response.sendRedirect(request.getContextPath() + "/member/result");
+		
 		
 	}
 }

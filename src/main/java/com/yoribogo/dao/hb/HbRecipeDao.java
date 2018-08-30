@@ -2,6 +2,8 @@ package com.yoribogo.dao.hb;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import org.hibernate.Session;
@@ -151,13 +153,101 @@ public class HbRecipeDao implements RecipeDao{
 		
 		return genieRecipe;
 	}
+
+	@Override
+	public List<Recipe> listDate(String memberId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("select "
+				+ "R, COALESCE(RL.memberId, 0) as checkLike" 
+				+ " from Recipe as R"
+				+ " left outer join RecipeLike RL on R.id = RL.recipeId and RL.memberId =:memberId order by regDate desc").setParameter("memberId", memberId);
+		
+
+		List<Recipe> list = query.getResultList();
+		
+		
+		return list;
+	}
+
+	@Override
+	public List<Recipe> listPop(String memberId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("select "
+				+ "R, COALESCE(RL.memberId, 0) as checkLike" 
+				+ " from Recipe as R"
+				+ " left outer join RecipeLike RL on R.id = RL.recipeId and RL.memberId =:memberId order by readCount desc").setParameter("memberId", memberId);
+		
+
+		List<Recipe> list = query.getResultList();
+		
+		
+		return list;
+	}
+
+	@Override
+	public List<Recipe> listRan(String memberId) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("select "
+				+ "R, COALESCE(RL.memberId, 0) as checkLike" 
+				+ " from Recipe as R"
+				+ " left outer join RecipeLike RL on R.id = RL.recipeId and RL.memberId =:memberId order by rand()").setParameter("memberId", memberId);
+		
+
+		List<Recipe> list = query.getResultList();
+		
+		return list;
+	}
+
+	@Override
+	public List<Recipe> listDate() {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("from Recipe order by regDate desc",Recipe.class);
+		List<Recipe> list = query.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Recipe> listPop() {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Recipe> query = session.createQuery("from Recipe order by readCount desc",Recipe.class);
+		List<Recipe> list = query.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Recipe> listRan() {
+		Session session = sessionFactory.getCurrentSession();
+
+		Query<Recipe> query = session.createQuery("from Recipe order by rand()",Recipe.class);
+		List<Recipe> list = query.getResultList();
+		return list;
+	}
+
+	@Override
+	public List<Recipe> getRecipePaging() {
+		Session session = sessionFactory.getCurrentSession();
+
+		Query<Recipe> query = session.createQuery("from Recipe",Recipe.class);
+		query.setFirstResult(0);
+		query.setMaxResults(2);  
+		
+		List<Recipe> list = query.getResultList();
+		return list;
+	}
 	
-	
-	
-
-
-
-
+	 
+	  
+   
+ 
 
 
 

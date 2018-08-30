@@ -169,5 +169,13 @@ public class MemberController {
 
 	}
 	
+	@GetMapping("result")
+	public String result(Model model){
+		
+		model.addAttribute("msg", "아이디 또는 비밀번호가 다릅니다 :)"); 
+		model.addAttribute("url", "member/login");
+		
+		return "result";
+	}
 	
 }

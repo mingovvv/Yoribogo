@@ -7,6 +7,9 @@ public class YoribogoSecurityWebApplicationIntializer extends AbstractSecurityWe
 }
 
 /*
+
+시큐어리티 초기화 클래스
+
 이부분을 입력함으로써 web.xml에서한
 <filter>
 <filter-name>springSecurityFilterChain</filter-name>

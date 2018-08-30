@@ -32,7 +32,7 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse renponse, Authentication authentication)
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
 		
 		String memberId = authentication.getName();
@@ -44,20 +44,24 @@ public class YoribogoLoginSuccessHandler implements AuthenticationSuccessHandler
 		for(String role : roles)
 			System.out.println(role);
 		
+		
 		//가려던길 알아보는 설정
 		HttpSession session = request.getSession();
 		if(session != null) {
+			
 			SavedRequest savedReqeust = (SavedRequest) session.getAttribute("SPRING_SECURITY_SAVED_REQUEST");
 			
 			if(savedReqeust != null) {
 				String returnUrl = savedReqeust.getRedirectUrl();
 				System.out.println(returnUrl);
 				
-				redirectStrategy.sendRedirect(request, renponse, returnUrl);
+				
+				
+				redirectStrategy.sendRedirect(request, response, returnUrl);
 			}
 			else { //직접 로그인창으로 간 경우
 				
-				redirectStrategy.sendRedirect(request, renponse, "/chef/index");
+				redirectStrategy.sendRedirect(request, response, "/chef/index");
 				
 				
 				//-------------------------나중에 복합키에 대해 자세히 알게되면 구현-------------------

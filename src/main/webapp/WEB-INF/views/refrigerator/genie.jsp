@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 
@@ -148,6 +149,7 @@ $(function(){
 				 for(var i =0; i < result.length;i++){
 					 console.log(template.content);
 					 var clone = document.importNode(template.content,true);
+					 console.log(clone);
 					 
 					 var recipeId = clone.querySelector(".frame > div > a");
 					 var image = clone.querySelector(".frame > div > a > img");

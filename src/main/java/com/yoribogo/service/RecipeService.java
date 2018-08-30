@@ -4,17 +4,20 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yoribogo.dao.FoodOrderDao;
 import com.yoribogo.dao.IngredientDao;
 import com.yoribogo.dao.MemberDao;
 import com.yoribogo.dao.RecipeCommentDao;
 import com.yoribogo.dao.RecipeDao;
+import com.yoribogo.dao.RecipeLikeDao;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
 import com.yoribogo.entity.RecipeComment;
+import com.yoribogo.entity.RecipeLike;
 
 
 
@@ -35,6 +38,9 @@ public class RecipeService {
 	
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private RecipeLikeDao recipeLikeDao;
 
 	public List<Recipe> getRecipe() {
 		
@@ -81,5 +87,74 @@ public class RecipeService {
 		return member;
 	}
 
+
+	@Transactional
+	public List<RecipeLike> getRecipeLike(String memberId) {
+		
+		List<RecipeLike> list = recipeLikeDao.getList(memberId);
+		
+		return list;
+	}
+
+
+	@Transactional
+	public List<Recipe> getLikeRecipe(String memberId) {
+		
+		List<Recipe> list = recipeDao.getLikeRecipe(memberId);
+		return list;
+	}
+
+
+	@Transactional
+	public int getReadCount(Integer recipeId) {
+
+		int readCount = recipeDao.getReadCount(recipeId);
+		
+		return readCount;
+		
+	}  
+
+
+	@Transactional
+	public int getCommentCount(Integer recipeId) {
+		
+		int commentCount = recipeCommentDao.getCommentCount(recipeId);
+		return commentCount;
+	}
+
+
+	@Transactional
+	public int getLikeCount(Integer recipeId) {
+		
+		int likeCount = recipeLikeDao.getLikeCount(recipeId);
+		
+		return likeCount;
+	}
+
+	@Transactional
+	public List<Recipe> listDate() {
+		List<Recipe> list = recipeDao.listDate();
+		return list;
+	}
+
+
+	@Transactional
+	public List<Recipe> listPop() {
+		List<Recipe> list = recipeDao.listPop();
+		return list;
+	}
+
+ 
+	@Transactional
+	public List<Recipe> listRan() {
+		List<Recipe> list = recipeDao.listRan();
+		return list;
+	}
+
+	@Transactional
+	public List<Recipe> getRecipePaging() {
+		List<Recipe> list = recipeDao.getRecipePaging();
+		return list;
+	}
 
 }
