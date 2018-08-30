@@ -46,7 +46,7 @@ public class CommunityController {
 	
 	@Autowired
 	private MemberService mservice;
-	
+	  
 //----------------------------------- list --------------------------------------------------
       @RequestMapping("list")
       public String list(@RequestParam(value="p", defaultValue="1")Integer page,
