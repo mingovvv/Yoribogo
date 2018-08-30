@@ -30,6 +30,5 @@ public class YoribogoLoginFailureHandler implements AuthenticationFailureHandler
 
 		response.sendRedirect(request.getContextPath() + "/member/result");
 		
-		
 	}
 }

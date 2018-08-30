@@ -40,13 +40,7 @@ public class HbRecipeDao implements RecipeDao{
 		
 		Query<Recipe> query = session.createQuery("from Recipe",Recipe.class); //임포트 하이버네이트 쿼리
 		List<Recipe> list = query.getResultList();
-		
-		
-		
-		
-		
-		
-		
+
 		return list;
 	}
 	
@@ -248,12 +242,4 @@ public class HbRecipeDao implements RecipeDao{
 	  
    
  
-
-
-
-
-
-
-
-	
 }

@@ -152,7 +152,8 @@ $(function(){
 	$(document).on("click",".btn-cancel",function(){ //함수 바인딩
 		
 		
-		$(this).siblings().remove();
+
+.siblings().remove();
 		$(this).remove();
 		
 		for(var i=0; i<$(".stepCount").length;i++){

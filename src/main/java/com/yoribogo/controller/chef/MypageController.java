@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.security.Principal;
-import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
-import com.yoribogo.entity.RecipeLike;
 import com.yoribogo.service.MemberService;
 import com.yoribogo.service.chef.RecipeService;
 
@@ -51,18 +49,10 @@ public class MypageController {
 		String memberId = principal.getName();
 		
 		Member member = service.getMember(memberId);
+		
 		model.addAttribute("member",member);
 		
-		List<Recipe> recipe = service.getRecipe(memberId);
-		model.addAttribute("recipe",recipe);
 		
-		System.out.println("잘받아왔니?"+recipe);
-		
-		List<RecipeLike> recipeLike = service.getRecipeLike(memberId);
-		model.addAttribute("recipeLike",recipeLike);
-		
-		List<Recipe> likeRecipe = service.getLikeRecipe(memberId);
-		model.addAttribute("likeRecipe",likeRecipe);
 		
 		return "chef.mypage.entrance";
 		

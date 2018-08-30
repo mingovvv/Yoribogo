@@ -1,12 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                             
+=======
+                                    
+    
+    
+>>>>>>> refs/remotes/origin/master
     
     
     
     
     
     <wb-module deploy-name="yoribogo-0.0.1-SNAPSHOT">
+<<<<<<< HEAD
                                                 
+=======
+                                                                
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                                                                
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                                                                
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                                                                
+        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                                                                        
+        
+        
+        
+>>>>>>> refs/remotes/origin/master
         
         
         
@@ -38,16 +83,34 @@
         
         
         <property name="java-output-path" value="/Yoribogo/target/classes"/>
+<<<<<<< HEAD
                 
+=======
+                                
+        
+        
+>>>>>>> refs/remotes/origin/master
         <property name="context-root" value="yoribogo"/>
+<<<<<<< HEAD
                                                     
+=======
+                                                                    
+    
+    
+>>>>>>> refs/remotes/origin/master
     
     
     
     
     
     </wb-module>
+<<<<<<< HEAD
                         
+=======
+                                
+
+
+>>>>>>> refs/remotes/origin/master
 
 
 

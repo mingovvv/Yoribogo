@@ -126,8 +126,6 @@
 							</c:if>
 						</div>
 		</div>		
-		
-			
 				
 				<template id="comment-template">
 						<div><img src=""></div>
@@ -211,9 +209,6 @@
 
          var data = $(".comment-form form").serialize();
          console.log(data);//data에는 내가 입력한 댓글의 내용이 들어간다
-         
-         
-         
          
          $.post("${recipe.id}/comment/reg", data, function(result){ //result에는 결과값 1이 들어가 있따
         	 console.log(result);

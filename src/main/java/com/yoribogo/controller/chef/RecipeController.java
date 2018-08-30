@@ -554,20 +554,18 @@ public class RecipeController {
 		System.out.println("당신의 로그인 아이디 = "+memberId);
 		
 		recipe.setMemberId(memberId);
-		
-		
+
+		System.out.println("레시피 아이디" + recipe.getId() );
+
 		ServletContext ctx = request.getServletContext();
 		
 		String fpath = "/resources/representativeImage/"+memberId;
 		String path = ctx.getRealPath(fpath);
 		
-		
 		File filepath = new File(path);
 	    if(!filepath.exists())
 	    	filepath.mkdirs();
-	    
-	    
-	    
+
 	    if(!file[0].isEmpty()) {
 			try {
 				String fname = file[0].getOriginalFilename();  
@@ -614,16 +612,13 @@ public class RecipeController {
 	  		
 	  		for(int i=1;i<file.length;i++) {
 	  			
-	  			
 	  			String fpath2 = "/resources/orderImage/"+memberId+"/"+i;
 	  		    String path2 = ctx.getRealPath(fpath2);
 	  		    
 	  		    File filepath2 = new File(path2);
 	  		    if(!filepath2.exists())
 	  		    	filepath2.mkdirs();
-	  			
-	  			
-	  			
+
 	  		System.out.println("input file 갯수 : " + file.length);
 	  			
 	  			if(!file[i].isEmpty()) {
@@ -652,7 +647,6 @@ public class RecipeController {
 	  				} catch (IOException e) {
 	  					// TODO Auto-generated catch block
 	  					e.printStackTrace();
-	  					
 	  				}
 	  			}else {
 	  				foodOrder.setImage("null");
@@ -663,7 +657,6 @@ public class RecipeController {
 		  		foodOrder.setChapter(i);
 		  		foodOrder.setRecipeId(recipeId);
 		  		service.insertFoodOrder(foodOrder);
-	  			
 	  			
 	  		}
 	  		//----------------------------------------------------------------

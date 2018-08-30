@@ -26,7 +26,7 @@
 				 </c:if> 
 				 
 				<li class="timer-button"><img src="${ctx}/resources/images/count.png" /></li>
-			</ul>
+			</ul>    
 		</nav>  
 		
 		<div class="timer">
