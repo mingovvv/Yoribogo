@@ -7,18 +7,18 @@
 	<header class="header">
 	
 		<sec:authorize access="isAuthenticated()">	
-		<h1><a href="${ctx}/chef/index" style="z-index: 100"><img src="${ctx}/resources/images/yoribogo.png" height="50px"></a></h1>
+		<h1><a href="${ctx}/chef/index" style="z-index: 100"><img src="${ctx}/resources/images/yoribogo.png" width="200px" height="50px"></a></h1>
 		</sec:authorize>
 		
 		<sec:authorize access="!isAuthenticated()">	
-		<h1><a href="${ctx}/index" style="z-index: 100"><img src="${ctx}/resources/images/yoribogo.png" height="50px"></a></h1>
+		<h1><a href="${ctx}/index" style="z-index: 100"><img src="${ctx}/resources/images/yoribogo.png" width="200px" height="50px"></a></h1>
 		</sec:authorize>
 		 
 		<nav class="main-menu">
 			<h1 class="hidden">메인메뉴</h1>
 			<ul>
 				<li><img class="logo" src="${ctx}/resources/images/yoribogo-logo.png"/></li>
-				<li id = "search-button"><img style="cursor: pointer;" src="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></li>
+				<%-- <li id = "search-button"><img style="cursor: pointer;" src="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></li> --%>
 				
 				<li id = "menu-button">
 					<img style="cursor: pointer;" src="${ctx}/resources/images/ic_dehaze_black_24dp_1x.png"/>

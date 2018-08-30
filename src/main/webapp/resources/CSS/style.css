@@ -78,6 +78,10 @@ a:visited { color: white; text-decoration: none;}
 
 
 /* 옆으로 밀기 */
+.change-image{
+	border-bottom: 20px solid #6ccfc3;
+}
+
 .main,
 .footer,
 .visual{
@@ -478,8 +482,8 @@ a:visited { color: white; text-decoration: none;}
 
 @media screen and (min-width: 1020px) {
 	.main {
-		margin-left: 150px;
-		margin-right: 150px;
+		margin-left: 12%;
+		margin-right: 12%;
 	}
 	
 	.main.reg-main{
@@ -644,7 +648,6 @@ a:visited { color: white; text-decoration: none;}
 .footer div{
     height: 20px;
     background: #6ccfc3;
-    margin-top: 20px;
     margin-bottom: 20px;
 }
 .footer p{
@@ -2187,8 +2190,43 @@ margin-left: 20px;
 
 			
 			
-			
-			
+
+
+}
+
+
+ 			.recipe-list ul .str_item {
+                font-size:0;
+                line-height:0
+            }
+            .recipe-list ul img { opacity:1}
+            .recipe-list ul img:hover {
+             	opacity: 1;
+				-webkit-animation: flash 1.5s;
+				animation: flash 1.5s;
+             }
+            .recipe-list ul li.str_wrap.str_active {
+                background:#f2fef1;
+            }
+            
+            
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+} 
+
 			
 			
 

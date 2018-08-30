@@ -1,7 +1,7 @@
 package com.yoribogo.controller.chef;
 
 import java.security.Principal;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.yoribogo.entity.Member;
+import com.yoribogo.entity.Recipe;
+import com.yoribogo.entity.RecipeLike;
 import com.yoribogo.service.MemberService;
+import com.yoribogo.service.chef.RecipeService;
 
 
 
@@ -21,6 +24,8 @@ public class HomeController {
 	
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private RecipeService Recipeservice;
 	
 	
 	@GetMapping("index")//최신버전 get까지가능
@@ -29,13 +34,20 @@ public class HomeController {
 								,Principal principal) {
 		
 		
-		String mId =principal.getName();
-		Member member = service.getMemberInfo(mId);
 		
-		System.out.println("아이디 = " + mId);
-		System.out.println(member);
+		String memberId = principal.getName();
 		
-		model.addAttribute("member",member);
+		List<Recipe> recipe = Recipeservice.getRecipe();
+		model.addAttribute("recipe",recipe);
+		
+		System.out.println("recipe : "+recipe);
+		
+		List<RecipeLike> recipeLike = Recipeservice.getRecipeLike(memberId);
+		model.addAttribute("recipeLike",recipeLike);
+		
+		System.out.println("recipeLike : "+recipeLike);
+		
+		model.addAttribute("checkDetail",1);
 		
 		return "chef.index";
 	}

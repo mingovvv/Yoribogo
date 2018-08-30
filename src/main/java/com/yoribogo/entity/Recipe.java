@@ -29,6 +29,7 @@ public class Recipe {
 	@Column(updatable=false)
 	private String memberId;
 	
+	
 
 	@Column(insertable=false,updatable=false) 
 	private int readCount;
@@ -36,6 +37,8 @@ public class Recipe {
 	
 	@Transient//DB에 저장하지 않는 속성을 의미함 ex) 패스워드 확인
 	private List<RecipeComment> comments;
+	@Transient
+	private String checkLike;
 	
 	public Recipe() {
 		// TODO Auto-generated constructor stub
@@ -55,7 +58,40 @@ public class Recipe {
 		this.regDate = regDate;
 		this.memberId = memberId;
 	}
+	
+	
 
+
+	public Recipe(int id, String title, String description, String representativeImage, String sortNational,
+			String sortTime, String sortSituation, String ggulTip, Date regDate, String memberId, int readCount,
+			String checkLike) {
+		super();
+		this.id = id;  
+		this.title = title;
+		this.description = description;
+		this.representativeImage = representativeImage;
+		this.sortNational = sortNational;
+		this.sortTime = sortTime;
+		this.sortSituation = sortSituation;
+		this.ggulTip = ggulTip;
+		this.regDate = regDate;
+		this.memberId = memberId;
+		this.readCount = readCount;
+		this.checkLike = checkLike;
+	}
+
+	
+	
+	public String getCheckLike() {
+		return checkLike;
+	}
+
+	public void setCheckLike(String checkLike) {
+		this.checkLike = checkLike;
+	}
+
+	
+	
 	public int getReadCount() {
 		return readCount;
 	}
@@ -146,7 +182,7 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", title=" + title + ", description=" + description + ", representativeImage="
+		return "Recipe [id=" + id + ", checkLike=" + checkLike + ", title=" + title + ", description=" + description + ", representativeImage="
 				+ representativeImage + ", sortNational=" + sortNational + ", sortTime=" + sortTime + ", sortSituation="
 				+ sortSituation + ", ggulTip=" + ggulTip + ", regDate=" + regDate + ", memberId=" + memberId
 				+ ", readCount=" + readCount + ", comments=" + comments + "]";
@@ -154,7 +190,7 @@ public class Recipe {
 
 	public List<RecipeComment> getComments() {
 		return comments;
-	}
+	} 
 
 	public void setComments(List<RecipeComment> comments) {
 		this.comments = comments;
@@ -169,7 +205,6 @@ public class Recipe {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
 	
 	
 }
