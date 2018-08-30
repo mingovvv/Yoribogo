@@ -16,8 +16,8 @@
 		<div class="content">
 			<div class="signin-cont cont">
 				<form method="post">
-					<input type="text" name="username" class="inpt" required="required" placeholder="user id"> 
-					<input type="password" name="password" class="inpt" required="required" placeholder="Your password"> 
+					<input type="text" name="username" id="id" class="inpt" required="required" placeholder="user id"> 
+					<input type="password" name="password" id="pwd" class="inpt" required="required" placeholder="Your password"> 
 					
 					<input type="checkbox" id="remember" class="checkbox" checked> <label for="remember">Remember me</label>
 					<div class="submit-wrap">
@@ -56,3 +56,50 @@
 		}
 	});
 </script>
+<!-- <script>
+$(document).ready(function(){
+                       
+	$('#form').submit(function(){
+		$.ajax({
+            type: 'POST',
+            url: '/yoribogo/member/login/checkMember',
+            data: {
+                'memberId' : $('#id').val()
+                //'memberPwd' : $('#pwd').val()
+            },
+            dataType:'html',                
+            success: function(data){
+            	if(data == "OK"){
+            		
+            		$('#id').attr("name","username");
+            		$('#pwd').attr("name","password");
+            		
+            	}else
+            		{
+            			$('#id').removeAttr("name");
+            			$('#pwd').removeAttr("name");
+            		}                                         
+            },
+            /* complete : function(data) {
+				alert("not connect");
+                // 통신이 실패했어도 완료가 되었을 때 이 함수를 타게 된다.
+
+            }, */
+            error:function(request,status,error){
+               alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+              }           
+        });
+		
+		//패스워드도 ajax로 확인할 것 
+		
+		if($('#id').attr('name') == null || $('#pwd').attr('name') == null){
+			alert("fail");
+			$('#pwd').val('');
+			$('#pwd').focus();
+			//텍스트 빨간색으로 출력
+			return false;
+		}else
+			alert("login success");
+	});
+});
+</script> -->

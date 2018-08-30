@@ -34,7 +34,6 @@ public class HbMemberDao implements MemberDao{
 		return 1;
 	}
 
-
 	@Transactional
 	@Override
 	public Member get(String id) {
@@ -56,30 +55,25 @@ public class HbMemberDao implements MemberDao{
 		return 1;
 	}
 
-	/*@Transactional
 	@Override
-	public Member getMemberId(Member id) {
+	public Member getMember(String memberId) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		 
-		Query<Member> query = session.createQuery("from member where id=:id", Member.class).setParameter("id", id);
 		
+		Query<Member> query = session.createQuery("from member where id=:memberId", Member.class).setParameter("id", memberId);
+		
+		Member member = query.getSingleResult();
+		
+		return member;
+	}
+
+	@Override
+	public List<Member> getList() {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<Member> query = session.createQuery("from Member", Member.class);
 		List<Member> list = query.getResultList();
-		
-		return (Member) list;
-	}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
+		return list;
+	}
 	
 }

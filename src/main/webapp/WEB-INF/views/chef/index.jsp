@@ -54,48 +54,4 @@
 		circular: true,		
 		drag: true			
 	});  
-/*  	(function() {
-	 var j=1;
-		setInterval(function() {
-
-			$.getJSON('${ctx}/index/circle', function(result) {
-				console.log(result);
-				console.log(result.length); 
-				 $(".recipe-list ul li").empty();
-
-				 var template = document.querySelector('#comment-template');
-				 
-				 
-				
-				 for(var i=j; i<j+2 ; i++){
-					 var clone = document.importNode(template.content,true);
-					 
-					 var recipeId = clone.querySelector(".frame > div > a");
-					 var image = clone.querySelector(".frame > div > a > img");
-					 var title = clone.querySelector(".frame div:nth-child(2)");
-					 var memberId = clone.querySelector(".frame div:nth-child(3) div:nth-child(1)");
-					 var readCount = clone.querySelector(".frame div:nth-child(3) div:nth-child(2)");
-					 
-					 recipeId.href="${ctx}/recipe/"+result[i].id;
-					 image.src="${ctx}"+result[i].representativeImage;
-					 title.textContent=result[i].title;
-					 readCount.style.color="#d07376";
-					 readCount.style.position="absolute";
-					 readCount.style.right="0%";
-					 readCount.style.bottom="0%";
-					 readCount.textContent=result[i].sortTime;
-					    
-					 
-					 $(".recipe-list ul li").get(0).appendChild(clone);
-				 }
-				 j++;
-				 
-				 if(result.length == j+1)
-					 j=0;
-				  
-			});
-
-		}, 3000);
-	}); */
-
 </script>

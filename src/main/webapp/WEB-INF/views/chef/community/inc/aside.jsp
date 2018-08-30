@@ -8,7 +8,7 @@
 			<h1 class="hidden">간편조작 버튼</h1>
 			<ul>
 				<li class="plus-button"><img src="${ctx}/resources/images/add.png" /></a></li>
-				<li class="write-button"><a href="${ctx}/chef/recipe/reg"><img src="${ctx}/resources/images/write.png" /></a></li>
+				<li class="write-button"><a href="${ctx}/chef/community/reg"><img src="${ctx}/resources/images/write.png" /></a></li>
 			</ul>
 		</nav>
 		

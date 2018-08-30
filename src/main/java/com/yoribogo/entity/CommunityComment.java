@@ -20,6 +20,8 @@ public class CommunityComment {
 	private String content;
 	@Column(insertable=false)
 	private Date regDate;
+	private int communityId;
+	private String profile;
 	
 	@Transient //값을 데이터에 저장하지 않으려는 경우에 사용됨
 	private Community community;
@@ -28,12 +30,15 @@ public class CommunityComment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CommunityComment(int id, String memberId, String content, Date regDate, Community community) {
+	public CommunityComment(int id, String memberId, String content, Date regDate, int communityId, String profile,
+			Community community) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
 		this.content = content;
 		this.regDate = regDate;
+		this.communityId = communityId;
+		this.profile = profile;
 		this.community = community;
 	}
 
@@ -69,6 +74,22 @@ public class CommunityComment {
 		this.regDate = regDate;
 	}
 
+	public int getCommunityId() {
+		return communityId;
+	}
+
+	public void setCommunityId(int communityId) {
+		this.communityId = communityId;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 	public Community getCommunity() {
 		return community;
 	}
@@ -80,6 +101,7 @@ public class CommunityComment {
 	@Override
 	public String toString() {
 		return "CommunityComment [id=" + id + ", memberId=" + memberId + ", content=" + content + ", regDate=" + regDate
-				+ ", community=" + community + "]";
+				+ ", communityId=" + communityId + ", profile=" + profile + ", community=" + community + "]";
 	}
+
 }

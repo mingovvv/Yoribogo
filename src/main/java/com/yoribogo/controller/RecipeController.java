@@ -14,15 +14,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.mysql.jdbc.log.Log;
 import com.yoribogo.entity.FoodOrder;
 import com.yoribogo.entity.Ingredient;
 import com.yoribogo.entity.Member;
 import com.yoribogo.entity.Recipe;
+import com.yoribogo.entity.RecipeComment;
 import com.yoribogo.service.RecipeService;
 
 
@@ -151,4 +154,7 @@ public class RecipeController {
 		return "recipe.detail";
 		
 	}
+	
+	
+
 }

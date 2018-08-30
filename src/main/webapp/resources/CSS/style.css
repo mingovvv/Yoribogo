@@ -78,10 +78,6 @@ a:visited { color: white; text-decoration: none;}
 
 
 /* 옆으로 밀기 */
-.change-image{
-	border-bottom: 20px solid #6ccfc3;
-}
-
 .main,
 .footer,
 .visual{

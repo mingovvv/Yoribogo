@@ -32,7 +32,9 @@ public class HibernateConfig {
 		
 		dataSource.setDriverClass("com.mysql.jdbc.Driver");
 
-		dataSource.setJdbcUrl("jdbc:mysql://219.251.66.248:3306/yoribogodb?serverTimezone=UTC&autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8");
+
+		dataSource.setJdbcUrl("jdbc:mysql://211.58.161.171:3306/yoribogodb?serverTimezone=UTC&autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8");
+
 
 		dataSource.setUser("min");
 		dataSource.setPassword("minmin");

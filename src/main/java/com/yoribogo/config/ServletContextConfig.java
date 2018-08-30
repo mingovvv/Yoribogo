@@ -45,6 +45,7 @@ public class ServletContextConfig {
 	    resolver.setDefaultEncoding("utf-8");
 	    resolver.setMaxUploadSize(10485760);
 	    resolver.setMaxInMemorySize(10485760);
+	
 	    return resolver;
 	}
 	

@@ -98,15 +98,14 @@ public class MemberController {
 		ServletContext ctx = request.getServletContext();
 		System.out.println(member.getId());
 		String fpath = "/resources/profiles/"+member.getId();
-	    String path = ctx.getRealPath(fpath); //물리경로
-	    
+	    String path = ctx.getRealPath(fpath); //물리경로    
 
 	    //String folder = ctx.getRealPath("/resources/profiles/");
-	    
+
 	   /* File filefolder = new File(folder);
 	    if(!filefolder.exists())
 	    	filefolder.mkdir();
-	    
+
 	    File filepath = new File(path);
 	    if(!filepath.exists())
 	    	filepath.mkdir();*/
